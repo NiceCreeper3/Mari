@@ -9,13 +9,18 @@ public class MariMove2 : MonoBehaviour
     [SerializeField] float _gravity;
     [SerializeField] float _jumpHight = 5f;
 
-    Vector3 _velocity;
+
+    // remove and use PlayerGravity
 
     [SerializeField] Transform _mariLegs;
     [SerializeField] float _groundDistance = 0.4f;
     [SerializeField] LayerMask _groundMask;
 
     bool _isGrounded;
+
+    Vector3 _velocity;
+
+
 
     // Update is called once per frame
     void LateUpdate()
@@ -41,6 +46,8 @@ public class MariMove2 : MonoBehaviour
 
         _velocity.y += _gravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
+
+        
     }
 
 
