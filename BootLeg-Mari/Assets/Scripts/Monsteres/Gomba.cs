@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gomba : MonoBehaviour
+public class Gomba : Monster, IJumpebol
 {
+    
+    void IJumpebol.JumpetOn(int hit)
+    {
+
+    }
+    
     // Start is called before the first frame update
     void Start()
     {

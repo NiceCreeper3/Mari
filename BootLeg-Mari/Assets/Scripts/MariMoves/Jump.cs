@@ -24,7 +24,20 @@ public class Jump : MonoBehaviour
 
         if (Physics.Raycast(landing,out hit, _StompHight))
         {
+            if (!hit.GetHashCode<IJumpebol>(out var damageable))
+            {
+                return;
+            }
 
+            if (!hit.TryGetComponent<IJumpebol>(out var damageable))
+            {
+                return;
+            }
+
+            IJumpebol interactable = hit.collider.gameObject.GetComponent<IJumpebol>();
+            interactable.JumpetOn(1);
+
+            damageable.JumpetOn(1);
         }
     }
 }
