@@ -6,46 +6,41 @@ public class MariMove2 : MonoBehaviour
 {
     [SerializeField] float _speed;
     [SerializeField] CharacterController _controller;
-    [SerializeField] float _gravity;
-    [SerializeField] float _jumpHight = 5f;
+
+    // camara
+    [SerializeField] Transform cam;
 
 
-    // remove and use PlayerGravity
-
-    [SerializeField] Transform _mariLegs;
-    [SerializeField] float _groundDistance = 0.4f;
-    [SerializeField] LayerMask _groundMask;
-
-    bool _isGrounded;
-
-    Vector3 _velocity;
-
-
+    // turning
+    [SerializeField] float _turnSmoothTime = 0.1f;
+    [SerializeField] float turnSmoothVelosetig;
 
     // Update is called once per frame
     void LateUpdate()
     {
-        _isGrounded = Physics.CheckSphere(_mariLegs.position, _groundDistance, _groundMask);
-        if (_isGrounded == true && _velocity.y < 0)
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+
+        //Vector3 move = transform.right * x + transform.forward * z;
+
+        // the .normalize makes it so we don,t get extra speed by holding bofe buttons
+        Vector3 move = new Vector3(x, 0f, z).normalized;
+
+        if (move.magnitude >= 0.1f)
         {
-            _velocity.y = -2f;
+            float targetAngel = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref turnSmoothVelosetig, _turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle,0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngel, 0f) * Vector3.forward;
+            _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        _controller.Move(move * _speed * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && _isGrounded)
-        {
-            _velocity.y = Mathf.Sqrt(_jumpHight * -2f * _gravity);
-        }
 
 
-        _velocity.y += _gravity * Time.deltaTime;
-        _controller.Move(_velocity * Time.deltaTime);
+        //_controller.Move(move * _speed * Time.deltaTime);
+
+
 
         
     }
