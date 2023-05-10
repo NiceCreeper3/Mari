@@ -18,32 +18,25 @@ public class MariMove2 : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        // gets W.A.S.D to mode
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
-
-        //Vector3 move = transform.right * x + transform.forward * z;
 
         // the .normalize makes it so we don,t get extra speed by holding bofe buttons
         Vector3 move = new Vector3(x, 0f, z).normalized;
 
         if (move.magnitude >= 0.1f)
         {
+            // makes Mari curkel and wake ind akottens to cam
             float targetAngel = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref turnSmoothVelosetig, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle,0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngel, 0f) * Vector3.forward;
+
+            // moves the player
             _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
-        }
-
-
-
-        //_controller.Move(move * _speed * Time.deltaTime);
-
-
-
-        
+        }        
     }
-
-
 }

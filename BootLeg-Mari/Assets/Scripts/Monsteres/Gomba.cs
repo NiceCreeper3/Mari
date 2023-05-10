@@ -1,19 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Gomba : Monster, IJumpebol
+public class Gomba : Monster
 {
-    
-    void IJumpebol.JumpetOn(int hit)
-    {
 
-    }
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _maxHealt = 1;
     }
 
     // Update is called once per frame

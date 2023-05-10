@@ -6,8 +6,14 @@ public class Jump : MonoBehaviour
 {
     [SerializeField] float _jumpHight = 3f;
     [SerializeField] float _StompHight;
+    [SerializeField] float rayRange = 4;
 
     [SerializeField] Transform _mariBoot;
+
+    void Update()
+    {
+        CastRay();
+    }
 
     // Update is called once per frame
     void LateUpdate()
@@ -18,26 +24,46 @@ public class Jump : MonoBehaviour
         /// <summary>
         /// raycast til at hvise laning og angribe
         /// </summary>
-        RaycastHit hit;
+        /// 
 
+
+
+        /*
+                RaycastHit hit;
+
+                Ray landing = new Ray(_mariBoot.position, Vector3.down);
+
+                if (Physics.Raycast(landing, out hit, _StompHight))
+                {
+
+                    IJumpebol interactable = hit.collider.gameObject.GetComponent<IJumpebol>();
+                    interactable.JumpetOn(1);
+                }*/
+
+
+
+        //curent etempt
+        RaycastHit hitInfo = new RaycastHit();
+        bool hit = Physics.Raycast(_mariBoot.position, out hitInfo, rayRange);
         Ray landing = new Ray(_mariBoot.position, Vector3.down);
-
-        if (Physics.Raycast(landing,out hit, _StompHight))
+        if (hit)
         {
-            if (!hit.GetHashCode<IJumpebol>(out var damageable))
+            GameObject hitObject = hitInfo.transform.gameObject;
+            hitObject.GetComponent<IJumpebol>().JumpetOn(1);
+        }
+    }
+
+    void CastRay()
+    {
+        RaycastHit hitInfo = new RaycastHit();
+        bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, rayRange);
+        if (hit)
+        {
+            GameObject hitObject = hitInfo.transform.gameObject;
+            if (Input.GetMouseButtonDown(0))
             {
-                return;
+                hitObject.GetComponent<IJumpebol>().JumpetOn(1);
             }
-
-            if (!hit.TryGetComponent<IJumpebol>(out var damageable))
-            {
-                return;
-            }
-
-            IJumpebol interactable = hit.collider.gameObject.GetComponent<IJumpebol>();
-            interactable.JumpetOn(1);
-
-            damageable.JumpetOn(1);
         }
     }
 }
