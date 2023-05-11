@@ -1,4 +1,4 @@
-public interface IJumpebol
+public interface IJumpable
 {
     // gøre noget når man bliver ramt mari
     void JumpetOn(int hit);

@@ -6,14 +6,9 @@ public class Jump : MonoBehaviour
 {
     [SerializeField] float _jumpHight = 3f;
     [SerializeField] float _StompHight;
-    [SerializeField] float rayRange = 4;
+    [SerializeField] float rayRange;
 
     [SerializeField] Transform _mariBoot;
-
-    void Update()
-    {
-        CastRay();
-    }
 
     // Update is called once per frame
     void LateUpdate()
@@ -26,43 +21,20 @@ public class Jump : MonoBehaviour
         /// </summary>
         /// 
 
+        RaycastHit hitInfo;
+        bool hit = Physics.Raycast(_mariBoot.position, Vector3.down, out hitInfo, rayRange);
 
+        //draws a fake line that gives visual indekator
+        Debug.DrawRay(_mariBoot.position, Vector3.down, Color.red, rayRange);
 
-        /*
-                RaycastHit hit;
-
-                Ray landing = new Ray(_mariBoot.position, Vector3.down);
-
-                if (Physics.Raycast(landing, out hit, _StompHight))
-                {
-
-                    IJumpebol interactable = hit.collider.gameObject.GetComponent<IJumpebol>();
-                    interactable.JumpetOn(1);
-                }*/
-
-
-
-        //curent etempt
-        RaycastHit hitInfo = new RaycastHit();
-        bool hit = Physics.Raycast(_mariBoot.position, out hitInfo, rayRange);
-        Ray landing = new Ray(_mariBoot.position, Vector3.down);
         if (hit)
         {
-            GameObject hitObject = hitInfo.transform.gameObject;
-            hitObject.GetComponent<IJumpebol>().JumpetOn(1);
-        }
-    }
-
-    void CastRay()
-    {
-        RaycastHit hitInfo = new RaycastHit();
-        bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, rayRange);
-        if (hit)
-        {
-            GameObject hitObject = hitInfo.transform.gameObject;
-            if (Input.GetMouseButtonDown(0))
+            IJumpable jumpable = hitInfo.collider.GetComponent<IJumpable>();
+            if(jumpable != null)
             {
-                hitObject.GetComponent<IJumpebol>().JumpetOn(1);
+                Debug.Log("Stomp");
+                jumpable.JumpetOn(1);
+                PlayerGravity._velocity.y = Mathf.Sqrt(_jumpHight * -2f * PlayerGravity._gravity);
             }
         }
     }

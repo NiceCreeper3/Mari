@@ -39,26 +39,5 @@ public class PlayerGravity : MonoBehaviour
         // poleds the player down and keaps bilding gravity. but the nummber gets reaset if player lands on ground
         _velocity.y += _gravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
-
-
-
-        // alternat that does not work
-        /*
-         [SerializeField] bool NeedsReaset = false;
-        _isGrounded = Physics.CheckSphere(_mariLegs.position, _groundDistance, _groundMask);
-        if (!_isGrounded)
-        {
-            // poleds the player down and keaps bilding gravity. but the nummber gets reaset if player lands on ground
-            _velocity.y += _gravity * Time.deltaTime;
-            _controller.Move(_velocity * Time.deltaTime);
-
-            NeedsReaset = true;
-        }
-        else if (NeedsReaset)  // reastes gravit
-        {
-            _velocity.y = -3f;
-
-            NeedsReaset = false;
-        }*/
     }
 }
