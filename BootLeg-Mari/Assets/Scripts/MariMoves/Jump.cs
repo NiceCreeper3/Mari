@@ -30,11 +30,13 @@ public class Jump : MonoBehaviour
         if (hit)
         {
             IJumpable jumpable = hitInfo.collider.GetComponent<IJumpable>();
-            if(jumpable != null)
+
+            // the PlayerGravity._velocity.y does not work jet
+            if (jumpable != null && PlayerGravity._velocity.y !< 1)
             {
                 Debug.Log("Stomp");
                 jumpable.JumpetOn(1);
-                PlayerGravity._velocity.y = Mathf.Sqrt(_jumpHight * -2f * PlayerGravity._gravity);
+                PlayerGravity._velocity.y = Mathf.Sqrt((_jumpHight * -2f * PlayerGravity._gravity) / 2);
             }
         }
     }
