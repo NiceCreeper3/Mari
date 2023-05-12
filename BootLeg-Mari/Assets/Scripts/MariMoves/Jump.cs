@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    [SerializeField] float _jumpHight = 3f;
+    public static float _jumpHight = 3f;
     [SerializeField] float _StompHight;
     [SerializeField] float rayRange;
 
@@ -36,7 +36,7 @@ public class Jump : MonoBehaviour
             {
                 Debug.Log("Stomp");
                 jumpable.JumpetOn(1);
-                PlayerGravity._velocity.y = Mathf.Sqrt((_jumpHight * -2f * PlayerGravity._gravity) / 2);
+
             }
         }
     }

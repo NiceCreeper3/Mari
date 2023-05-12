@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour, IJumpable
+public class Monster : MonoBehaviour
 {
     [SerializeField] protected int _gombaSpeed;
     [SerializeField] protected int _healt;
@@ -14,15 +14,4 @@ public class Monster : MonoBehaviour, IJumpable
         _healt = _maxHealt;    
     }
 
-    void IJumpable.JumpetOn(int hit)
-    {
-
-        Debug.Log("hit");
-        _healt = -hit;
-
-        if (_healt <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }
