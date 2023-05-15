@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
+    #region
+    // keaps trak if the game is paused or not
     public static bool GaemIsPaused = false;
     public GameObject pauseMenuUI;
+    #endregion
 
-    // Update is called once per frame
+    // Awaits player input
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -24,12 +27,9 @@ public class PauseMenuScript : MonoBehaviour
         }
     }
 
-    public void ResumeGame()
-    {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GaemIsPaused = false;
-    }
+    // Buttons methods
+    #region
+    // Pauses the game
     void PauseGame()
     {
         pauseMenuUI.SetActive(true);
@@ -37,14 +37,33 @@ public class PauseMenuScript : MonoBehaviour
         GaemIsPaused = true;
     }
 
+    //Resumes the game
+    public void ResumeGame()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GaemIsPaused = false;
+    }
+
+    // Reasets the game
+    public void ReasetTheGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+    }
+
+    // goes the the main menu
     public void LoadMenu()
     {
         SceneManager.LoadScene("MaiMenu");
+        Time.timeScale = 1f;
     }
 
+    // exits the game
     public void QuitGame()
     {
         Debug.Log("Qutting game");
         Application.Quit();
     }
+    #endregion
 }
