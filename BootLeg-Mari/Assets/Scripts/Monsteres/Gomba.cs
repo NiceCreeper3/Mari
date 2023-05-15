@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class Gomba : Monster, IJumpable
 {
-    [SerializeField] LayerMask _aggroRange;
+
     [SerializeField] Transform _targetToMoveTo;
+
+    // torturial
     private NavMeshAgent _navAI;
+    [SerializeField] LayerMask _aggroRange;
+    private Collider[] _withInAggroRange;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,14 +23,20 @@ public class Gomba : Monster, IJumpable
 
         // makes the player target
         _targetToMoveTo = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        // makes the Gomba move towards the targets positon. with herer is the players positon
-        transform.position = Vector3.MoveTowards(transform.position, _targetToMoveTo.position, _gombaSpeed * Time.deltaTime);
+
+        _withInAggroRange = Physics.OverlapSphere(transform.position, 10, _aggroRange);
+        if (_withInAggroRange.Length > 0)
+        {
+            // makes the Gomba move towards the targets positon. with herer is the players positon
+            transform.position = Vector3.MoveTowards(transform.position, _targetToMoveTo.position, _gombaSpeed * Time.deltaTime);
+        }
+
+
 
     }
 

@@ -233,7 +233,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &5936706085104460278
 BoxCollider:
@@ -264,6 +264,9 @@ MonoBehaviour:
   _currentHealt: 0
   _maxHealt: 1
   _targetToMoveTo: {fileID: 0}
+  _aggroRange:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!195 &-5085111145701679033
 NavMeshAgent:
   m_ObjectHideFlags: 0
