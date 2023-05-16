@@ -5,7 +5,11 @@ using UnityEngine;
 public class FallPlatform : MonoBehaviour, IJumpable
 {
     Transform GetTheYeelowBar;
-    [SerializeField] int _timeOnTelItReasets;
+    
+    //the time it takes ontell it falls and the time it takes to reaset
+    [SerializeField] int _timeOnTelItFalls , _timeOnTelItReasets;
+
+
     Vector3 _origanalPositon;
     Rigidbody Platform;
 
@@ -29,20 +33,21 @@ public class FallPlatform : MonoBehaviour, IJumpable
 
     IEnumerator MakeBarFall()
     {
-        yield return null;
+        //Makes the yellow bar red
+        GetTheYeelowBar.GetComponent<Renderer>().material.color = Color.red;
+
+        yield return new WaitForSecondsRealtime(_timeOnTelItFalls);
         PlatFormFall();
 
         yield return new WaitForSecondsRealtime(_timeOnTelItReasets);
         PlatFormReaset();
-
     }
 
     void PlatFormFall()
     {
-        //Makes the yellow bar red
-        GetTheYeelowBar.GetComponent<Renderer>().material.color = Color.red;
 
-        // mankes the platform Fall by removing isKinematic
+
+        // mankes the platform Fall by removing isKinematic      
         Platform.isKinematic = false;
     }
 
