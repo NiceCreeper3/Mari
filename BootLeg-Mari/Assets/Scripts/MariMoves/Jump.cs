@@ -6,10 +6,17 @@ public class Jump : MonoBehaviour
 {
     //Valus
     #region
+    // Jumping
+    [Header("Jump Values")]
     public static float _jumpHight = 3f;
+    [SerializeField] float _wallJumpForce;
+
+    // Raycast / Stomp
+    [Header("Stomp Values")]
     [SerializeField] float _StompHight;
     [SerializeField] float rayRange;
 
+    // refrinse raycast Orige point
     [SerializeField] Transform _mariBoot;
     #endregion
 
@@ -21,18 +28,18 @@ public class Jump : MonoBehaviour
         JumpetOnSomthing();
     }
 
+    //WallJump
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!PlayerGravity._isGrounded && hit.normal.y < 0.1f)
-        {
-
-        }
+        WallJump(hit);
     }
 
 
     // Methodes
     #region
-
+    /// <summary>
+    /// Makes the player jump 
+    /// </summary>
     void JumpMethode()
     {
         if (Input.GetButtonDown("Jump") && PlayerGravity._isGrounded)
@@ -62,6 +69,20 @@ public class Jump : MonoBehaviour
 
             }
         }
+    }
+
+    void WallJump(ControllerColliderHit Hit)
+    {
+        if (!PlayerGravity._isGrounded && Hit.normal.y < 0.1f)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                Debug.DrawRay(Hit.point, Hit.normal, Color.red, 1.25F);
+                PlayerGravity._velocity.y = _wallJumpForce;
+                MariMove2._move = Hit.normal * 10 * Time.deltaTime;
+            }
+        }
+
     }
     #endregion
 }
