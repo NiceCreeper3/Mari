@@ -9,7 +9,6 @@ public class MariMove2 : MonoBehaviour
     // <movment>
     [SerializeField] float _speed;
     [SerializeField] CharacterController _controller;
-    public static Vector3 _move;
 
     // <camara>
     [SerializeField] Transform _cam;
@@ -28,17 +27,23 @@ public class MariMove2 : MonoBehaviour
     // brackys
     void Movement()
     {
-        // gets W.A.S.D to mode
+        // gets W.A.S.D to move
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
-        // the .normalize makes it so we don,t get extra speed by holding bofe buttons
-        _move = new Vector3(x, 0f, z).normalized;
 
-        if (_move.magnitude >= 0.1f)
+
+        // the .normalize makes it so we don,t get extra speed by holding bofe buttons
+        if (!MariValues.IsWallJumping)
+        {
+            MariValues.Move = new Vector3(x, 0f, z).normalized;
+        }
+
+        
+        if (MariValues.Move.magnitude >= 0.1f)
         {
             // makes Mari curkel and wake ind akottens to cam
-            float targetAngel = Mathf.Atan2(_move.x, _move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
+            float targetAngel = Mathf.Atan2(MariValues.Move.x, MariValues.Move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref turnSmoothVelosetig, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);

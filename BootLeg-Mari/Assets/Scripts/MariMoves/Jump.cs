@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     #region
     // Jumping
     [Header("Jump Values")]
-    public static float _jumpHight = 3f;
+
     [SerializeField] float _wallJumpForce;
 
     // Raycast / Stomp
@@ -18,8 +18,25 @@ public class Jump : MonoBehaviour
 
     // refrinse raycast Orige point
     [SerializeField] Transform _mariBoot;
-    #endregion
 
+    private ControllerColliderHit _remberHitWall;
+
+/*
+    // no defrint tortorial
+    [Header("Wall sliding")]
+    private bool _isWallSliding;
+    private float _wallSlidingSpeed = 2f;
+
+    [SerializeField] private Transform _wallCheck;
+    [SerializeField] private LayerMask _wallLayer;
+
+    [Header("Wall jump")]
+    private bool _isWallJumping;
+    private float _wallJumpingDirection, _wallJumpingTime = 0.2f, _wallJumpingCounter, _wallJumpingDuration = 0.4f;
+    private Vector3 _wallJumpingPower = new Vector3(8f,16,0);
+
+*/
+    #endregion
     // Update is called once per frame
     void LateUpdate()
     {
@@ -31,6 +48,7 @@ public class Jump : MonoBehaviour
     //WallJump
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        //WallSlide(hit);
         WallJump(hit);
     }
 
@@ -42,8 +60,8 @@ public class Jump : MonoBehaviour
     /// </summary>
     void JumpMethode()
     {
-        if (Input.GetButtonDown("Jump") && PlayerGravity._isGrounded)
-            PlayerGravity._velocity.y = Mathf.Sqrt(_jumpHight * -2f * PlayerGravity._gravity);
+        if (Input.GetButtonDown("Jump") && MariValues.IsGrounded)
+            MariValues.Velocity.y = Mathf.Sqrt(MariValues.JumpHight * -2f * MariValues.Gravity);
     }
 
     /// <summary>
@@ -62,7 +80,7 @@ public class Jump : MonoBehaviour
             IJumpable jumpable = hitInfo.collider.GetComponent<IJumpable>();
 
             // the PlayerGravity._velocity.y does not work jet
-            if (jumpable != null && PlayerGravity._velocity.y! < 1)
+            if (jumpable != null && MariValues.Velocity.y! < 1)
             {
                 Debug.Log("Stomp");
                 jumpable.JumpetOn(1);
@@ -73,16 +91,32 @@ public class Jump : MonoBehaviour
 
     void WallJump(ControllerColliderHit Hit)
     {
-        if (!PlayerGravity._isGrounded && Hit.normal.y < 0.1f)
+        if (!MariValues.IsGrounded && Hit.normal.y < 0.1f)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.DrawRay(Hit.point, Hit.normal, Color.red, 1.25F);
-                PlayerGravity._velocity.y = _wallJumpForce;
-                MariMove2._move = Hit.normal * 10 * Time.deltaTime;
+                // hows if we hit the wall
+                Debug.Log(gameObject.transform.position);
+                Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
+
+                MariValues.IsWallJumping = true;
+                MariValues.Move.x = 0;
+                MariValues.Move.x = -5;
+                MariValues.Velocity.y = _wallJumpForce;
+
+                StartCoroutine(Timer());
+
+                MariValues.Move = Hit.normal * 10 * Time.deltaTime;
             }
         }
 
     }
+
+    IEnumerator Timer()
+    {
+        // gives controll bak to player after som time has passed
+        yield return new WaitForSecondsRealtime(1f);
+        MariValues.IsWallJumping = false;
+    } 
     #endregion
 }

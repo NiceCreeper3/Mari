@@ -44,7 +44,7 @@ public class Gomba : Monster, IJumpable
 
         if (_currentHealt <= 0)
         {
-            PlayerGravity._velocity.y = Mathf.Sqrt((Jump._jumpHight * -2f * PlayerGravity._gravity) / 2);
+            MariValues.Velocity.y = Mathf.Sqrt((MariValues.JumpHight * -2f * MariValues.Gravity) / 2);
             Destroy(gameObject);
         }
     }
