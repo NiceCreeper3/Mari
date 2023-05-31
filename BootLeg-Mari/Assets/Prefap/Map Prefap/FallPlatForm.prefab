@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -9100503976026832366}
   m_Layer: 7
   m_Name: FallPlatForm
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -48,7 +48,6 @@ public class Jump : MonoBehaviour
     //WallJump
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        //WallSlide(hit);
         WallJump(hit);
     }
 
@@ -99,8 +98,8 @@ public class Jump : MonoBehaviour
                 Debug.Log(gameObject.transform.position);
                 Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
 
+                // indekates
                 MariValues.IsWallJumping = true;
-                MariValues.Move.x = 0;
                 MariValues.Move.x = -5;
                 MariValues.Velocity.y = _wallJumpForce;
 
@@ -115,7 +114,7 @@ public class Jump : MonoBehaviour
     IEnumerator Timer()
     {
         // gives controll bak to player after som time has passed
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.5f);
         MariValues.IsWallJumping = false;
     } 
     #endregion
