@@ -4,26 +4,11 @@ public class PlayerGravity : MonoBehaviour
 {
     [SerializeField] float _groundDistance = 0.4f;
 
-
     [SerializeField] LayerMask _groundMask;
     [SerializeField] Transform _mariLegs;
 
     // can maby remove
     [SerializeField] CharacterController _controller;
-
-    #region Shared 
-    /// <summary>
-    /// is shared with
-    /// MariMove2
-    /// Jump
-    /// </summary>
-
-    // determans if we are on the ground
-
-
-
-
-    #endregion
 
     void LateUpdate()
     {

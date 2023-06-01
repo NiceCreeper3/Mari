@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class KillFloor : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.tag == "Player")
-        {
 
-        }
-        else if(collision.collider.tag != "Respawn")
+        if (other.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            Debug.Log("Player Hit KilleZone");
+        }
+        else if (!other.CompareTag("PlatForm"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log(other.gameObject);
         }
     }
 }

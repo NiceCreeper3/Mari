@@ -45,8 +45,6 @@ public class FallPlatform : MonoBehaviour, IJumpable
 
     void PlatFormFall()
     {
-
-
         // mankes the platform Fall by removing isKinematic      
         Platform.isKinematic = false;
     }
