@@ -7,6 +7,7 @@ public class Monster : MonoBehaviour
     [SerializeField] protected int _gombaSpeed;
     [SerializeField] protected int _currentHealt;
     [SerializeField] protected int _maxHealt;
+    [SerializeField] protected Transform _targetToMoveTo;
 
     // Start is called before the first frame update
     void Start()

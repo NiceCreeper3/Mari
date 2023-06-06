@@ -16,14 +16,21 @@ public class MariMove2 : MonoBehaviour
     // <turning>
     [SerializeField] float _turnSmoothTime = 0.1f;
     [SerializeField] float turnSmoothVelosetig;
+
+    [SerializeField] ParticleSystem SpeedCloud;
     #endregion
 
     // Update is called once per frame
     void LateUpdate()
     {
         Movement();
+
+        //StartCoroutine(CreatSpeedDust());
+
     }
 
+    // methodes
+    #region
     // brackys
     void Movement()
     {
@@ -31,15 +38,13 @@ public class MariMove2 : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
-
-
-        // the .normalize makes it so we don,t get extra speed by holding bofe buttons
         if (!MariValues.IsWallJumping)
         {
+            // the .normalize makes it so we don,t get extra speed by holding bofe buttons
             MariValues.Move = new Vector3(x, 0f, z).normalized;
+            CreatSpeedDust();
         }
 
-        
         if (MariValues.Move.magnitude >= 0.1f)
         {
             // makes Mari curkel and wake ind akottens to cam
@@ -54,4 +59,18 @@ public class MariMove2 : MonoBehaviour
             _controller.Move(moveDir.normalized * _speed * Time.deltaTime);
         }
     }
+
+    void CreatSpeedDust()
+    {
+        if (MariValues.IsGrounded)
+        {
+            SpeedCloud.Play();
+        }
+    }
+/*    IEnumerator CreatSpeedDust()
+    {
+        yield return new WaitForSecondsRealtime(2); 
+
+    }*/
+    #endregion
 }

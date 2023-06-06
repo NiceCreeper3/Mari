@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Gomba : Monster, IJumpable
 {
-
-    [SerializeField] Transform _targetToMoveTo;
-
     // torturial
     private NavMeshAgent _navAI;
     [SerializeField] LayerMask _aggroRange;
@@ -33,21 +30,17 @@ public class Gomba : Monster, IJumpable
         _withInAggroRange = Physics.OverlapSphere(transform.position, 10, _aggroRange);
         if (_withInAggroRange.Length > 0)
         {
-
-            // gives the X.Y.Z position of target
-            Vector3 gombaMove = Vector3.MoveTowards(transform.position, _targetToMoveTo.position, _gombaSpeed * Time.deltaTime);
-
-
-            float targetAngel = Mathf.Atan2(gombaMove.x, gombaMove.y) * Mathf.Rad2Deg;
-            float gombaAngel = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref turnSmoothVelocity, 0.1f);
-            transform.rotation = Quaternion.Euler(0f, gombaAngel, 0f);
-
             // makes the Gomba move towards the targets positon. with herer is the players positon
-            transform.position = gombaMove;
-            //transform.position = Vector3.MoveTowards(transform.position, _targetToMoveTo.position, _gombaSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _targetToMoveTo.position, _gombaSpeed * Time.deltaTime);
+
+            // gets the players position - the players y. withe here is the gombas y position
+            Vector3 TargetPosisionExepetY = new Vector3(_targetToMoveTo.position.x, transform.position.y, _targetToMoveTo.position.z);
+
+            // makes the gomba rotate to look towordes the player
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, TargetPosisionExepetY - transform.position, 3f, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
-
 
     void IJumpable.JumpetOn(int hit)
     {

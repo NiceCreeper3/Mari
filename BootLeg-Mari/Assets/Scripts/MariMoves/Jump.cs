@@ -90,7 +90,7 @@ public class Jump : MonoBehaviour
 
     void WallJump(ControllerColliderHit Hit)
     {
-        if (!MariValues.IsGrounded && Hit.normal.y < 0.1f)
+        if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -114,7 +114,7 @@ public class Jump : MonoBehaviour
     IEnumerator Timer()
     {
         // gives controll bak to player after som time has passed
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(2);
         MariValues.IsWallJumping = false;
     } 
     #endregion
