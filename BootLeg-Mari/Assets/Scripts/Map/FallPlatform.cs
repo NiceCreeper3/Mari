@@ -7,7 +7,7 @@ public class FallPlatform : MonoBehaviour, IJumpable
     Transform GetTheYeelowBar;
     
     //the time it takes ontell it falls and the time it takes to reaset
-    [SerializeField] int _timeOnTelItFalls , _timeOnTelItReasets;
+    [SerializeField] float _timeOnTelItFalls , _timeOnTelItReasets;
 
 
     Vector3 _origanalPositon;
@@ -43,12 +43,14 @@ public class FallPlatform : MonoBehaviour, IJumpable
         PlatFormReaset();
     }
 
+    // makes the platform fall after a delley
     void PlatFormFall()
     {
         // mankes the platform Fall by removing isKinematic      
         Platform.isKinematic = false;
     }
 
+    // reastes the platform to origenal position
     void PlatFormReaset()
     {
         //Makes the yellow bar yellow agien

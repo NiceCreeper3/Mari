@@ -18,34 +18,18 @@ public class Jump : MonoBehaviour
 
     // refrinse raycast Orige point
     [SerializeField] Transform _mariBoot;
-
-    private ControllerColliderHit _remberHitWall;
-
-/*
-    // no defrint tortorial
-    [Header("Wall sliding")]
-    private bool _isWallSliding;
-    private float _wallSlidingSpeed = 2f;
-
-    [SerializeField] private Transform _wallCheck;
-    [SerializeField] private LayerMask _wallLayer;
-
-    [Header("Wall jump")]
-    private bool _isWallJumping;
-    private float _wallJumpingDirection, _wallJumpingTime = 0.2f, _wallJumpingCounter, _wallJumpingDuration = 0.4f;
-    private Vector3 _wallJumpingPower = new Vector3(8f,16,0);
-
-*/
     #endregion
     // Update is called once per frame
     void LateUpdate()
     {
-        JumpMethode();
+        if (!MariValues.MariIsDisapeled)
+        {
+            JumpMethode();
 
-        JumpetOnSomthing();
+            JumpetOnSomthing();
+        }
     }
 
-    //WallJump
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         WallJump(hit);
@@ -88,6 +72,11 @@ public class Jump : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// makes the player Jump away from a wall
+    /// and the makes it so he can,t move
+    /// </summary>
+    /// <param name="Hit"></param>
     void WallJump(ControllerColliderHit Hit)
     {
         if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
@@ -111,11 +100,15 @@ public class Jump : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Timer ontil player can have controlle agien
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Timer()
     {
         // gives controll bak to player after som time has passed
         yield return new WaitForSecondsRealtime(2);
         MariValues.IsWallJumping = false;
-    } 
+    }
     #endregion
 }

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class QustenBlock : MonoBehaviour
 {
+    [SerializeField] GameObject EmtigBocks;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent(""))
+        Debug.Log("Block Hit");
+        if (other.CompareTag("Player") )
         {
-
+            Instantiate(EmtigBocks, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }

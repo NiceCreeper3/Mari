@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MariValues : MonoBehaviour
+public class MariValues
 {
     /// The jump higt of the player
     /// Origen: Jump
@@ -33,4 +31,7 @@ public class MariValues : MonoBehaviour
     /// Origen: Jump
     ///Is linked: Jump, MariMove2
     public static bool IsWallJumping = false;
+
+
+    public static bool MariIsDisapeled = false;
 }

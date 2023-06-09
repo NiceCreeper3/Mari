@@ -6,11 +6,13 @@ using UnityEngine;
 public class Gomba : Monster, IJumpable
 {
     // torturial
-    private NavMeshAgent _navAI;
     [SerializeField] LayerMask _aggroRange;
     private Collider[] _withInAggroRange;
 
-    [SerializeField] float turnSmoothVelocity;
+    [SerializeField] float _gombaAttakRange;
+
+    [SerializeField] float _turnSmoothVelocity;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -18,14 +20,31 @@ public class Gomba : Monster, IJumpable
         // sets the max HP of Gomba
         _maxHealt = 1;
 
-        _navAI = GetComponent<NavMeshAgent>();
-
         // makes the player target
         _targetToMoveTo = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        FollwPlayer();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        AttackPlayer(other);
+    }
+
+    void IJumpable.JumpetOn(int hit)
+    {
+        GombaHit(hit);
+    }
+
+
+    //Methodes
+    #region
+
+    void FollwPlayer()
     {
         _withInAggroRange = Physics.OverlapSphere(transform.position, 10, _aggroRange);
         if (_withInAggroRange.Length > 0)
@@ -42,10 +61,10 @@ public class Gomba : Monster, IJumpable
         }
     }
 
-    void IJumpable.JumpetOn(int hit)
+    void GombaHit(int _hit)
     {
         Debug.Log("hit");
-        _currentHealt = -hit;
+        _currentHealt = -_hit;
 
         if (_currentHealt <= 0)
         {
@@ -53,4 +72,13 @@ public class Gomba : Monster, IJumpable
             Destroy(gameObject);
         }
     }
+
+    void AttackPlayer(Collider _other)
+    {
+        if (_other.CompareTag("Player"))
+        {
+
+        }
+    }
+    #endregion
 }

@@ -260,9 +260,10 @@ GameObject:
   - component: {fileID: 7756544989650165429}
   - component: {fileID: 3841482882708717357}
   - component: {fileID: 2476037924080013729}
-  m_Layer: 0
+  - component: {fileID: -3447283618950024009}
+  m_Layer: 7
   m_Name: Qestin Block
-  m_TagString: Untagged
+  m_TagString: QustenBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,8 +316,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1}
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.75, z: 0}
+--- !u!114 &-3447283618950024009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119228760659614081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f37650727331d14693912bac9397128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmtigBocks: {fileID: 6205489467647473035, guid: 9da20037a39d15245985ace68c6fe744, type: 3}
 --- !u!1 &5253863472203346083
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,19 +20,27 @@ public class MariMove2 : MonoBehaviour
     [SerializeField] ParticleSystem SpeedCloud;
     #endregion
 
+    private void Awake()
+    {
+        transform.position = WorldValues.PlayerSpawnPoint;
+    }
+
+
     // Update is called once per frame
     void LateUpdate()
     {
-        Movement();
+        if (!MariValues.MariIsDisapeled)
+        {
+            MariMovement();
+        }
 
         //StartCoroutine(CreatSpeedDust());
-
     }
 
     // methodes
     #region
     // brackys
-    void Movement()
+    void MariMovement()
     {
         // gets W.A.S.D to move
         float x = Input.GetAxisRaw("Horizontal");
@@ -45,6 +53,7 @@ public class MariMove2 : MonoBehaviour
             CreatSpeedDust();
         }
 
+        // makes Mari Rotate to wake akording to the cammera
         if (MariValues.Move.magnitude >= 0.1f)
         {
             // makes Mari curkel and wake ind akottens to cam
@@ -67,10 +76,5 @@ public class MariMove2 : MonoBehaviour
             SpeedCloud.Play();
         }
     }
-/*    IEnumerator CreatSpeedDust()
-    {
-        yield return new WaitForSecondsRealtime(2); 
-
-    }*/
     #endregion
 }

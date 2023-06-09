@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,6 +46,7 @@ public class PauseMenuScript : MonoBehaviour
     // Reasets the game
     public void ReasetTheGame()
     {
+        WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
