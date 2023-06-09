@@ -22,12 +22,8 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!MariValues.MariIsDisapeled)
-        {
-            JumpMethode();
-
-            JumpetOnSomthing();
-        }
+        JumpMethode();
+        JumpetOnSomthing();
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -38,6 +34,7 @@ public class Jump : MonoBehaviour
 
     // Methodes
     #region
+
     /// <summary>
     /// Makes the player jump 
     /// </summary>
@@ -60,6 +57,7 @@ public class Jump : MonoBehaviour
 
         if (hit)
         {
+            //Atempets to get the hit opjeket IJumpable if it has one
             IJumpable jumpable = hitInfo.collider.GetComponent<IJumpable>();
 
             // the PlayerGravity._velocity.y does not work jet

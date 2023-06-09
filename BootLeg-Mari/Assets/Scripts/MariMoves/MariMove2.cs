@@ -7,13 +7,16 @@ public class MariMove2 : MonoBehaviour
     // values
     #region
     // <movment>
+    [Header("Movment")]
     [SerializeField] float _speed;
     [SerializeField] CharacterController _controller;
 
     // <camara>
+    [Header("Camerra")]
     [SerializeField] Transform _cam;
 
     // <turning>
+    [Header("Turning the Player")]
     [SerializeField] float _turnSmoothTime = 0.1f;
     [SerializeField] float turnSmoothVelosetig;
 
@@ -25,15 +28,10 @@ public class MariMove2 : MonoBehaviour
         transform.position = WorldValues.PlayerSpawnPoint;
     }
 
-
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!MariValues.MariIsDisapeled)
-        {
-            MariMovement();
-        }
-
+        MariMovement();
         //StartCoroutine(CreatSpeedDust());
     }
 

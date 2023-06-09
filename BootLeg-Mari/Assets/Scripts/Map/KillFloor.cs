@@ -12,7 +12,7 @@ public class KillFloor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player Hit KilleZone");
-            StartCoroutine(PalyerReaspawn(other));           
+            StartCoroutine(PalyerReaspawn());           
         }
         else if (!other.CompareTag("PlatForm"))
         {
@@ -21,7 +21,7 @@ public class KillFloor : MonoBehaviour
         }
     }
 
-    IEnumerator PalyerReaspawn(Collider Other)
+    IEnumerator PalyerReaspawn()
     {
         // Makes it Mari doeset do enithing for a wille
         DeaidTextUi.SetActive(true);

@@ -5,7 +5,7 @@ public class PauseMenuScript : MonoBehaviour
 {
     #region
     // keaps trak if the game is paused or not
-    public static bool GaemIsPaused = false;
+    public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     #endregion
 
@@ -14,7 +14,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GaemIsPaused)
+            if (GameIsPaused)
             {
                 ResumeGame();
             }
@@ -32,7 +32,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GaemIsPaused = true;
+        GameIsPaused = true;
     }
 
     //Resumes the game
@@ -40,7 +40,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GaemIsPaused = false;
+        GameIsPaused = false;
     }
 
     // Reasets the game

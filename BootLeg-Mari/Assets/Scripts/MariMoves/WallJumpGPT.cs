@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallJumpGPT : MonoBehaviour
 {
+    [Header("States")]
     public float jumpForce = 5f;
     public float wallJumpForce = 10f;
     public float wallCheckDistance = 0.5f;
@@ -11,36 +12,15 @@ public class WallJumpGPT : MonoBehaviour
 
     private bool isJumping = false;
 
-    private void OnCollisionStay(Collision collision)
+    private void LateUpdate()
     {
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
-
-    //WallJump
-    void ThankYouChatGPT(Collision _collision)
-    {
-        if (_collision.gameObject.CompareTag(""))
-        {
-            Vector3 contactNormal = _collision.contacts[0].normal;
-
-            if (Vector3.Dot(transform.forward, contactNormal) < 0)
-            {
-                //_wallJumpForce
-
-                Vector3 JumpDirection = Vector3.Reflect(-transform.forward, contactNormal).normalized;
-                GetComponent<Rigidbody>().velocity = (JumpDirection * wallJumpForce) + (Vector3.up * MariValues.JumpHight);
-                MariValues.IsWallJumping = true;
-            }
-        }
+        if (Input.GetButtonDown("Jump") && MariValues.IsGrounded)
+            MariValues.Velocity.y = Mathf.Sqrt(MariValues.JumpHight * -2f * MariValues.Gravity);
     }
 
     private void Update()
     {
+
         // Check if the jump key is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -89,5 +69,23 @@ public class WallJumpGPT : MonoBehaviour
         Vector3 wallNormal = hit.normal;
         Vector3 jumpDirection = Vector3.Reflect(-transform.forward, wallNormal).normalized;
         return jumpDirection;
+    }
+
+    //WallJump
+    void ThankYouChatGPT(Collision _collision)
+    {
+        if (_collision.gameObject.CompareTag(""))
+        {
+            Vector3 contactNormal = _collision.contacts[0].normal;
+
+            if (Vector3.Dot(transform.forward, contactNormal) < 0)
+            {
+                //_wallJumpForce
+
+                Vector3 JumpDirection = Vector3.Reflect(-transform.forward, contactNormal).normalized;
+                GetComponent<Rigidbody>().velocity = (JumpDirection * wallJumpForce) + (Vector3.up * MariValues.JumpHight);
+                MariValues.IsWallJumping = true;
+            }
+        }
     }
 }

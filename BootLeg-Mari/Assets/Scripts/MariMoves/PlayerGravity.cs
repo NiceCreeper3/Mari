@@ -16,20 +16,17 @@ public class PlayerGravity : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!MariValues.MariIsDisapeled)
+        // kan be opdated to only count op if the player is not on groud. and reaste ind a defrint way
+
+        // reastes the gravgig if the player is on solled ground
+        MariValues.IsGrounded = Physics.CheckSphere(_mariLegs.position, _groundDistance, _groundMask);
+        if (MariValues.IsGrounded == true && MariValues.Velocity.y < 0)
         {
-            // kan be opdated to only count op if the player is not on groud. and reaste ind a defrint way
-
-            // reastes the gravgig if the player is on solled ground
-            MariValues.IsGrounded = Physics.CheckSphere(_mariLegs.position, _groundDistance, _groundMask);
-            if (MariValues.IsGrounded == true && MariValues.Velocity.y < 0)
-            {
-                MariValues.Velocity.y = -2f;
-            }
-
-            // poleds the player down and keaps bilding gravity. but the nummber gets reaset if player lands on ground
-            MariValues.Velocity.y += MariValues.Gravity * Time.deltaTime;
-            _controller.Move(MariValues.Velocity * Time.deltaTime);
+            MariValues.Velocity.y = -2f;
         }
+
+        // poleds the player down and keaps bilding gravity. but the nummber gets reaset if player lands on ground
+        MariValues.Velocity.y += MariValues.Gravity * Time.deltaTime;
+        _controller.Move(MariValues.Velocity * Time.deltaTime);
     }
 }
