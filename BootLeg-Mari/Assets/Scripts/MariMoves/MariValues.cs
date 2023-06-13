@@ -31,4 +31,13 @@ public class MariValues
     /// Origen: Jump
     ///Is linked: Jump, MariMove2
     public static bool IsWallJumping = false;
+
+    /// shows how mane times the player kan be hit
+    /// Origen: MariDead
+    ///Is linked: MariDead, Jump, MariMove2
+    public static short Healf = 3;
+
+    public static bool MariIsDead = false;
+
+    public static bool MariInviseFrame = false;
 }

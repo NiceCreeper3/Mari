@@ -317,9 +317,8 @@ Transform:
   m_Children:
   - {fileID: 471019160}
   - {fileID: 1376583875}
-  - {fileID: 723792060}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &55611805
 AudioSource:
@@ -963,7 +962,7 @@ GameObject:
   - component: {fileID: 210220432}
   m_Layer: 0
   m_Name: Kill Floor (2)
-  m_TagString: Untagged
+  m_TagString: PlatForm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1008,7 +1007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeaidTextUi: {fileID: 1421566016}
 --- !u!33 &210220434
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1881,6 +1879,7 @@ GameObject:
   - component: {fileID: 471019158}
   - component: {fileID: 471019161}
   - component: {fileID: 471019162}
+  - component: {fileID: 471019163}
   m_Layer: 10
   m_Name: Mari
   m_TagString: Player
@@ -1984,6 +1983,19 @@ MonoBehaviour:
   _StompHight: 1
   rayRange: 0.4
   _mariBoot: {fileID: 488642689}
+--- !u!114 &471019163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471019157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc65a2d83646834dba0afc9e04d5c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeaidTextUi: {fileID: 153522843}
 --- !u!1 &473165971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,7 +3196,7 @@ GameObject:
   - component: {fileID: 709285267}
   m_Layer: 0
   m_Name: Kill Floor (1)
-  m_TagString: Untagged
+  m_TagString: PlatForm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3229,7 +3241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeaidTextUi: {fileID: 1421566016}
 --- !u!33 &709285269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3266,7 +3277,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723792059}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3276,8 +3287,8 @@ Transform:
   - {fileID: 526965609}
   - {fileID: 233455778}
   - {fileID: 888411622}
-  m_Father: {fileID: 55611804}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &726695507
 PrefabInstance:
@@ -3445,7 +3456,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bf93445d9ec0d544981a45244bc6a885, type: 2}
     - target: {fileID: 9187232029177919730, guid: 2d5d3162cbe5bf0488780612caf7a4cd, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 9187232029177919730, guid: 2d5d3162cbe5bf0488780612caf7a4cd, type: 3}
       propertyPath: m_LocalScale.x
@@ -3663,8 +3674,8 @@ GameObject:
   - component: {fileID: 880874280}
   - component: {fileID: 880874279}
   m_Layer: 0
-  m_Name: Kill FloorEndRight
-  m_TagString: Untagged
+  m_Name: Kill Floor EndTop
+  m_TagString: PlatForm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3677,7 +3688,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880874277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 99.3, y: 36.72, z: 136}
+  m_LocalPosition: {x: 112.7, y: 36.72, z: 139.61}
   m_LocalScale: {x: 5, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3709,7 +3720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeaidTextUi: {fileID: 1421566016}
 --- !u!33 &880874281
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4960,7 +4970,7 @@ Transform:
   - {fileID: 153522844}
   - {fileID: 39863654}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273569688
 GameObject:
@@ -5109,7 +5119,7 @@ Transform:
   - {fileID: 1835493407}
   - {fileID: 1669771138}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1279672187 stripped
 Transform:
@@ -5938,6 +5948,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9187232029177919730, guid: 2d5d3162cbe5bf0488780612caf7a4cd, type: 3}
   m_PrefabInstance: {fileID: 1442548549}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1456759955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1456759956}
+  - component: {fileID: 1456759959}
+  - component: {fileID: 1456759958}
+  - component: {fileID: 1456759957}
+  m_Layer: 0
+  m_Name: Kill Floor EndRight
+  m_TagString: PlatForm
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1456759956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456759955}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 122.62, y: 36.72, z: 132.01}
+  m_LocalScale: {x: 3, y: 1, z: 4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1669771138}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1456759957
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456759955}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11, y: 1, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1456759958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456759955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!33 &1456759959
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456759955}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1488065551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10900,7 +10977,7 @@ GameObject:
   - component: {fileID: 1531476583}
   m_Layer: 0
   m_Name: Kill Floor
-  m_TagString: Untagged
+  m_TagString: PlatForm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10917,7 +10994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeaidTextUi: {fileID: 1421566016}
 --- !u!33 &1531476581
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11194,7 +11270,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1616649779 stripped
 Transform:
@@ -11410,7 +11486,7 @@ GameObject:
   - component: {fileID: 1668898994}
   m_Layer: 0
   m_Name: Kill Floor (4)
-  m_TagString: Untagged
+  m_TagString: PlatForm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11455,7 +11531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeaidTextUi: {fileID: 1421566016}
 --- !u!33 &1668898996
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11510,6 +11585,7 @@ Transform:
   - {fileID: 576893684}
   - {fileID: 2082379532}
   - {fileID: 880874278}
+  - {fileID: 1456759956}
   - {fileID: 540802352}
   m_Father: {fileID: 1276307263}
   m_RootOrder: 1
@@ -12113,6 +12189,51 @@ Transform:
   m_Father: {fileID: 1276307263}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1836784880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1836784881}
+  - component: {fileID: 1836784882}
+  m_Layer: 0
+  m_Name: AudioManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1836784881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836784880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836784882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836784880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e8139eab6d65340aca87f7a80feecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds: []
 --- !u!4 &1845788246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9187232029177919730, guid: 2d5d3162cbe5bf0488780612caf7a4cd, type: 3}
@@ -12795,7 +12916,7 @@ GameObject:
   - component: {fileID: 2082379533}
   m_Layer: 0
   m_Name: Kill Floor EndLeft
-  m_TagString: Untagged
+  m_TagString: PlatForm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12808,8 +12929,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082379531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 99.3, y: 36.72, z: 136}
-  m_LocalScale: {x: 5, y: 1, z: 3}
+  m_LocalPosition: {x: 73.28, y: 36.72, z: 136}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1669771138}
@@ -12840,7 +12961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9d35b4171feb44baa4306c4f776030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeaidTextUi: {fileID: 1421566016}
 --- !u!33 &2082379535
 MeshFilter:
   m_ObjectHideFlags: 0

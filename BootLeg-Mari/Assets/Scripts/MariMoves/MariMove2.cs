@@ -26,12 +26,18 @@ public class MariMove2 : MonoBehaviour
     private void Awake()
     {
         transform.position = WorldValues.PlayerSpawnPoint;
+
+        MariValues.Healf = 3;
+        MariValues.MariIsDead = false;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        MariMovement();
+        if (!MariValues.MariIsDead)
+        {
+            MariMovement();
+        }
         //StartCoroutine(CreatSpeedDust());
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    [Header("Enemy States")]
     [SerializeField] protected int _gombaSpeed;
     [SerializeField] protected int _currentHealt;
     [SerializeField] protected int _maxHealt;

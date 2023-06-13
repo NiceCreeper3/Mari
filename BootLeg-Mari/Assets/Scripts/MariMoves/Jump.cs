@@ -22,8 +22,11 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        JumpMethode();
-        JumpetOnSomthing();
+        if (!MariValues.MariIsDead)
+        {
+            JumpMethode();
+            JumpetOnSomthing();
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

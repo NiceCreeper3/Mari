@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.AI;
 using UnityEngine;
 
 public class Gomba : Monster, IJumpable
@@ -30,9 +29,15 @@ public class Gomba : Monster, IJumpable
         FollwPlayer();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         AttackPlayer(other);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+
     }
 
     void IJumpable.JumpetOn(int hit)
@@ -75,10 +80,14 @@ public class Gomba : Monster, IJumpable
 
     void AttackPlayer(Collider _other)
     {
-        if (_other.CompareTag("Player"))
+        if (_other.TryGetComponent<IIsHitebol>(out var hitebol))
         {
+            Debug.Log("Gomba Hit Player");
+            hitebol.ObjegtHasBenHit(1);
 
+            // play MariDamigeAudio
         }
     }
+
     #endregion
 }
