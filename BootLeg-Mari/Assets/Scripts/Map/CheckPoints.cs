@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CheckPoints : MonoBehaviour
 {
-    //public Vector3 CheckPointPosition;
+    [Header("Color of Falg as it is takken")]
+    [SerializeField] Material _flagTakkenColor;
+
+
     private Transform CheckPointFlag;
     private bool _hasBenAktivated = false;
 
@@ -32,7 +35,7 @@ public class CheckPoints : MonoBehaviour
     {
         if (!_hasBenAktivated)
         {
-            CheckPointFlag.GetComponent<Renderer>().material.color = Color.red;
+            CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
             WorldValues.PlayerSpawnPoint = transform.position;
             _hasBenAktivated = true;
         }

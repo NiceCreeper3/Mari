@@ -16,4 +16,16 @@ public class Monster : MonoBehaviour
         _currentHealt = _maxHealt;    
     }
 
+    protected void EnemyHit(int _hit)
+    {
+        Debug.Log("hit");
+        _currentHealt = -_hit;
+
+        if (_currentHealt <= 0)
+        {
+            MariValues.Velocity.y = Mathf.Sqrt((MariValues.JumpHight * -2f * MariValues.Gravity) / 2);
+            Destroy(gameObject);
+        }
+    }
+
 }

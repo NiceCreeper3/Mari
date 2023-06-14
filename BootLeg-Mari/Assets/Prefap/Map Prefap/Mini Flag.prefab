@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068bba087ddc8be45a65d576ef8ea472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckPointPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1913282461694126989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74,7 +73,7 @@ GameObject:
   - component: {fileID: 2947606740183960866}
   - component: {fileID: 3444259848746807028}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 3489984879829575721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1.5, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 0.5}
+  m_LocalScale: {x: 2, y: 1, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 606742007883045236}
@@ -158,7 +157,7 @@ GameObject:
   - component: {fileID: 3114197549551564173}
   - component: {fileID: 5146307187479837481}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: BopAtTheTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +253,7 @@ GameObject:
   - component: {fileID: 7926552415789732407}
   - component: {fileID: 8911234012076822909}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

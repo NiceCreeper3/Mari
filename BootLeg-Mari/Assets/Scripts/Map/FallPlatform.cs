@@ -5,9 +5,15 @@ using UnityEngine;
 public class FallPlatform : MonoBehaviour, IJumpable
 {
     Transform GetTheYeelowBar;
-    
+
+    [Header("Color Of Platform")]
+    [SerializeField] Material _normalColor;
+    [SerializeField] Material _fallColor;
+
     //the time it takes ontell it falls and the time it takes to reaset
     [SerializeField] float _timeOnTelItFalls , _timeOnTelItReasets;
+
+
 
 
     Vector3 _origanalPositon;
@@ -34,7 +40,7 @@ public class FallPlatform : MonoBehaviour, IJumpable
     IEnumerator MakeBarFall()
     {
         //Makes the yellow bar red
-        GetTheYeelowBar.GetComponent<Renderer>().material.color = Color.red;
+        GetTheYeelowBar.GetComponent<Renderer>().material.color = _fallColor.color;
 
         yield return new WaitForSecondsRealtime(_timeOnTelItFalls);
         PlatFormFall();
@@ -54,7 +60,7 @@ public class FallPlatform : MonoBehaviour, IJumpable
     void PlatFormReaset()
     {
         //Makes the yellow bar yellow agien
-        GetTheYeelowBar.GetComponent<Renderer>().material.color = Color.yellow;
+        GetTheYeelowBar.GetComponent<Renderer>().material.color = _normalColor.color;
 
         // mankes the platform stop falling by returning isKinematic. and it movees the platform to its origenal position
         Platform.isKinematic = true;

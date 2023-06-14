@@ -5,10 +5,10 @@ using UnityEngine;
 public class Gomba : Monster, IJumpable
 {
     // torturial
+
+    [Header("Enemy Setting")]
     [SerializeField] LayerMask _aggroRange;
     private Collider[] _withInAggroRange;
-
-    [SerializeField] float _gombaAttakRange;
 
     [SerializeField] float _turnSmoothVelocity;
 
@@ -34,15 +34,9 @@ public class Gomba : Monster, IJumpable
         AttackPlayer(other);
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-
-    }
-
     void IJumpable.JumpetOn(int hit)
     {
-        GombaHit(hit);
+        EnemyHit(hit);
     }
 
 
@@ -66,17 +60,7 @@ public class Gomba : Monster, IJumpable
         }
     }
 
-    void GombaHit(int _hit)
-    {
-        Debug.Log("hit");
-        _currentHealt = -_hit;
 
-        if (_currentHealt <= 0)
-        {
-            MariValues.Velocity.y = Mathf.Sqrt((MariValues.JumpHight * -2f * MariValues.Gravity) / 2);
-            Destroy(gameObject);
-        }
-    }
 
     void AttackPlayer(Collider _other)
     {

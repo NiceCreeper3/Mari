@@ -12,7 +12,7 @@ public class PauseMenuScript : MonoBehaviour
     // Awaits player input
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !MariValues.MariIsDead)
         {
             if (GameIsPaused)
             {

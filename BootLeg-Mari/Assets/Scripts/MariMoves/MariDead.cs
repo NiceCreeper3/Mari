@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MariDead : MonoBehaviour, IIsHitebol
 {
-    public GameObject DeaidTextUi;
-    [SerializeField] float InviseFamesTime;
+    [SerializeField] GameObject _deaidTextUis;
+    [SerializeField] float _inviseFamesTime;
+
+    // Deturmes if mari can be hit agien
+    private bool MariInviseFrame = false;
 
     public void ObjegtHasBenHit(short HitDamige)
     {
-        if (!MariValues.MariInviseFrame)
+        if (!MariInviseFrame)
         {
             MariValues.Healf -= HitDamige;
             // makes it so enemyes kant 
@@ -28,15 +31,15 @@ public class MariDead : MonoBehaviour, IIsHitebol
     // gives the player som invincebiletig time
     IEnumerator StartMariHitCooldown()
     {
-        MariValues.MariInviseFrame = true;
-        yield return new WaitForSecondsRealtime(InviseFamesTime);
-        MariValues.MariInviseFrame = false;
+        MariInviseFrame = true;
+        yield return new WaitForSecondsRealtime(_inviseFamesTime);
+        MariInviseFrame = false;
     }
 
     public IEnumerator PalyerReaspawn()
     {
         // Makes it Mari doeset do enithing for a wille
-        DeaidTextUi.SetActive(true);
+        _deaidTextUis.SetActive(true);
 
 
         // reasets the 
@@ -45,7 +48,7 @@ public class MariDead : MonoBehaviour, IIsHitebol
 
         //
         SceneManager.LoadScene("MariMap");
-        DeaidTextUi.SetActive(false);
+        _deaidTextUis.SetActive(false);
     }
 }
 
