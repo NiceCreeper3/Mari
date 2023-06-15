@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class GoleFlag : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject _winUi;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _winUi.SetActive(true);
     }
 }
