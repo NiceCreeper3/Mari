@@ -9,7 +9,7 @@ public class KillFloor : MonoBehaviour
         {
 
             Debug.Log("Player Hit KilleZone");
-            MariValues.Healf = 0;
+            MariValues.Health = 0;
             hitebol.ObjegtHasBenHit(3);
         }
         // if somthing that is not a plaform hits the killfloor. then it is deleted. this is mostly made to get ride of Enemys

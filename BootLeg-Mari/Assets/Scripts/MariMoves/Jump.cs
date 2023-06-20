@@ -19,6 +19,8 @@ public class Jump : MonoBehaviour
     // refrinse raycast Orige point
     [SerializeField] Transform _mariBoot;
     #endregion
+
+
     // Update is called once per frame
     void LateUpdate()
     {
@@ -33,7 +35,6 @@ public class Jump : MonoBehaviour
     {
         WallJump(hit);
     }
-
 
     // Methodes
     #region
@@ -78,7 +79,7 @@ public class Jump : MonoBehaviour
     /// and the makes it so he can,t move
     /// </summary>
     /// <param name="Hit"></param>
-    void WallJump(ControllerColliderHit Hit)
+    private void WallJump(ControllerColliderHit Hit)
     {
         if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
         {
@@ -89,15 +90,26 @@ public class Jump : MonoBehaviour
                 Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
 
                 // indekates
-                MariValues.IsWallJumping = true;
-                MariValues.Move.x = -5;
-                MariValues.Velocity.y = _wallJumpForce;
 
-                StartCoroutine(Timer());
 
+                DtK();
+
+                // what does this?
                 MariValues.Move = Hit.normal * 10 * Time.deltaTime;
             }
         }
+    }
+
+    private void DtK()
+    {
+        //try Enumbertor
+        MariValues.IsWallJumping = true;
+        transform.Rotate(0, 180, 0, Space.Self);
+
+        MariValues.Move.x = 10;
+        MariValues.Velocity.y = _wallJumpForce;
+
+        StartCoroutine(Timer());
 
     }
 
@@ -105,7 +117,7 @@ public class Jump : MonoBehaviour
     /// Timer ontil player can have controlle agien
     /// </summary>
     /// <returns></returns>
-    IEnumerator Timer()
+    private IEnumerator Timer()
     {
         // gives controll bak to player after som time has passed
         yield return new WaitForSecondsRealtime(2);

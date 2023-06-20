@@ -20,26 +20,30 @@ public class MovingPlatForm : MonoBehaviour
         //StartCoroutine(MoveBackAndForth1());
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("i am tired");
+            collision.gameObject.transform.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("i am tired");
+            collision.gameObject.transform.SetParent(null);
+        }
+        //collision.collider.transform.SetParent(null);
+    }
+
     // makes the platform move back and forth
     void MoveBackAndForth()
     {
         float time = Mathf.PingPong(Time.time * _speed, 1);
         transform.position = Vector3.Lerp(_posison1, _posison2, time);
-    }
-
-
-    // Is does nothing speshel but is supposed to make the platform stop for a bit after reathing its distenason
-    IEnumerator MoveBackAndForth1()
-    {
-
-
-        float time = Mathf.PingPong(Time.time * _speed, 1);
-        transform.position = Vector3.Lerp(_posison1, _posison2, time);
-        
-        if(transform.position == _posison1 && transform.position == _posison1)
-            yield return new WaitForSecondsRealtime(_switcheTimer);
-
-        // figer avt how to make it stop for som seconds
     }
 
 }

@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sunCoinOrder: {fileID: 0}
-  _sunCoinNumber: 0
+  _sunCoinNumber: 1
 --- !u!65 &9097754335468548646
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class MariMove2 : MonoBehaviour
     {
         transform.position = WorldValues.PlayerSpawnPoint;
 
-        MariValues.Healf = 3;
+        MariValues.Health = 3;
         MariValues.MariIsDead = false;
     }
 
