@@ -36,6 +36,7 @@ public class Gomba : Monster, IJumpable
 
     void IJumpable.JumpetOn(int hit)
     {
+        FindObjectOfType<AudioMangerScript>().PlayAudio("GombaStomp", true);
         EnemyHit(hit);
     }
 
@@ -59,8 +60,6 @@ public class Gomba : Monster, IJumpable
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
-
-
 
     void AttackPlayer(Collider _other)
     {

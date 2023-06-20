@@ -12,14 +12,17 @@ public class CheckPoints : MonoBehaviour
     [SerializeField] GameObject _sunCoinFiled1, _sunCoinFiled2, _sunCoinFiled3;
 
     private Transform CheckPointFlag;
-    private bool _hasBenAktivated = false;
+    private static bool _hasBenAktivated = false;
 
     private void Awake()
     {
         //CheckPointPosition = gameObject.transform.position;
         CheckPointFlag = gameObject.transform.GetChild(0);
+        if (_hasBenAktivated)
+            CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
     }
 
+    // devleper stuff Deletie after
     void Update()
     {
         if (Input.GetKeyDown("l"))
@@ -47,25 +50,13 @@ public class CheckPoints : MonoBehaviour
 
             CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
             _hasBenAktivated = true;
+            FindObjectOfType<AudioMangerScript>().PlayAudio("CheckPonintGot", true);
         }
-    }
-
-    IEnumerator ReamberSunCoin()
-    {
-        // gives controll bak to player after som time has passed
-        yield return new WaitForSecondsRealtime(0.3f);
-
-        // reambers if we have gotten the SunCoin wen vi hit the check point
-        if (_sunCoinFiled1.activeSelf)
-            WorldValues.SunCoinNummber1 = true;
-        if (_sunCoinFiled2.activeSelf)
-            WorldValues.SunCoinNummber2 = true;
-        if (_sunCoinFiled3.activeSelf)
-            WorldValues.SunCoinNummber3 = true;
     }
 
     void ReamberSunCoin1()
     {
+        WorldValues.SavedSuncoins = WorldValues.ScoreSunCoinsColleted;
         // reambers if we have gotten the SunCoin wen vi hit the check point
         if (_sunCoinFiled1.activeSelf)
             WorldValues.SunCoinNummber1 = true;

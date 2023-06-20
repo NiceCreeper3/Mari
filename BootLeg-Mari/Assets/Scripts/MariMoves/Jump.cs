@@ -45,7 +45,11 @@ public class Jump : MonoBehaviour
     void JumpMethode()
     {
         if (Input.GetButtonDown("Jump") && MariValues.IsGrounded)
+        {
             MariValues.Velocity.y = Mathf.Sqrt(MariValues.JumpHight * -2f * MariValues.Gravity);
+            FindObjectOfType<AudioMangerScript>().PlayAudio("JumpAudio", true);
+        }
+            
     }
 
     /// <summary>
@@ -92,7 +96,7 @@ public class Jump : MonoBehaviour
                 // indekates
 
 
-                DtK();
+                WallJumpStuff();
 
                 // what does this?
                 MariValues.Move = Hit.normal * 10 * Time.deltaTime;
@@ -100,11 +104,12 @@ public class Jump : MonoBehaviour
         }
     }
 
-    private void DtK()
+    private void WallJumpStuff()
     {
         //try Enumbertor
         MariValues.IsWallJumping = true;
         transform.Rotate(0, 180, 0, Space.Self);
+        FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
 
         MariValues.Move.x = 10;
         MariValues.Velocity.y = _wallJumpForce;

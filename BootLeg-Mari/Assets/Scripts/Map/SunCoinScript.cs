@@ -23,6 +23,12 @@ public class SunCoinScript : MonoBehaviour
         {
             CoinHasBeanTaken();
         }
+        else
+        {
+            WorldValues.ScoreSunCoinsColleted = WorldValues.SavedSuncoins;
+        }
+
+        Debug.Log("you have " + WorldValues.ScoreSunCoinsColleted + " SunCoins");
     }
 
     private void Update()
@@ -39,12 +45,14 @@ public class SunCoinScript : MonoBehaviour
     private void GotSunCoin()
     {
         WorldValues.ScoreSunCoinsColleted += 1;
+        FindObjectOfType<AudioMangerScript>().PlayAudio("CoinPikOp", true);
         _sunCoinOrder.SetActive(true);
         Destroy(gameObject);
     }
 
     private void CoinHasBeanTaken()
     {
+        Debug.Log("SunCoinHasBenDeleted");
         Destroy(gameObject);
         _sunCoinOrder.SetActive(true);
     }

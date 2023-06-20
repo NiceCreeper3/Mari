@@ -8,12 +8,13 @@ public class FallPlatform : MonoBehaviour, IJumpable
 
     [Header("Color Of Platform")]
     [SerializeField] Material _normalColor;
-    [SerializeField] Material _fallColor;
+    [SerializeField] Material _fallColor;   
 
     //the time it takes ontell it falls and the time it takes to reaset
     [SerializeField] float _timeOnTelItFalls , _timeOnTelItReasets;
 
-
+    //This just makes it so the audio donsent spam
+    private bool HasBenJumpetOn = false;
 
 
     Vector3 _origanalPositon;
@@ -42,6 +43,14 @@ public class FallPlatform : MonoBehaviour, IJumpable
         //Makes the yellow bar red
         GetTheYeelowBar.GetComponent<Renderer>().material.color = _fallColor.color;
 
+        // playes audio det first time the platfom is hit
+        if (!HasBenJumpetOn)
+        {
+            FindObjectOfType<AudioMangerScript>().PlayAudio("FallPlatFormDrope", true);
+            HasBenJumpetOn = true;
+        }
+
+
         yield return new WaitForSecondsRealtime(_timeOnTelItFalls);
         PlatFormFall();
 
@@ -61,6 +70,9 @@ public class FallPlatform : MonoBehaviour, IJumpable
     {
         //Makes the yellow bar yellow agien
         GetTheYeelowBar.GetComponent<Renderer>().material.color = _normalColor.color;
+
+        // allows audio to be played agien
+        HasBenJumpetOn = false;
 
         // mankes the platform stop falling by returning isKinematic. and it movees the platform to its origenal position
         Platform.isKinematic = true;

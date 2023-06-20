@@ -53,12 +53,14 @@ public class AudioMangerScript : MonoBehaviour
             Debug.LogWarning("Sound " + name + " not found. check if the name give is correckt");
             return;
         }
-        
-        if(playAudio)
+
+        s.Source.Play();
+/*
+        if (playAudio)
             s.Source.Play();
         else
             s.Source.Stop();
-
+*/
 
     }
 }

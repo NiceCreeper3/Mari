@@ -14,11 +14,14 @@ public class GoleFlag : MonoBehaviour
     {
         _winUi.SetActive(true);
         MariValues.MariIsDead = true;
+        FindObjectOfType<AudioMangerScript>().PlayAudio("WinFanfar", true);
         ScoreToPlayer();
     }
 
     void ScoreToPlayer()
     {
+        Debug.Log("the skore is " + WorldValues.ScoreSunCoinsColleted + " and the player died = " + WorldValues.ScoreHasPlayerDied);
+
         // shows the player skore
         if (WorldValues.ScoreSunCoinsColleted == 3 && !WorldValues.ScoreHasPlayerDied)
         {
@@ -41,15 +44,16 @@ public class GoleFlag : MonoBehaviour
             _score.text = "C";
             _jukeText.text = "Don,t worring i will add a disbeld mode next time for you. but good try";
         }
-        else if (WorldValues.ScoreSunCoinsColleted == 0)
-        {
-            _score.text = "D";
-            _jukeText.text = "DO YOU NOT HAVE EYES!";
-        }
-        else
+        else if (WorldValues.ScoreSunCoinsColleted == 0 && WorldValues.ScoreHasPlayerDied)
         {
             _score.text = "F";
             _jukeText.text = "did you know. according to all known laws of deviation. there is no way you can suck that bad";
+        }
+        else
+        {
+            _score.text = "D";
+            _jukeText.text = "DO YOU NOT HAVE EYES!";
+
         }
 
     }

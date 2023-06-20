@@ -41,8 +41,10 @@ public class MariDead : MonoBehaviour, IIsHitebol
         // Makes it Mari doeset do enithing for a wille
         _deaidTextUis.SetActive(true);
 
-
-        // 
+        // playes a audio wen player dies
+        FindObjectOfType<AudioMangerScript>().PlayAudio("DeadAudio", true);
+       
+        //  Telles Mari has died atleast ones. wiht reflekts on score
         WorldValues.ScoreHasPlayerDied = true;
 
         // sets so the player cant move wille ded

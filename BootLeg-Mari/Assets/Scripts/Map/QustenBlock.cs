@@ -11,6 +11,7 @@ public class QustenBlock : MonoBehaviour
         Debug.Log("Block Hit");
         if (other.CompareTag("Player") )
         {
+            FindObjectOfType<AudioMangerScript>().PlayAudio("QustenBlockHit", true);         
             Instantiate(EmtigBocks, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

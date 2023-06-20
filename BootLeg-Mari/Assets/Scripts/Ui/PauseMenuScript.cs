@@ -33,6 +33,7 @@ public class PauseMenuScript : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        FindObjectOfType<AudioMangerScript>().PlayAudio("PauseMenuAudio", true);
     }
 
     //Resumes the game

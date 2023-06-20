@@ -17,6 +17,9 @@ public class WorldValues
     /// Is linked: SunCoinScript, GoleFlag    
     public static short ScoreSunCoinsColleted = 0;
 
+    [Range(0, 3)]
+    public static short SavedSuncoins = 0;
+
     public static bool SunCoinNummber1 = false, SunCoinNummber2 = false, SunCoinNummber3 = false;
 
 }
