@@ -20,7 +20,6 @@ public class Jump : MonoBehaviour
     [SerializeField] Transform _mariBoot;
     #endregion
 
-
     // Update is called once per frame
     void LateUpdate()
     {
@@ -89,33 +88,35 @@ public class Jump : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                #region DebugMessenges
+
                 // hows if we hit the wall
                 Debug.Log(gameObject.transform.position);
                 Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
+                #endregion
 
-                // indekates
+                // try Enumbertor
 
 
-                WallJumpStuff();
+                MariValues.Velocity.y = _wallJumpForce;
+                MariValues.Move -= Hit.normal * 10 * Time.deltaTime;
 
-                // what does this?
-                MariValues.Move = Hit.normal * 10 * Time.deltaTime;
+
+                //transform.Rotate(0, 180, 0, Space.Self);
+                FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
+
+                // fumpes 
+                //MariValues.Velocity.y = _wallJumpForce;
+
+                //MariValues.Move.x = 10;
+
+
+                StartCoroutine(Timer());
+
+                // what does this?                
+                //MariValues.Move = Hit.normal * 10 * Time.deltaTime;
             }
         }
-    }
-
-    private void WallJumpStuff()
-    {
-        //try Enumbertor
-        MariValues.IsWallJumping = true;
-        transform.Rotate(0, 180, 0, Space.Self);
-        FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
-
-        MariValues.Move.x = 10;
-        MariValues.Velocity.y = _wallJumpForce;
-
-        StartCoroutine(Timer());
-
     }
 
     /// <summary>
@@ -124,6 +125,9 @@ public class Jump : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Timer()
     {
+        yield return new WaitForSecondsRealtime(0.2f);
+        MariValues.IsWallJumping = true;
+
         // gives controll bak to player after som time has passed
         yield return new WaitForSecondsRealtime(2);
         MariValues.IsWallJumping = false;

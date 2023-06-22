@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlatForm
   - QustenBlock
+  - Clude
   layers:
   - Default
   - TransparentFX

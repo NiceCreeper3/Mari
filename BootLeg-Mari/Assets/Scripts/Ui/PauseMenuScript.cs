@@ -39,9 +39,6 @@ public class PauseMenuScript : MonoBehaviour
     //Resumes the game
     public void ResumeGame()
     {
-        //Reasets score rikvaerments
-        WorldValues.ScoreHasPlayerDied = WorldValues.SunCoinNummber1 = WorldValues.SunCoinNummber2 = WorldValues.SunCoinNummber3 = false;
-
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -50,6 +47,9 @@ public class PauseMenuScript : MonoBehaviour
     // Reasets the game
     public void ReasetTheGame()
     {
+        //Reasets score rikvaerments
+        WorldValues.ScoreHasPlayerDied = WorldValues.SunCoinNummber1 = WorldValues.SunCoinNummber2 = WorldValues.SunCoinNummber3 = false;
+
         WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;

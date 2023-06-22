@@ -8,36 +8,59 @@ public class MovingPlatForm : MonoBehaviour
     [SerializeField] float _speed;
 
     [SerializeField] Vector3 _posison1, _posison2;
-    private void Awake()
+    [SerializeField] GameObject OrigenalMariParent;
+
+    public static bool o;
+
+
+    //stuff
+    private GameObject target = null;
+    private Vector3 offset;
+
+
+    private void Start()
     {
         _posison1 += transform.position;
         _posison2 += transform.position;
+
+        
+
+        target = null;
     }
 
-    private void Update()
-    {    
+
+    // Currentlig works but is not optemol
+    // on Stay is inntet but freeses the player. and Enter makes so player can,t move
+    void OnTriggerEnter(Collider col)
+    {
+        col.transform.SetParent(transform);
+
+        Debug.Log("Player is on clude");
+
+        //target = col.gameObject;
+        //offset = target.transform.position - transform.position;
+    }
+    void OnTriggerExit(Collider col)
+    {
+        col.transform.SetParent(OrigenalMariParent.transform);
+        Debug.Log("Player left platform");
+        target = null;
+    }
+
+
+    private void FixedUpdate()
+    {
+/*
+        if (target != null)
+        {
+            //target.transform.position = transform.position + offset;
+        }
+*/
+
         MoveBackAndForth();
-        //StartCoroutine(MoveBackAndForth1());
+
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("i am tired");
-            collision.gameObject.transform.SetParent(transform);
-        }
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("i am tired");
-            collision.gameObject.transform.SetParent(null);
-        }
-        //collision.collider.transform.SetParent(null);
-    }
 
     // makes the platform move back and forth
     void MoveBackAndForth()
@@ -45,5 +68,4 @@ public class MovingPlatForm : MonoBehaviour
         float time = Mathf.PingPong(Time.time * _speed, 1);
         transform.position = Vector3.Lerp(_posison1, _posison2, time);
     }
-
 }

@@ -63,7 +63,7 @@ public class Gomba : Monster, IJumpable
 
     void AttackPlayer(Collider _other)
     {
-        if (_other.TryGetComponent<IIsHitebol>(out var hitebol))
+        if (_other.TryGetComponent<IIsHitebol>(out var hitebol) && !MariValues.MariIsDead)
         {
             Debug.Log("Gomba Hit Player");
             hitebol.ObjegtHasBenHit(1);

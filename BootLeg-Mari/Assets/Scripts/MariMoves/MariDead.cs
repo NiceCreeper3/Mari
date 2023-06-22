@@ -4,8 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class MariDead : MonoBehaviour, IIsHitebol
 {
-    [SerializeField] GameObject _deaidTextUis;
+
     [SerializeField] float _inviseFamesTime;
+
+    [Header("stuff ind inspeckter")]
+    [SerializeField] GameObject _deaidTextUis;
+    [SerializeField] Material _hitColor, _normalcolor;
 
     // Deturmes if mari can be hit agien
     private bool MariInviseFrame = false;
@@ -16,10 +20,11 @@ public class MariDead : MonoBehaviour, IIsHitebol
         if (!MariInviseFrame)
         {
             MariValues.Health -= HitDamige;
-            // makes it so enemyes kant 
+            FindObjectOfType<AudioMangerScript>().PlayAudio("HitSound", true);
+
+            // makes it so enemyes kant          
             StartCoroutine(StartMariHitCooldown());
         }
-
 
         if (MariValues.Health <= 0)
         {
@@ -31,8 +36,16 @@ public class MariDead : MonoBehaviour, IIsHitebol
     // gives the player som invincebiletig time after there have ben hit
     IEnumerator StartMariHitCooldown()
     {
+        // makes it so player can.t be hit
         MariInviseFrame = true;
+        for(int i = 1; i <= 3; i+= 1)
+            gameObject.transform.GetChild(i).GetComponent<Renderer>().material.color = _hitColor.color;
+
         yield return new WaitForSecondsRealtime(_inviseFamesTime);
+
+        for (int i = 1; i <= 3; i += 1)
+            gameObject.transform.GetChild(i).GetComponent<Renderer>().material.color = _normalcolor.color;
+
         MariInviseFrame = false;
     }
 

@@ -31,12 +31,12 @@ public class GoleFlag : MonoBehaviour
         else if (WorldValues.ScoreSunCoinsColleted == 3)
         {
             _score.text = "A";
-            _jukeText.text = "MY GOD. you arent complitlig inkompetent. NOW DO BEADER";
+            _jukeText.text = "MY GOD. you aren.t complitlig inkompetent. NOW DO BETTER";
         }
         else if (WorldValues.ScoreSunCoinsColleted == 2)
         {
             _score.text = "B";
-            _jukeText.text = "Do you like vanila... no? is your name joe.. no? THEN DO BETER NEXT TIME BOKO";
+            _jukeText.text = "Do you like vanilla... no? is your name joe.. no? THEN DO BETER NEXT TIME BOKO";
         }
         else if (WorldValues.ScoreSunCoinsColleted == 1)
         {
@@ -44,15 +44,15 @@ public class GoleFlag : MonoBehaviour
             _score.text = "C";
             _jukeText.text = "Don,t worring i will add a disbeld mode next time for you. but good try";
         }
-        else if (WorldValues.ScoreSunCoinsColleted == 0 && WorldValues.ScoreHasPlayerDied)
-        {
-            _score.text = "F";
-            _jukeText.text = "did you know. according to all known laws of deviation. there is no way you can suck that bad";
-        }
-        else
+        else if (WorldValues.ScoreSunCoinsColleted == 0 && !WorldValues.ScoreHasPlayerDied)
         {
             _score.text = "D";
             _jukeText.text = "DO YOU NOT HAVE EYES!";
+        }
+        else
+        {
+            _score.text = "F";
+            _jukeText.text = "did you know. according to all known laws of deviation. there is no way you can suck that bad";
 
         }
 
