@@ -23,8 +23,6 @@ public class MovingPlatForm : MonoBehaviour
         _posison1 += transform.position;
         _posison2 += transform.position;
 
-        
-
         target = null;
     }
 
@@ -58,7 +56,6 @@ public class MovingPlatForm : MonoBehaviour
 */
 
         MoveBackAndForth();
-
     }
 
 

@@ -8,7 +8,6 @@ public class CheckPoints : MonoBehaviour
     [SerializeField] Material _flagTakkenColor;
 
     [Header("Checks if we got coin and reambes it")]
-
     [SerializeField] GameObject _sunCoinFiled1, _sunCoinFiled2, _sunCoinFiled3;
 
     private Transform CheckPointFlag;
@@ -25,7 +24,7 @@ public class CheckPoints : MonoBehaviour
     // devleper stuff Deletie after
     void Update()
     {
-        if (Input.GetKeyDown("l"))
+        if (Input.GetKeyDown("9"))
         {
             Debug.Log("New Spawn");
             SetNewSpawnPoint();

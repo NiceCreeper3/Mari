@@ -18,12 +18,12 @@ public class MariMove2 : MonoBehaviour
     // <turning>
     [Header("Turning the Player")]
     [SerializeField] float _turnSmoothTime = 0.1f;
-    [SerializeField] float turnSmoothVelosetig;
+    [SerializeField] float _turnSmoothVelosetig;
 
-    [SerializeField] ParticleSystem SpeedCloud;
+    [SerializeField] ParticleSystem _runCloud;
     #endregion
 
-    private void Awake()
+    private void Start()
     {
         transform.position = WorldValues.PlayerSpawnPoint;
 
@@ -34,7 +34,7 @@ public class MariMove2 : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!MariValues.MariIsDead)
+        if (!MariValues.MariIsDead && !MariValues.PlayerIsTeleporting)
         {
             MariMovement();
         }
@@ -63,7 +63,7 @@ public class MariMove2 : MonoBehaviour
             // makes Mari curkel and wake ind akottens to cam
             float targetAngel = Mathf.Atan2(MariValues.Move.x, MariValues.Move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
 
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref turnSmoothVelosetig, _turnSmoothTime);
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref _turnSmoothVelosetig, _turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngel, 0f) * Vector3.forward;
@@ -77,7 +77,7 @@ public class MariMove2 : MonoBehaviour
     {
         if (MariValues.IsGrounded)
         {
-            SpeedCloud.Play();
+            _runCloud.Play();
         }
     }
     #endregion

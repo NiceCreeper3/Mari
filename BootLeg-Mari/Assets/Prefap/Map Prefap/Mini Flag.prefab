@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068bba087ddc8be45a65d576ef8ea472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flagTakkenColor: {fileID: 2100000, guid: 4784d4aec2ce2a84bbb3fb31fdfec6a5, type: 2}
+  _sunCoinFiled1: {fileID: 0}
+  _sunCoinFiled2: {fileID: 0}
+  _sunCoinFiled3: {fileID: 0}
 --- !u!65 &1913282461694126989
 BoxCollider:
   m_ObjectHideFlags: 0

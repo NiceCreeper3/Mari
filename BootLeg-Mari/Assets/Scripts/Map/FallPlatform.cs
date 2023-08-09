@@ -50,7 +50,6 @@ public class FallPlatform : MonoBehaviour, IJumpable
             HasBenJumpetOn = true;
         }
 
-
         yield return new WaitForSecondsRealtime(_timeOnTelItFalls);
         PlatFormFall();
 

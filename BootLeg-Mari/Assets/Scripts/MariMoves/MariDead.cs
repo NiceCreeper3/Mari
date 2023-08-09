@@ -65,7 +65,7 @@ public class MariDead : MonoBehaviour, IIsHitebol
 
         // waits so player can read messige and then realoads the scene loads 
         yield return new WaitForSecondsRealtime(2f);
-        SceneManager.LoadScene("MariMap");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         _deaidTextUis.SetActive(false);
     }
 }

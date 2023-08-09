@@ -9,7 +9,9 @@ public class Jump : MonoBehaviour
     // Jumping
     [Header("Jump Values")]
 
+    //Walljumping
     [SerializeField] float _wallJumpForce;
+    private bool hasJumped;
 
     // Raycast / Stomp
     [Header("Stomp Values")]
@@ -20,6 +22,8 @@ public class Jump : MonoBehaviour
     [SerializeField] Transform _mariBoot;
     #endregion
 
+    // Unity Triggeres
+    #region
     // Update is called once per frame
     void LateUpdate()
     {
@@ -28,12 +32,20 @@ public class Jump : MonoBehaviour
             JumpMethode();
             JumpetOnSomthing();
         }
+        if (Input.GetButtonUp("Jump"))
+        {
+            hasJumped = false;
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        WallJump(hit);
+        if (hit.gameObject.tag != "NoWallJump")
+        {
+            WallJump(hit);
+        }    
     }
+    #endregion
 
     // Methodes
     #region
@@ -77,12 +89,8 @@ public class Jump : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// makes the player Jump away from a wall
-    /// and the makes it so he can,t move
-    /// </summary>
-    /// <param name="Hit"></param>
-    private void WallJump(ControllerColliderHit Hit)
+
+    /*private void WallJump(ControllerColliderHit Hit)
     {
         if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
         {
@@ -97,24 +105,52 @@ public class Jump : MonoBehaviour
 
                 // try Enumbertor
 
-
-                MariValues.Velocity.y = _wallJumpForce;
-                MariValues.Move -= Hit.normal * 10 * Time.deltaTime;
-
-
                 //transform.Rotate(0, 180, 0, Space.Self);
+                MariValues.Move = Hit.normal * 10000 * Time.deltaTime;
+                MariValues.Velocity.y = _wallJumpForce;
+                
                 FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
 
-                // fumpes 
+                // jumpes 
                 //MariValues.Velocity.y = _wallJumpForce;
-
                 //MariValues.Move.x = 10;
+
+                StartCoroutine(Timer());
+            }
+        }
+    }*/
+
+    /// <summary>
+    /// makes the player Jump away from a wall
+    /// and the makes it so he can,t move
+    /// </summary>
+    /// <param name="Hit"></param>
+    private void WallJump(ControllerColliderHit Hit)
+    {
+        if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
+        {
+            if (Input.GetButton("Jump"))
+            {
+                #region DebugMessenges
+
+                // hows if we hit the wall
+                Debug.Log(gameObject.transform.position);
+                Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
+                #endregion
+                // søger for at spiller ikke bare kan holde jump inde
+
+
+                MariValues.Move = Hit.normal * 10000 * Time.deltaTime;
+                MariValues.Velocity.y = _wallJumpForce;
+
+                if (!hasJumped)
+                {
+                    FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
+                }
+                hasJumped = true;
 
 
                 StartCoroutine(Timer());
-
-                // what does this?                
-                //MariValues.Move = Hit.normal * 10 * Time.deltaTime;
             }
         }
     }
@@ -125,7 +161,7 @@ public class Jump : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Timer()
     {
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.1f);
         MariValues.IsWallJumping = true;
 
         // gives controll bak to player after som time has passed

@@ -42,4 +42,8 @@ public class MariValues
     ///Is linked: MariDead, Jump, MariMove2
     public static bool MariIsDead = false;
 
+    /// disabels the playeres gravity and control so he can teleport
+    /// Origen: Teleport
+    ///Is linked: Teleport, MariMove2, PlayerGravity, Spikes
+    public static bool PlayerIsTeleporting = false;
 }
