@@ -40,6 +40,7 @@ public class MoveingPlatform : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // makes the platform move bake and forfe
         currentPos = Vector3.Lerp(_posisonStart.position, _posisonEnd.position, Mathf.Cos(Time.time / -_speed * Mathf.PI * 2) * -.5f + .5f);
         rb.MovePosition(currentPos);
     }
