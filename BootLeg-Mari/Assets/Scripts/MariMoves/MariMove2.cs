@@ -52,9 +52,10 @@ public class MariMove2 : MonoBehaviour
 
         if (!MariValues.IsWallJumping)
         {
+            CreatSpeedDust();
             // the .normalize makes it so we don,t get extra speed by holding bofe buttons
             MariValues.Move = new Vector3(x, 0f, z).normalized;
-            CreatSpeedDust();
+
         }
 
         // makes Mari Rotate to wake akording to the cammera

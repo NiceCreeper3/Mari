@@ -18,14 +18,14 @@ public class FallPlatform : MonoBehaviour, IJumpable
 
 
     Vector3 _origanalPositon;
-    Rigidbody Platform;
+    Rigidbody _platform;
 
 
     void Start()
     {
         // gets the platfrom positoin and Rigidbody
         _origanalPositon = transform.position;
-        Platform = GetComponent<Rigidbody>();
+        _platform = GetComponent<Rigidbody>();
 
         GetTheYeelowBar = gameObject.transform.GetChild(0);
     }
@@ -61,7 +61,7 @@ public class FallPlatform : MonoBehaviour, IJumpable
     void PlatFormFall()
     {
         // mankes the platform Fall by removing isKinematic      
-        Platform.isKinematic = false;
+        _platform.isKinematic = false;
     }
 
     // reastes the platform to origenal position
@@ -74,7 +74,7 @@ public class FallPlatform : MonoBehaviour, IJumpable
         HasBenJumpetOn = false;
 
         // mankes the platform stop falling by returning isKinematic. and it movees the platform to its origenal position
-        Platform.isKinematic = true;
+        _platform.isKinematic = true;
         gameObject.transform.position = new Vector3(_origanalPositon.x, _origanalPositon.y, _origanalPositon.z);
     }
 }

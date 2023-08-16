@@ -26,7 +26,7 @@ public class Spikes : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1);
         MariValues.PlayerIsTeleporting = true;
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(1);
         Player.transform.position = _teleprotFromTrap.transform.position;
         yield return new WaitForSecondsRealtime(0.5f);
         MariValues.PlayerIsTeleporting = false;

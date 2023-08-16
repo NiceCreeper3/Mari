@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerGravity : MonoBehaviour
 {
+    //Values
+    #region
     [SerializeField] float _groundDistance = 0.4f;
     [SerializeField] float _difaltGravity;
     // lookes what ground the player has to be on to reaset 
@@ -12,6 +14,7 @@ public class PlayerGravity : MonoBehaviour
 
     // can maby remove
     [SerializeField] CharacterController _controller;
+    #endregion
 
     void LateUpdate()
     {

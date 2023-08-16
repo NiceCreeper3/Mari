@@ -8,6 +8,8 @@ public class BounsPadSkript : MonoBehaviour, IJumpable
     [SerializeField] float _maxBounse;
     [SerializeField] float _normalBounse;
 
+    private MariValues _mariValues;
+
     void IJumpable.JumpetOn(int hit)
     {
         Debug.Log("Platform hit");
@@ -20,10 +22,12 @@ public class BounsPadSkript : MonoBehaviour, IJumpable
         if (Input.GetButton("Jump"))
         {
             MariValues.Velocity.y = _maxBounse;
+            FindObjectOfType<AudioMangerScript>().PlayAudio("MaxBoundsJump", true);
         }
         else
         {
             MariValues.Velocity.y = _normalBounse;
+            FindObjectOfType<AudioMangerScript>().PlayAudio("NormalBoundsJump", true);
         }
     }
 

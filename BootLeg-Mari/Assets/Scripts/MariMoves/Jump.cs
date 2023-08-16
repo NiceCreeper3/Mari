@@ -20,6 +20,8 @@ public class Jump : MonoBehaviour
 
     // refrinse raycast Orige point
     [SerializeField] Transform _mariBoot;
+
+    private MariValues _mariValues;
     #endregion
 
     // Unity Triggeres
@@ -59,8 +61,7 @@ public class Jump : MonoBehaviour
         {
             MariValues.Velocity.y = Mathf.Sqrt(MariValues.JumpHight * -2f * MariValues.Gravity);
             FindObjectOfType<AudioMangerScript>().PlayAudio("JumpAudio", true);
-        }
-            
+        }           
     }
 
     /// <summary>

@@ -19,7 +19,7 @@ public class MariValues
 
     /// Is how hard the player gets polled down
     /// Origen: PlayerGravity
-    /// Is linked: PlayerGravity, Jump, Gomba
+    /// Is linked: PlayerGravity, Jump, Monster, BounsPadSkript, WallJumpGPT
     public static Vector3 Velocity;
 
     /// The playes starting gravity

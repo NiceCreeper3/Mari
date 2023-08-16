@@ -5,7 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour
 {
-    [SerializeField] Transform _teleport1, _teleport2, _teleport3, _teleport4, _teleport5;
+    private GameObject _teleport1, _teleport2, _teleport3, _teleport4, _teleport5, _mariTeleport;
+
+    private void Start()
+    {
+        try
+        {
+            _teleport1 = GameObject.Find("Tel1");
+            _teleport2 = GameObject.Find("Tel2");
+            _teleport3 = GameObject.Find("Tel3");
+            _teleport4 = GameObject.Find("Tel4");
+            _teleport5 = GameObject.Find("Tel5");
+        }
+        catch
+        {
+            Debug.LogError("You dident name a teleport correktlig");
+        }
+
+        try
+        {
+            _mariTeleport = GameObject.Find("Mari");
+        }
+        catch
+        {
+            Debug.LogError("You can,t rithe mari");
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -36,11 +61,12 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    private IEnumerator TeleportDev(Transform PlayesToTeleport )
+    // teleportes me to desired lokason
+    private IEnumerator TeleportDev(GameObject PlayesToTeleport )
     {      
         MariValues.PlayerIsTeleporting = true;
         yield return new WaitForSecondsRealtime(0.5f);
-        transform.position = PlayesToTeleport.transform.position;
+        _mariTeleport.transform.position = PlayesToTeleport.transform.position;
         yield return new WaitForSecondsRealtime(0.5f);
         MariValues.PlayerIsTeleporting = false;
         Debug.Log("you have teleported to " + PlayesToTeleport.name);
