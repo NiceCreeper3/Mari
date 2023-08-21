@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 6415533577095159855}
   m_Layer: 0
   m_Name: Gomba
-  m_TagString: Untagged
+  m_TagString: NoWallJump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,15 +273,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb15a7b1d4af7a43941bc0de07b8cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gombaSpeed: 2
-  _currentHealt: 0
-  _maxHealt: 1
-  _targetToMoveTo: {fileID: 0}
-  _aggroRange:
+  _aggroRangeOfEnemy: 0
+  _enemySpeed: 2
+  _passeveSpeed: 0
+  targetLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _gombaAttakRange: 0
-  turnSmoothVelocity: 0
+  _targetToMoveTo: {fileID: 6093271187628462166, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
 --- !u!1 &4938652173549064795
 GameObject:
   m_ObjectHideFlags: 0

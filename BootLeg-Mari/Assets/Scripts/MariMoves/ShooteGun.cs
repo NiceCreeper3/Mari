@@ -30,13 +30,13 @@ public class ShooteGun : MonoBehaviour
         if (hit)
         {
             //Atempets to get the hit opjeket IJumpable if it has one
-            IJumpable jumpable = hitInfo.collider.GetComponent<IJumpable>();
+            IShootebol shootebol = hitInfo.collider.GetComponent<IShootebol>();
 
             // the PlayerGravity._velocity.y does not work jet
-            if (jumpable != null)
+            if (shootebol != null)
             {
                 Debug.Log("shoot");
-                jumpable.JumpetOn(1);
+                shootebol.Shoot();
 
             }
         }

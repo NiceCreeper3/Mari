@@ -166,7 +166,7 @@ public class Jump : MonoBehaviour
         MariValues.IsWallJumping = true;
 
         // gives controll bak to player after som time has passed
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(1.5f);
         MariValues.IsWallJumping = false;
     }
     #endregion

@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7009336108211812561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7009336108211812560}
+  - component: {fileID: 7009336108211812563}
+  m_Layer: 0
+  m_Name: AudioManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7009336108211812560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009336108211812561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7009336108211812563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009336108211812561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e8139eab6d65340aca87f7a80feecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - Name: CoinPikOp
+    Clip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: GombaStomp
+    Clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: JumpAudio
+    Clip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: WallJumpAudio
+    Clip: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: FallPlatFormDrope
+    Clip: {fileID: 8300000, guid: d8d04c6f80a1140db85ede568dab1f51, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: CheckPonintGot
+    Clip: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: WinFanfar
+    Clip: {fileID: 8300000, guid: 2667a0a008b044e218b63df62e2be749, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: PauseMenuAudio
+    Clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: QustenBlockHit
+    Clip: {fileID: 8300000, guid: 0994c12e202f342459a4212e7287f7e8, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: DeadAudio
+    Clip: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: HitSound
+    Clip: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: GunShot
+    Clip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: MaxBoundsJump
+    Clip: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}
+  - Name: NormalBoundsJump
+    Clip: {fileID: 8300000, guid: a0010a1a0c474473b81729eb770c485f, type: 3}
+    Volune: 1
+    Pitch: 3
+    LoopAudio: 0
+    Source: {fileID: 0}

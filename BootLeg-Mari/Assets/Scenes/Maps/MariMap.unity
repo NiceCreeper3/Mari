@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3, z: -15}
+  m_FollowOffset: {x: 0, y: 6, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -708,7 +708,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84697961}
-  m_LocalRotation: {x: -0.003257626, y: 0.025590682, z: 0.000083392624, w: 0.9996672}
+  m_LocalRotation: {x: 0.123449534, y: 0.025250133, z: -0.0031421767, w: 0.9920246}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1316,6 +1316,38 @@ PrefabInstance:
       propertyPath: _jukeText
       value: 
       objectReference: {fileID: 154880321}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.data[0]
+      value: Congrats you wasted you life ind the beast way posebol. by not realising
+        you did
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.data[1]
+      value: MY GOD. you aren.t complitlig inkompetent. NOW DO BETTER
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.data[2]
+      value: Do you like vanilla... no? is your name joe.. no? THEN DO BETER NEXT
+        TIME BOKO
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.data[3]
+      value: Don,t worring i will add a disbeld mode next time for you. but good
+        try
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.data[4]
+      value: DO YOU NOT HAVE EYES!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: WinTexts.Array.data[5]
+      value: did you know. according to all known laws of deviation. there is no
+        way you can suck that bad
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae308612ec893654dad3bac5904d750f, type: 3}
 --- !u!4 &391638542 stripped
@@ -1549,7 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3, z: -15}
+  m_FollowOffset: {x: 0, y: 6, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2389,7 +2421,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591117579}
-  m_LocalRotation: {x: 0.014878334, y: 0.025587983, z: -0.00038087342, w: 0.9995618}
+  m_LocalRotation: {x: 0.141426, y: 0.025188977, z: -0.0035997345, w: 0.9896218}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3603,7 +3635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 3, z: -15}
+  m_FollowOffset: {x: 0, y: 6, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3733,8 +3765,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.014878329, y: 0.02558798, z: -0.00038087327, w: 0.99956185}
-  m_LocalPosition: {x: -0.7850394, y: 6, z: -14.979443}
+  m_LocalRotation: {x: 0.141426, y: 0.02518898, z: -0.0035997347, w: 0.9896218}
+  m_LocalPosition: {x: -0.62803155, y: 9, z: -11.983555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5178,12 +5210,12 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0.2
   m_Orbits:
+  - m_Height: 8
+    m_Radius: 7
   - m_Height: 6
-    m_Radius: 10
+    m_Radius: 12
   - m_Height: 3
-    m_Radius: 15
-  - m_Height: 0
-    m_Radius: 10
+    m_Radius: 7
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1735073844}
@@ -5197,7 +5229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376583873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7850394, y: 6, z: -14.979443}
+  m_LocalPosition: {x: -0.62803155, y: 9, z: -11.983555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10842,7 +10874,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1597737963}
-  - component: {fileID: 1597737964}
   m_Layer: 0
   m_Name: TeleportPoints(Pleas delete after)
   m_TagString: Untagged
@@ -10870,18 +10901,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1597737964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597737962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84b975062f335e74bade99a8c31d0b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1605705953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9187232029177919730, guid: 2d5d3162cbe5bf0488780612caf7a4cd, type: 3}
@@ -11409,7 +11428,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735073843}
-  m_LocalRotation: {x: 0.033057388, y: 0.025576824, z: -0.00084624276, w: 0.99912584}
+  m_LocalRotation: {x: 0.15940331, y: 0.025119329, z: -0.004057313, w: 0.9868856}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
