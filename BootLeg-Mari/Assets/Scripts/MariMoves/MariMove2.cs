@@ -46,7 +46,7 @@ public class MariMove2 : MonoBehaviour
     // brackys
     void MariMovement()
     {
-        // gets W.A.S.D to move
+        // read inputs and gets W.A.S.D to move
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
@@ -82,4 +82,8 @@ public class MariMove2 : MonoBehaviour
         }
     }
     #endregion
+
+
+
+
 }

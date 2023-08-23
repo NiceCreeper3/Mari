@@ -318,7 +318,13 @@ MonoBehaviour:
   _winUi: {fileID: 0}
   _score: {fileID: 0}
   _jukeText: {fileID: 0}
-  WinTexts: []
+  WinTexts:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &2337047214708463533
 GameObject:
   m_ObjectHideFlags: 0

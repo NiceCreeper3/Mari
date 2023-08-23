@@ -38,7 +38,25 @@ public class DevCheats : EditorWindow
         GUILayout.Space(10);
 
         //Teleport
-        #region
+        TeleportDev();
+
+        GUILayout.Space(10);
+
+        ReasetScene();
+
+        GUILayout.Space(10);
+
+        ReasetScore();
+
+        GUILayout.Space(5);
+
+        SetHealth();
+    }
+
+    //Methodes
+    #region
+    void TeleportDev()
+    {
         // gives the lokason you want to teleport to
         GUILayout.Label("Teleport to lokason");
         _toTeleport = (short)EditorGUILayout.Slider(_toTeleport, 0, 5);
@@ -72,24 +90,20 @@ public class DevCheats : EditorWindow
                 _mariTeleport.transform.position = _teleport5.transform.position;
             }
         }
-        #endregion
+    }
 
-        GUILayout.Space(10);
-
-        //reaset Sce
-        #region
+    void ReasetScene()
+    {
         // Reasets the scene
         GUILayout.Label("Reaset the kurrent scene");
         if (GUILayout.Button("Reaset"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        #endregion
+    }
 
-        GUILayout.Space(10);
-
-        // score reshet
-        #region
+    void ReasetScore()
+    {
         // Reasets the scene
         reasetOrMax = GUILayout.Toggle(reasetOrMax, "MaxScore = true, reaset = false");
 
@@ -113,9 +127,18 @@ public class DevCheats : EditorWindow
             //Reasets score rikvaerments
 
         }
-        #endregion
-
-
     }
 
+    void SetHealth()
+    {
+        GUILayout.Label("sets the playeres Health to what you want");
+        short setHealth = (short)EditorGUILayout.Slider(_toTeleport, 0, 10);
+
+        if (GUILayout.Button("set Health"))
+        {
+            MariValues.Health = setHealth;
+            WorldValues.ScoreHasPlayerDied = false;
+        }
+    }
+    #endregion
 }

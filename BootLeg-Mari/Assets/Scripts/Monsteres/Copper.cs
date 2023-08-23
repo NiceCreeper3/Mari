@@ -6,18 +6,14 @@ public class Copper : Monster, IShootebol, IJumpable
 {
     [Header("Points to patrol")]
     [SerializeField] Transform[] _points;
-    int _tagetPatrolPoint = 0;
+    short _tagetPatrolPoint = 0;
 
     protected override void PassiveStands()
     {
         // makes the enemy
         if (transform.position == _points[_tagetPatrolPoint].position)
         {
-            _tagetPatrolPoint++;
-
-            // reasets 
-            if (_tagetPatrolPoint >= _points.Length)
-                _tagetPatrolPoint = 0;
+            _tagetPatrolPoint = (short)((_tagetPatrolPoint + 1) % _points.Length);
         }
         else
         {

@@ -289,10 +289,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8718859062832376077}
-  - component: {fileID: 6990619887449835707}
   - component: {fileID: 535022622040964551}
   - component: {fileID: 5335078131630745561}
   - component: {fileID: 3875268249931951126}
+  - component: {fileID: 6990619887449835707}
   m_Layer: 7
   m_Name: cloud
   m_TagString: Untagged
@@ -322,21 +322,6 @@ Transform:
   m_Father: {fileID: 6763409769250139455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6990619887449835707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4608267762770849703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb7f03b0544ec34fa1298cc02aa5e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
-  _posisonStart: {fileID: 1764051093605264707}
-  _posisonEnd: {fileID: 4017224265245372065}
 --- !u!65 &535022622040964551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -379,6 +364,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6990619887449835707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4608267762770849703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb7f03b0544ec34fa1298cc02aa5e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _positonsToMove:
+  - {fileID: 0}
+  - {fileID: 0}
+  _posisonStart: {fileID: 1764051093605264707}
+  _posisonEnd: {fileID: 4017224265245372065}
 --- !u!1 &4895995271118561081
 GameObject:
   m_ObjectHideFlags: 0

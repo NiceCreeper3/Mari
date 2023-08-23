@@ -128,7 +128,7 @@ public class Jump : MonoBehaviour
     /// <param name="Hit"></param>
     private void WallJump(ControllerColliderHit Hit)
     {
-        if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
+        if (!MariValues.IsGrounded && Hit.normal.y < 3f)
         {
             if (Input.GetButton("Jump"))
             {

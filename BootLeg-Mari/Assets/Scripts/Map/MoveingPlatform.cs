@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class MoveingPlatform : MonoBehaviour
 {
-    [Header("determens how fast the cloud moves. the higer the number distu solwer")]
-    [SerializeField] float _speed;
+    [Header("determens how fast the cloud moved")]
+    [SerializeField] float _speedOfCloud;
 
     [Header("determens were the cloud shode move")]
-    [SerializeField] Transform _posisonStart;
-    [SerializeField] Transform _posisonEnd;
+    [SerializeField] Transform[] _positonsToMove;
+    int _nextPositionMove = 0;
+    private float _distanseBetviePoints;
+/*    [SerializeField] Transform _posisonStart;
+    [SerializeField] Transform _posisonEnd;*/
 
     //stuff
     private Rigidbody rb;
@@ -20,12 +23,13 @@ public class MoveingPlatform : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        _distanseBetviePoints = Vector3.Distance(transform.position, _positonsToMove[0].position);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // gets the players CharacterController
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
             cc = other.GetComponent<CharacterController>();
     }
 
@@ -33,15 +37,30 @@ public class MoveingPlatform : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //moves the palyer ind a cortens to the platforms velocity
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
             cc.Move( rb.velocity * Time.deltaTime);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // makes the platform move bake and forfe
-        currentPos = Vector3.Lerp(_posisonStart.position, _posisonEnd.position, Mathf.Cos(Time.time / -_speed * Mathf.PI * 2) * -.5f + .5f);
-        rb.MovePosition(currentPos);
+        MovingCloud();
+    }
+
+    void MovingCloud()
+    {
+
+        // makes the enemy
+        if (transform.position == _positonsToMove[_nextPositionMove].position)
+        {
+            _nextPositionMove = (_nextPositionMove + 1) % _positonsToMove.Length;
+
+            _distanseBetviePoints = Vector3.Distance(transform.position, _positonsToMove[_nextPositionMove].position);
+        }
+        else
+        {
+            currentPos = Vector3.MoveTowards(transform.position, _positonsToMove[_nextPositionMove].position, _distanseBetviePoints * _speedOfCloud * Time.fixedDeltaTime);
+            rb.MovePosition(currentPos);
+        }
     }
 }
