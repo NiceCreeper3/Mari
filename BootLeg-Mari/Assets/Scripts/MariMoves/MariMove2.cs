@@ -18,9 +18,11 @@ public class MariMove2 : MonoBehaviour
     // <turning>
     [Header("Turning the Player")]
     [SerializeField] float _turnSmoothTime = 0.1f;
-    [SerializeField] float _turnSmoothVelosetig;
+    float _turnSmoothVelosetig;
 
+    [Header("ice is workind progres")]
     [SerializeField] ParticleSystem _runCloud;
+    [SerializeField] float iceFriction = 0.1f; // Adjust this value for slipperiness
     #endregion
 
     private void Start()
@@ -55,7 +57,6 @@ public class MariMove2 : MonoBehaviour
             CreatSpeedDust();
             // the .normalize makes it so we don,t get extra speed by holding bofe buttons
             MariValues.Move = new Vector3(x, 0f, z).normalized;
-
         }
 
         // makes Mari Rotate to wake akording to the cammera
@@ -81,9 +82,40 @@ public class MariMove2 : MonoBehaviour
             _runCloud.Play();
         }
     }
+
+
+
+    //Icy (Not sure if it works)
+    private float slideSpeed = 1.75f;
+    private Vector3 lastMoveDirection = Vector3.zero;
+
+    private bool icy = false;
+
+    void Icy(float x, float z)
+    {
+        float inputMagnitude = Mathf.Min(new Vector3(x, 0, z).sqrMagnitude, 1f);
+
+        // store last direction when received some movement
+        if (inputMagnitude > 0.225f)
+        {
+            lastMoveDirection = MariValues.Move;
+        }
+
+        // add speed
+        // keeps sliding when still, runs slowly when moving
+        if (icy)
+        {
+            MariValues.Move = lastMoveDirection * slideSpeed;
+        }
+        else
+        {
+            MariValues.Move *= _speed;
+        }
+    }
+
     #endregion
-
-
-
-
 }
+
+
+
+

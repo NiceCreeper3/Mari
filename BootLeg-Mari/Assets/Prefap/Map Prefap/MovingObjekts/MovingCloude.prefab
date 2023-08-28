@@ -514,7 +514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedOfCloud: 0
-  _positonsToMove: []
+  _positonsToMove:
+  - {fileID: 2990129589726465096}
+  - {fileID: 9029683431156178658}
 --- !u!1 &5715791710488823369
 GameObject:
   m_ObjectHideFlags: 0

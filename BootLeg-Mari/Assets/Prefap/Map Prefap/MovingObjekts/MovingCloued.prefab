@@ -376,12 +376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb7f03b0544ec34fa1298cc02aa5e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speedOfCloud: 0
   _positonsToMove:
-  - {fileID: 0}
-  - {fileID: 0}
-  _posisonStart: {fileID: 1764051093605264707}
-  _posisonEnd: {fileID: 4017224265245372065}
+  - {fileID: 1764051093605264707}
+  - {fileID: 4017224265245372065}
 --- !u!1 &4895995271118561081
 GameObject:
   m_ObjectHideFlags: 0

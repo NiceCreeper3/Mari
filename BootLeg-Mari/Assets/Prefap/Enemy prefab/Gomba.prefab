@@ -273,13 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb15a7b1d4af7a43941bc0de07b8cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aggroRangeOfEnemy: 0
-  _enemySpeed: 2
-  _passeveSpeed: 0
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  _targetToMoveTo: {fileID: 6093271187628462166, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
+  _enemyStates: {fileID: 11400000, guid: ad07c2571335cfb4e9e16e2d23fd2c88, type: 2}
+  _enemyTargetScriptabelObject: {fileID: 11400000, guid: 0b4bbe0e09b29eb4dadcf031f65d39ac, type: 2}
+  target: {fileID: 295157851312814183, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
 --- !u!1 &4938652173549064795
 GameObject:
   m_ObjectHideFlags: 0

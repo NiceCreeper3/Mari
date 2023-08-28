@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
     [Header("Enemy States")]
-    [SerializeField] protected float _aggroRangeOfEnemy;
-    [SerializeField] protected float _enemySpeed, _passeveSpeed;
-
+    [SerializeField] protected EnemyStatesSkripteabelObjects _enemyStates;
+/*    [SerializeField] protected float _aggroRangeOfEnemy;
+    [SerializeField] protected float _enemySpeed, _passeveSpeed;*/
 
     // torturial
-    [Header("The layer the plalyer is on")]
-    [SerializeField] protected LayerMask targetLayer;
-    [SerializeField] protected Transform _targetToMoveTo;
-    protected Collider[] _isWithIndAggroRange;
+    [Header("taget to thase")]
+    [SerializeField] private EemyTargetScriptebolObject _enemyTargetScriptabelObject;
+    [SerializeField] Transform TargetToMoveTo;
+    private Collider[] _isWithIndAggroRange;
+    
 
     // Update is called once per frame
     void Update()
@@ -33,7 +32,7 @@ public class Monster : MonoBehaviour
     void EnemeyMovemet()
     {
         //Makes a shere around the enmey using the _aggroRangeOfEnemy to determen how big it has to be
-        _isWithIndAggroRange = Physics.OverlapSphere(transform.position, _aggroRangeOfEnemy, targetLayer);
+        _isWithIndAggroRange = Physics.OverlapSphere(transform.position, _enemyStates._aggroRangeOfEnemy, _enemyTargetScriptabelObject.TargetsLayer);
 
         // keeps the enmey ind passe stands unless the player gets ind range of the enimy
         if (_isWithIndAggroRange.Length > 0)
@@ -51,9 +50,9 @@ public class Monster : MonoBehaviour
     protected virtual void ActiveStands()
     {
         // makes the Gomba move towards the targets positon. with herer is the players positon
-        transform.position = Vector3.MoveTowards(transform.position, _targetToMoveTo.position, _enemySpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, TargetToMoveTo.position, _enemyStates._enemySpeed * Time.deltaTime);
 
-        RotatoLookAtTarget(_targetToMoveTo);
+        RotatoLookAtTarget(TargetToMoveTo);
     }
 
     protected virtual void PassiveStands() { }
@@ -89,6 +88,5 @@ public class Monster : MonoBehaviour
             hitebol.ObjegtHasBenHit(1);
         }
     }
-
     #endregion
 }

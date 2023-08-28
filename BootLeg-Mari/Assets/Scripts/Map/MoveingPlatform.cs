@@ -11,8 +11,6 @@ public class MoveingPlatform : MonoBehaviour
     [SerializeField] Transform[] _positonsToMove;
     int _nextPositionMove = 0;
     private float _distanseBetviePoints;
-/*    [SerializeField] Transform _posisonStart;
-    [SerializeField] Transform _posisonEnd;*/
 
     //stuff
     private Rigidbody rb;

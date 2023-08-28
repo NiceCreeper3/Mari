@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Gomba : Monster, IJumpable, IShootebol
 {
-
     private void OnTriggerStay(Collider other)
     {
         AttackPlayer(other);

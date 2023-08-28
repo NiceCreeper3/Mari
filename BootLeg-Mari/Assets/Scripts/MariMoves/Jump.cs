@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
@@ -89,37 +88,6 @@ public class Jump : MonoBehaviour
             }
         }
     }
-
-
-    /*private void WallJump(ControllerColliderHit Hit)
-    {
-        if (!MariValues.IsGrounded && Hit.normal.y < 0.5f)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                #region DebugMessenges
-
-                // hows if we hit the wall
-                Debug.Log(gameObject.transform.position);
-                Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
-                #endregion
-
-                // try Enumbertor
-
-                //transform.Rotate(0, 180, 0, Space.Self);
-                MariValues.Move = Hit.normal * 10000 * Time.deltaTime;
-                MariValues.Velocity.y = _wallJumpForce;
-                
-                FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
-
-                // jumpes 
-                //MariValues.Velocity.y = _wallJumpForce;
-                //MariValues.Move.x = 10;
-
-                StartCoroutine(Timer());
-            }
-        }
-    }*/
 
     /// <summary>
     /// makes the player Jump away from a wall
