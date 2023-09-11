@@ -45,7 +45,7 @@ public class CheckPoints : MonoBehaviour
             WorldValues.PlayerSpawnPoint = transform.position;
 
             //StartCoroutine(ReamberSunCoin());
-            ReamberSunCoin1();
+            ReamberSunCoins();
 
             CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
             _hasBenAktivated = true;
@@ -53,7 +53,7 @@ public class CheckPoints : MonoBehaviour
         }
     }
 
-    void ReamberSunCoin1()
+    void ReamberSunCoins()
     {
         WorldValues.SavedSuncoins = WorldValues.ScoreSunCoinsColleted;
         // reambers if we have gotten the SunCoin wen vi hit the check point

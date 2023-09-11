@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MariMove2 : MonoBehaviour
@@ -27,21 +28,24 @@ public class MariMove2 : MonoBehaviour
     [SerializeField] ParticleSystem _runCloud;
 
 
-/*
-    [SerializeField] private float _slideStartSpeed;
-    [SerializeField] private float _slideTime;
-    private float slippyMoveSpeed;
-*/
+    /*
+        [SerializeField] private float _slideStartSpeed;
+        [SerializeField] private float _slideTime;
+        private float slippyMoveSpeed;
+    */
     #endregion
 
-    private void Start()
+    private Action _mariMovementFuncstion;
+
+    private void Awake()
     {
         MariValues.Health = 3;
         MariValues.MariIsDead = false;
         MariValues.OnIcyFloor = false;
 
         // inde i en coruten so scene har tid til at indlese Spawnpoint
-        StartCoroutine(RespawnTime());
+        transform.position = WorldValues.PlayerSpawnPoint;
+        _mariMovementFuncstion = NormalMoveMent;
     }
 
     // Update is called once per frame
@@ -78,17 +82,26 @@ public class MariMove2 : MonoBehaviour
 
             // moves the player
             _controller.Move(moveDir.normalized * _SlideSpeed * Time.deltaTime);
-            Debug.Log("MoveDamit");
         }
         else if (MariValues.Move.magnitude >= 0.1f) // moves the player if you pushe down WASD
         {
             Vector3 NormalCamMove = LookDependingOnCam();
             // moves the player
             _controller.Move(NormalCamMove.normalized * _speed * Time.deltaTime);
-            //StartCoroutine(IceTimer());
         }
+    }
+
+    private void IcyMovment()
+    {
 
     }
+
+    private void NormalMoveMent()
+    {
+
+    }
+
+
 
     // makes Mari Rotate to wake akording to the cammera
     Vector3 LookDependingOnCam()
@@ -110,27 +123,8 @@ public class MariMove2 : MonoBehaviour
             _runCloud.Play();
         }
     }
-    private IEnumerator RespawnTime()
-    {
-        yield return new WaitForSeconds(1);
-        transform.position = WorldValues.PlayerSpawnPoint;
-    }
-
-        /*
-        // Sets the slipy movement and slowlig reduses it to 0
-        private IEnumerator IceTimer()
-        {
-            slippyMoveSpeed = _slideStartSpeed;
-
-            for (float f = _slideStartSpeed; f >= 0; f -= 0.5f)
-            {
-                slippyMoveSpeed = f;
-                yield return new WaitForSecondsRealtime(_slideTime);
-            }
-        }
-    */
         #endregion
-    }
+}
 
 
 

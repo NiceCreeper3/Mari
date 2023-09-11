@@ -7,8 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadGame()
     {
-
-
         WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
         SceneManager.LoadScene("MariMap");
     }
