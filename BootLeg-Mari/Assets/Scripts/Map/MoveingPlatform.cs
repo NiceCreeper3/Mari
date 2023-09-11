@@ -47,7 +47,6 @@ public class MoveingPlatform : MonoBehaviour
 
     void MovingCloud()
     {
-
         // makes the enemy
         if (transform.position == _positonsToMove[_nextPositionMove].position)
         {

@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MaiMenu.unity
     guid: 7a1ef1d6e0aa1c84f823c9f12418ca87
   - enabled: 1
-    path: Assets/Scenes/Maps/MariMap.unity
+    path: Assets/Scenes/Maps/(Hop Skip Jump) map1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Maps/(Rong game) map2.unity
+    path: Assets/Scenes/Maps/(Wrong game) map2.unity
     guid: 4972394a697f43a4b9bf028e7136fda6
   - enabled: 1
-    path: Assets/Scenes/Maps/Cold Sholder map3.unity
-    guid: a8d18b11e5e690243beefbbaf918449d
+    path: Assets/Scenes/Maps/(Cold Sholder) map3.unity
+    guid: 1b27a9e014572a54da36eee27eeb8462
+  - enabled: 1
+    path: Assets/Scenes/Maps/(JumpInNameOfColor) map4.unity
+    guid: 5d2054d33a9f0d34f8869e618ea740db
+  - enabled: 1
+    path: Assets/Scenes/Maps/(End Of All) Map5.unity
+    guid: 4bc4f6c7eeed2a842a91ae4974e2ccc8
   m_configObjects: {}

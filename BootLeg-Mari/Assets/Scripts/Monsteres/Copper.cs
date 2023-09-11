@@ -27,12 +27,12 @@ public class Copper : Monster, IShootebol, IJumpable
 
     void IJumpable.JumpetOn(int hit)
     {
-        EnemyHit();
+        StartCoroutine(EnemyHit(""));
     }
 
     void IShootebol.Shoot()
     {
-        EnemyHit();
+        StartCoroutine(EnemyHit(""));
     }
 
     private void OnTriggerStay(Collider other)

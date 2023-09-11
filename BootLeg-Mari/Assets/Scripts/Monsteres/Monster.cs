@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -12,7 +13,10 @@ public class Monster : MonoBehaviour
     [SerializeField] private EemyTargetScriptebolObject _enemyTargetScriptabelObject;
     [SerializeField] Transform TargetToMoveTo;
     private Collider[] _isWithIndAggroRange;
-    
+
+
+    [Header("Mari jump after stomp")]
+    [SerializeField] MariJumpScripttebolObject mariJumpStats;
 
     // Update is called once per frame
     void Update()
@@ -73,11 +77,19 @@ public class Monster : MonoBehaviour
     }
 
     // Killes the enemy if it is hit
-    protected void EnemyHit()
+    protected IEnumerator EnemyHit(string audioToPlayOnDeaf)
     {
+        // makes mari jump at hafe hight after stomping a enemy
+        MariValues.Velocity.y = Mathf.Sqrt(mariJumpStats.JumpHight * -2f * MariValues.Gravity / 2);
+
+        // Playes the given audio and then shrinkes the enemy by hafe its size
+        FindObjectOfType<AudioMangerScript>().PlayAudio(audioToPlayOnDeaf, true);
+        transform.localScale = new Vector3(1, 0.5f, 1);
+
+        // and Destores the enemy a bit after
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
-
 
     protected void AttackPlayer(Collider _other)
     {

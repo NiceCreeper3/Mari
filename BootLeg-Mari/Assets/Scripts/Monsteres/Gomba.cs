@@ -11,19 +11,15 @@ public class Gomba : Monster, IJumpable, IShootebol
 
     void IJumpable.JumpetOn(int hit)
     {
-        FindObjectOfType<AudioMangerScript>().PlayAudio("GombaStomp", true);
-        EnemyHit();
-
-        MariValues.Velocity.y = Mathf.Sqrt((MariValues.JumpHight * -2f * MariValues.Gravity) / 2);
+        StartCoroutine(EnemyHit("GombaStomp"));
     }
-
 
     //Methodes
     #region
     void IShootebol.Shoot()
     {
         FindObjectOfType<AudioMangerScript>().PlayAudio("GombaStomp", true);
-        EnemyHit();
+        StartCoroutine(EnemyHit("GombaStomp"));
     }
 
     #endregion

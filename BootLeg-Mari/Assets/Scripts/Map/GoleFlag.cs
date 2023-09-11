@@ -26,7 +26,9 @@ public class GoleFlag : MonoBehaviour
         // shows the player skore
         if (WorldValues.ScoreSunCoinsColleted == 3 && !WorldValues.ScoreHasPlayerDied)
         {
-            _score.text = "S";
+            _score.text = "Axolotl";
+            _score.fontSize = 65;
+            _score.enableWordWrapping = false;
             _jukeText.text = WinTexts[0];
         }
         else if (WorldValues.ScoreSunCoinsColleted == 3)

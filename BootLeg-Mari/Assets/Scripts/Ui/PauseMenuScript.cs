@@ -30,9 +30,12 @@ public class PauseMenuScript : MonoBehaviour
     // Pauses the game
     void PauseGame()
     {
+        // sets the PauseUI activate and stopes time 
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        // playse audio to indekat the player has paused the game
         FindObjectOfType<AudioMangerScript>().PlayAudio("PauseMenuAudio", true);
     }
 

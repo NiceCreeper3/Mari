@@ -5,16 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelUI : MonoBehaviour
 {
-    [SerializeField] short NextLevel;
-    public void StartLeve()
-    {
-        WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
+    [SerializeField] short _selecktScene;
+    [SerializeField] string[] Scenes;
 
-        if (NextLevel == 1)
-            SceneManager.LoadScene("MariMap");
-        if (NextLevel == 2)
-            SceneManager.LoadScene("(Rong game) map2");
-        if (NextLevel == 3)
-            SceneManager.LoadScene("Cold Sholder map3");
+    private void Start()
+    {
+        Scenes[0] = "MaiMenu";
+        Scenes[1] = "(Hop Skip Jump) map1";
+        Scenes[2] = "(Wrong game) map2";
+        Scenes[3] = "(Cold Sholder) map3";
+        Scenes[4] = "(JumpInNameOfColor) map4";
+        Scenes[5] = "(End Of All) Map5";
     }
+
+    public void StartScene()
+    {
+
+        WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
+        //Reasets score rikvaerments
+        WorldValues.ScoreHasPlayerDied = WorldValues.SunCoinNummber1 = WorldValues.SunCoinNummber2 = WorldValues.SunCoinNummber3 = false;
+        SceneManager.LoadScene(Scenes[_selecktScene]);
+    }
+
+
 }

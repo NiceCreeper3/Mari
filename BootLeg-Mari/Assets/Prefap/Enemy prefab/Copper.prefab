@@ -562,9 +562,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyStates: {fileID: 11400000, guid: 957dbd050bbdf5a4f80c308980522614, type: 2}
   _enemyTargetScriptabelObject: {fileID: 11400000, guid: 0b4bbe0e09b29eb4dadcf031f65d39ac, type: 2}
+  TargetToMoveTo: {fileID: 0}
+  mariJumpStats: {fileID: 11400000, guid: 4e52a3dafc074a14eaa259867c96e533, type: 2}
   _points:
-  - {fileID: 6237644752047941559}
   - {fileID: 4910527860911866234}
+  - {fileID: 6237644752047941559}
 --- !u!1 &538834286813502889
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +862,7 @@ GameObject:
   - component: {fileID: 538834287305554169}
   m_Layer: 0
   m_Name: Copper
-  m_TagString: NoWallJump
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 6415533577095159855}
   m_Layer: 0
   m_Name: Gomba
-  m_TagString: NoWallJump
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyStates: {fileID: 11400000, guid: ad07c2571335cfb4e9e16e2d23fd2c88, type: 2}
   _enemyTargetScriptabelObject: {fileID: 11400000, guid: 0b4bbe0e09b29eb4dadcf031f65d39ac, type: 2}
-  target: {fileID: 295157851312814183, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
+  TargetToMoveTo: {fileID: 0}
+  mariJumpStats: {fileID: 11400000, guid: 4e52a3dafc074a14eaa259867c96e533, type: 2}
 --- !u!1 &4938652173549064795
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,26 +10,18 @@ public class DevCheats : EditorWindow
 
     bool reasetOrMax = false;
 
-    //
-    private void OnEnable()
-    {
-        _teleport0 = GameObject.Find("Tel0");
-        _teleport1 = GameObject.Find("Tel1");
-        _teleport2 = GameObject.Find("Tel2");
-        _teleport3 = GameObject.Find("Tel3");
-        _teleport4 = GameObject.Find("Tel4");
-        _teleport5 = GameObject.Find("Tel5");
-
-        // gets mari so he can teleport
-        _mariTeleport = GameObject.Find("Mari");
-
-        Debug.Log("Editor is enable");
-    }
-
     [MenuItem("Window/DevCheats")]
     public static void ShowWindow()
     {
-        EditorWindow.GetWindow<DevCheats>("DevCheats");
+        GetWindow<DevCheats>("DevCheats");
+    }
+
+    //
+    private void OnEnable()
+    {
+        GetStuff();
+
+        Debug.Log("Editor is enable");
     }
 
     private void OnGUI()
@@ -52,41 +44,70 @@ public class DevCheats : EditorWindow
         SetHealth();
     }
 
+
+
     //Methodes
     #region
+    // gets the teleport plases
+    void GetStuff()
+    {
+        _teleport0 = GameObject.Find("Tel0");
+        _teleport1 = GameObject.Find("Tel1");
+        _teleport2 = GameObject.Find("Tel2");
+        _teleport3 = GameObject.Find("Tel3");
+        _teleport4 = GameObject.Find("Tel4");
+        _teleport5 = GameObject.Find("Tel5");
+
+        // gets mari so he can teleport
+        _mariTeleport = GameObject.Find("Mari");
+    }
+
     void TeleportDev()
     {
+        GUILayout.Label("reafeges the teleport spots");
+        if (GUILayout.Button("Reaset Telport"))
+            GetStuff();
+
         // gives the lokason you want to teleport to
         GUILayout.Label("Teleport to lokason");
         _toTeleport = (short)EditorGUILayout.Slider(_toTeleport, 0, 5);
 
+
+
         if (GUILayout.Button("Teleport"))
         {
-            // desides where to teleport
-            if (_toTeleport == 0)
+            try
             {
-                _mariTeleport.transform.position = _teleport0.transform.position;
+                // desides where to teleport
+                if (_toTeleport == 0)
+                {
+                    _mariTeleport.transform.position = _teleport0.transform.position;
+                }
+                if (_toTeleport == 1)
+                {
+                    // teleports the player to the lokason of Tel1
+                    _mariTeleport.transform.position = _teleport1.transform.position;
+                }
+                if (_toTeleport == 2)
+                {
+                    _mariTeleport.transform.position = _teleport2.transform.position;
+                }
+                if (_toTeleport == 3)
+                {
+                    _mariTeleport.transform.position = _teleport3.transform.position;
+                }
+                if (_toTeleport == 4)
+                {
+                    _mariTeleport.transform.position = _teleport4.transform.position;
+                }
+                if (_toTeleport == 5)
+                {
+                    _mariTeleport.transform.position = _teleport5.transform.position;
+                }
             }
-            if (_toTeleport == 1)
+            catch
             {
-                // teleports the player to the lokason of Tel1
-                _mariTeleport.transform.position = _teleport1.transform.position;
-            }
-            if (_toTeleport == 2)
-            {
-                _mariTeleport.transform.position = _teleport2.transform.position;
-            }
-            if (_toTeleport == 3)
-            {
-                _mariTeleport.transform.position = _teleport3.transform.position;
-            }
-            if (_toTeleport == 4)
-            {
-                _mariTeleport.transform.position = _teleport4.transform.position;
-            }
-            if (_toTeleport == 5)
-            {
-                _mariTeleport.transform.position = _teleport5.transform.position;
+                Debug.LogError("you need to reafreas the teleports");
             }
         }
     }
@@ -96,8 +117,9 @@ public class DevCheats : EditorWindow
         // Reasets the scene
         GUILayout.Label("Reaset the kurrent scene");
         if (GUILayout.Button("Reaset"))
-        {
+        {         
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GetStuff();
         }
     }
 
