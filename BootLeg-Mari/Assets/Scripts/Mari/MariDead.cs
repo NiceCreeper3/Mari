@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MariDead : MonoBehaviour, IIsHitebol
 {
-
     [SerializeField] float _inviseFamesTime;
 
     [Header("stuff ind inspeckter")]
@@ -14,19 +14,36 @@ public class MariDead : MonoBehaviour, IIsHitebol
     // Deturmes if mari can be hit agien
     private bool MariInviseFrame = false;
 
+    /// shows how mane times the player kan be hit before die ing
+    /// Origen: MariDead
+    ///Is linked: MariDead, KillFloor, MariMove2
+    private short _health;
+
+    private void Start()
+    {
+        DamigePlayer damigePlayer = GetComponent<DamigePlayer>();
+        damigePlayer.PlayerIsHit += DamigePlayer_PlayerIsHit; 
+        _health = 3;
+    }
+
+    private void DamigePlayer_PlayerIsHit(int obj)
+    {
+        throw new NotImplementedException();
+    }
+
     //is interface method
     public void ObjegtHasBenHit(short HitDamige)
     {
         if (!MariInviseFrame)
         {
-            MariValues.Health -= HitDamige;
+            _health -= HitDamige;
             FindObjectOfType<AudioMangerScript>().PlayAudio("HitSound", true);
 
             // makes it so enemyes kant          
             StartCoroutine(StartMariHitCooldown());
         }
 
-        if (MariValues.Health <= 0)
+        if (_health <= 0)
         {
             Debug.Log("Player has died");
             StartCoroutine(PalyerReaspawn());

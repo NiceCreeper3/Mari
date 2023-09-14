@@ -152,12 +152,12 @@ public class DevCheats : EditorWindow
 
     void SetHealth()
     {
-        GUILayout.Label("sets the playeres Health to what you want");
-        short setHealth = (short)EditorGUILayout.Slider(_toTeleport, 0, 10);
+        //GUILayout.Label("sets the playeres Health to what you want");
+        //short setHealth = (short)EditorGUILayout.Slider(_toTeleport, 0, 10);
 
         if (GUILayout.Button("set Health"))
         {
-            MariValues.Health = setHealth;
+            //MariValues.Health = setHealth;
             WorldValues.ScoreHasPlayerDied = false;
         }
     }

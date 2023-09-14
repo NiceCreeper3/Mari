@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MariValues
 {
-
-
     /// The MoveMent of Mari
     /// Origen: MariMove2
     /// Is linked: Jump, MariMove2
@@ -28,11 +26,6 @@ public class MariValues
     /// Origen: Jump
     ///Is linked: Jump, MariMove2
     public static bool IsWallJumping = false;
-
-    /// shows how mane times the player kan be hit before die ing
-    /// Origen: MariDead
-    ///Is linked: MariDead, KillFloor, MariMove2
-    public static short Health = 3;
 
     /// Is aktevatet to disabel player contolle as mari is "ded"
     /// Origen: MariDead

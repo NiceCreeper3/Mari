@@ -978,6 +978,10 @@ PrefabInstance:
       propertyPath: _SlideSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 295157851312814185, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
+      propertyPath: mariMovmentStatesSB
+      value: 
+      objectReference: {fileID: 11400000, guid: 1998ba817c38776438f03fa7e942b0e6, type: 2}
     - target: {fileID: 295157851312814186, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
       propertyPath: m_Name
       value: Mari

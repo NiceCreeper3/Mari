@@ -8,8 +8,7 @@ public class KillFloor : MonoBehaviour
         if (other.TryGetComponent<IIsHitebol>(out var hitebol))
         {
             Debug.Log("Player Hit KilleZone");
-            MariValues.Health = 0;
-            hitebol.ObjegtHasBenHit(3);
+            hitebol.ObjegtHasBenHit(999);
         }
         // if somthing that is not a plaform hits the killfloor. then it is deleted. this is mostly made to get ride of Enemys
         else if (other.CompareTag("enemy"))

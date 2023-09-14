@@ -7,9 +7,11 @@ public class MariMove2 : MonoBehaviour
 {
     // values
     #region
+
+    [SerializeField] private MariMovmentStatesSB mariMovmentStatesSB;
+
     // <movment>
     [Header("Movment")]
-    [SerializeField] float _speed;
     [SerializeField] CharacterController _controller;
 
     // <camara>
@@ -17,35 +19,19 @@ public class MariMove2 : MonoBehaviour
     [SerializeField] Transform _cam;
 
     // <turning>
-    [Header("Turning the Player")]
-    [SerializeField] float _turnSmoothTime = 0.1f;
-    float _turnSmoothVelosetig;
-
-    [Header("ice is workind progres")]
-    [SerializeField] private float _SlideSpeed;
+    private float _turnSmoothVelosetig;
 
     [Header("Partikal efekt")]
     [SerializeField] ParticleSystem _runCloud;
-
-
-    /*
-        [SerializeField] private float _slideStartSpeed;
-        [SerializeField] private float _slideTime;
-        private float slippyMoveSpeed;
-    */
     #endregion
-
-    private Action _mariMovementFuncstion;
 
     private void Awake()
     {
-        MariValues.Health = 3;
-        MariValues.MariIsDead = false;
-        MariValues.OnIcyFloor = false;
-
         // inde i en coruten so scene har tid til at indlese Spawnpoint
         transform.position = WorldValues.PlayerSpawnPoint;
-        _mariMovementFuncstion = NormalMoveMent;
+
+        // Sets the player to not be dead and that he is not on ice. inkase the player dies on ice
+        MariValues.MariIsDead = MariValues.OnIcyFloor = false;
     }
 
     // Update is called once per frame
@@ -55,7 +41,6 @@ public class MariMove2 : MonoBehaviour
         {
             MariMovement();
         }
-
     }
 
     // methodes
@@ -81,41 +66,31 @@ public class MariMove2 : MonoBehaviour
             Vector3 moveDir = LookDependingOnCam();
 
             // moves the player
-            _controller.Move(moveDir.normalized * _SlideSpeed * Time.deltaTime);
+            _controller.Move(moveDir.normalized * mariMovmentStatesSB.SlideSpeed * Time.deltaTime);
         }
         else if (MariValues.Move.magnitude >= 0.1f) // moves the player if you pushe down WASD
         {
             Vector3 NormalCamMove = LookDependingOnCam();
             // moves the player
-            _controller.Move(NormalCamMove.normalized * _speed * Time.deltaTime);
+            _controller.Move(NormalCamMove.normalized * mariMovmentStatesSB.Speed * Time.deltaTime);
         }
     }
 
-    private void IcyMovment()
-    {
 
-    }
-
-    private void NormalMoveMent()
-    {
-
-    }
-
-
-
-    // makes Mari Rotate to wake akording to the cammera
+    // makes Mari rotate and wake in acodens to the cammara
     Vector3 LookDependingOnCam()
     {
         // makes Mari curkel and wake ind akottens to cam
         float targetAngel = Mathf.Atan2(MariValues.Move.x, MariValues.Move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
 
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref _turnSmoothVelosetig, _turnSmoothTime);
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref _turnSmoothVelosetig, mariMovmentStatesSB.TurnSmoothTime);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         Vector3 moveDir = Quaternion.Euler(0f, targetAngel, 0f) * Vector3.forward;
 
         return moveDir;
     }
+
     void CreatSpeedDust()
     {
         if (MariValues.IsGrounded)
@@ -125,7 +100,3 @@ public class MariMove2 : MonoBehaviour
     }
         #endregion
 }
-
-
-
-
