@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwicheBox : MonoBehaviour
 {
-
-    Transform _isOn;
+    // refrens to the ON part of the swiche box
+     private Transform _isOn;
 
     private void Start()
     {
+        // gets refrens to the ON part of the swiche box
         _isOn = transform.GetChild(0);
     }
-
 
     // Update is called once per frame
     void Update()

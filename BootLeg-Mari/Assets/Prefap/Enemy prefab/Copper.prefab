@@ -467,6 +467,7 @@ GameObject:
   - component: {fileID: 3119481524371217282}
   - component: {fileID: 1136727403124407235}
   - component: {fileID: 4415317719260716225}
+  - component: {fileID: 8421922545112197147}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -567,6 +568,19 @@ MonoBehaviour:
   _points:
   - {fileID: 4910527860911866234}
   - {fileID: 6237644752047941559}
+--- !u!114 &8421922545112197147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538834286699504384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddff1d3c38ca53641820858e71af3a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damigePlayerScipttebolObject: {fileID: 11400000, guid: d8bb3a453ab37ab4a88d84d131ef026e, type: 2}
 --- !u!1 &538834286813502889
 GameObject:
   m_ObjectHideFlags: 0

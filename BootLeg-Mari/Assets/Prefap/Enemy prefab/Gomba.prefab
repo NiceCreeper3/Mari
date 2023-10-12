@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 5936706085104460278}
   - component: {fileID: 8891665189062155046}
   - component: {fileID: 6415533577095159855}
+  - component: {fileID: 9202832597119734074}
   m_Layer: 0
   m_Name: Gomba
   m_TagString: enemy
@@ -277,6 +278,19 @@ MonoBehaviour:
   _enemyTargetScriptabelObject: {fileID: 11400000, guid: 0b4bbe0e09b29eb4dadcf031f65d39ac, type: 2}
   TargetToMoveTo: {fileID: 0}
   mariJumpStats: {fileID: 11400000, guid: 4e52a3dafc074a14eaa259867c96e533, type: 2}
+--- !u!114 &9202832597119734074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005083332904032728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddff1d3c38ca53641820858e71af3a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damigePlayerScipttebolObject: {fileID: 11400000, guid: d8bb3a453ab37ab4a88d84d131ef026e, type: 2}
 --- !u!1 &4938652173549064795
 GameObject:
   m_ObjectHideFlags: 0

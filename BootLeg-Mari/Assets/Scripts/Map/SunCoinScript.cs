@@ -1,13 +1,15 @@
-
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SunCoinScript : MonoBehaviour
 {
-    [SerializeField] GameObject _sunCoinOrder;
+    //[SerializeField] GameObject _sunCoinOrder;
     [Range(1, 3)]
-    [SerializeField] short _sunCoinNumber;
+    [SerializeField] int _sunCoinNumber;
 
+    // sents event 
+    [SerializeField] private GameEventScriptebolObjecks OnCoinPikOp;
 
     private void Awake()
     {
@@ -46,7 +48,10 @@ public class SunCoinScript : MonoBehaviour
     {
         WorldValues.ScoreSunCoinsColleted += 1;
         FindObjectOfType<AudioMangerScript>().PlayAudio("CoinPikOp", true);
-        _sunCoinOrder.SetActive(true);
+
+        // sets the
+        OnCoinPikOp.Raise(_sunCoinNumber);
+
         Destroy(gameObject);
     }
 
@@ -54,6 +59,6 @@ public class SunCoinScript : MonoBehaviour
     {
         Debug.Log("SunCoinHasBenDeleted");
         Destroy(gameObject);
-        _sunCoinOrder.SetActive(true);
+        OnCoinPikOp.Raise(_sunCoinNumber);
     }
 }

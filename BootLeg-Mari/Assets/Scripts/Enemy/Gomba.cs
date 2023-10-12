@@ -16,7 +16,7 @@ public class Gomba : Monster, IJumpable, IShootebol
     #region
     void IShootebol.Shoot()
     {
-        FindObjectOfType<AudioMangerScript>().PlayAudio("GombaStomp", true);
+        //FindObjectOfType<AudioMangerScript>().PlayAudio("GombaStomp", true);
         StartCoroutine(EnemyHit("GombaStomp"));
     }
 

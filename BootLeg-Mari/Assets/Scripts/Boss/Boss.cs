@@ -4,29 +4,38 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Boss : MonoBehaviour, IJumpable
+public class Boss : MonoBehaviour
 {
     // Values
     #region
-    // getes the bosses states shothe as healt and AttackCoolDown
+    // (getes the bosses states shothe as healt and AttackCoolDown)
     [SerializeField] private BossStatesSB bossStatesSB;
-    private short _bossHealt;
 
-    // deturmens if the boss is alive
+    // (deturmens if the boss is alive)
     private bool _bossIsAlive = true;
 
-    // is the calles the difrent attackes the boos can do
-    private Action BossAtack;
+    // (boos stage)
+    private ushort _bossStage;
 
-    public event Action RocketAttack;
+    [Header("head")]
+    [SerializeField] private Transform _creatureHead;
 
-    private enum bossStages
-    {
-        Stage_1,
-        Stage_2,
-        Stage_3
-    }
-    private bossStages _currentStage;
+    private CreatureHeadSkript GetHitEvent;
+
+    // (Attack events)
+    [Header("Attack events")]
+    [SerializeField] private GameEventScriptebolObjecks OnAttackLasherSend;
+    [SerializeField] private GameEventScriptebolObjecks OnAttackMissails;
+    [SerializeField] private GameEventScriptebolObjecks OnAttackDoomShere;
+    [SerializeField] private GameEventScriptebolObjecks OnAttackHeadBash;
+
+    [Header("Death Partitals")]
+    [SerializeField] ParticleSystem[] _deathPartitals;
+    [SerializeField] GameObject _vitureFlag, _viturePlatform;
+
+
+    // indekaets how meny attackes the boss can do beafore he can be hit
+    private ushort attacksTilWeak = 0;
     #endregion
 
     // Method Triggeres
@@ -34,93 +43,112 @@ public class Boss : MonoBehaviour, IJumpable
     // Start is called before the first frame update
     void Start()
     {
-        _bossHealt = bossStatesSB.BossMaxHealt;
-        _currentStage = bossStages.Stage_1;
-        BossAtack = Stage1Attack;
+        // sets the current healt of the boss and its setes its stage
+        _bossStage = 1;
+
+        // gets refrens to event
+        GetHitEvent = _creatureHead.GetComponent<CreatureHeadSkript>();
+        GetHitEvent.BossIsHit += GetHitEvent_BossIsHit;
 
         // Starts the bosses Attack 
-        StartCoroutine(BossColddownAttack());
+        //StartCoroutine(BossColddownAttack());
     }
 
-    public void JumpetOn(int hit)
+    // boss takes damige
+    private void GetHitEvent_BossIsHit()
     {
-        BossHealtMangement();
+        // Swithes attacks and is alout to attack agien
+        SwitcheStage();
+        attacksTilWeak = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Rotate(1, 0, 1, Space.Self);
-
-    }
     #endregion
 
     // Methods
     #region
-    void SwitcheStage()
-    {
-        switch (_currentStage)
-        {
-            case bossStages.Stage_1:
-                _currentStage = bossStages.Stage_2;
-                BossAtack = Stage2Attack;
-                break;
 
-            case bossStages.Stage_2:
-                BossAtack = Stage3Attack;
-                _currentStage = bossStages.Stage_3;
-                break;
-        }
-    }
-
-    void BossHealtMangement() 
-    {
-        _bossHealt -= 1;
-        if(_bossHealt <= 0)
-            _bossIsAlive = false;
-
-        SwitcheStage();
-    }
-
-
+    // Boss Attack after som time
     private IEnumerator BossColddownAttack()
     {
         while (_bossIsAlive)
         {
             yield return new WaitForSecondsRealtime(bossStatesSB.BossAttackCoolDown);
-            BossAtack?.Invoke();
+
+            if (attacksTilWeak == 5)
+            {
+                // stopes the head from spining and then 
+                OnAttackHeadBash.Raise(_bossStage);
+            }
+            else
+            {
+                Debug.Log("Rolles attack");
+                Attack();
+
+                
+                //ads one to attacksTilWeak
+                attacksTilWeak++;
+            }
         }
     }
 
-    void Stage1Attack()
-    {
-        short AttackToDo = (short)Random.Range(1, 6);
 
-        switch (AttackToDo)
+    void Attack()
+    {
+        // rooles what attack to do
+        short attackRolle = (short)Random.Range(1, 4);
+        Debug.Log("Attack is " + attackRolle + " is tire 1");
+
+        switch (attackRolle)
+        {
+            // Makes missails fall from the sky
+            case 1:
+                OnAttackMissails.Raise(_bossStage);
+                //RocketAttack?.Invoke(_bossStage);
+                break;
+            // Glides Lasheres akros
+            case 2:
+                OnAttackLasherSend.Raise(_bossStage);
+                //LasherSendAttack?.Invoke(_bossStage);
+                break;
+
+            // Makes Sheres that chase the player
+            case 3:
+                OnAttackDoomShere.Raise(_bossStage);
+                //DoomShereAttack?.Invoke(_bossStage);
+                break;
+        }
+    }
+
+
+    void SwitcheStage()
+    {
+        switch (_bossStage)
         {
             case 1:
-                RocketAttack?.Invoke();
+                _bossStage = 2;
                 break;
+
             case 2:
+                _bossStage = 3;
                 break;
+
+            // Markes the boos as dead when he goves over 
             case 3:
-                break;
-            case 4:
-                break;
-            case 5:
+                _bossIsAlive = false;
+                CreatoureDeathParticals();
                 break;
         }
     }
-    void Stage2Attack()
+
+    void CreatoureDeathParticals() 
     {
+        foreach (ParticleSystem effets in _deathPartitals)
+        {
+            effets.Play();
 
+        }
+        _vitureFlag.SetActive(true);
+        _viturePlatform.SetActive(true);
     }
-
-    void Stage3Attack()
-    {
-
-    }
-
     #endregion
-
 }

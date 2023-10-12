@@ -479,8 +479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d055672030102848b765f83de94dfdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sunCoinOrder: {fileID: 0}
   _sunCoinNumber: 1
+  OnCoinPikOp: {fileID: 11400000, guid: 0bd880c592653634fb6e4794e26209fe, type: 2}
 --- !u!1 &9142308347109051127
 GameObject:
   m_ObjectHideFlags: 0
