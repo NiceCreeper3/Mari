@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MaiMenu.unity
+    path: Assets/Scenes/Otheres/MaiMenu.unity
     guid: 7a1ef1d6e0aa1c84f823c9f12418ca87
   - enabled: 1
     path: Assets/Scenes/Maps/(Hop Skip Jump) map1.unity

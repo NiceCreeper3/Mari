@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MariHealtSB
   m_EditorClassIdentifier: 
   PlayerStartHealt: 3
-  PlayerCurrentHealt: 1
+  PlayerCurrentHealt: 3
   InviseFamesTime: 1.5
