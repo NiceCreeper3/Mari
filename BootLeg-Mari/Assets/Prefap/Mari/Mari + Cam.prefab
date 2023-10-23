@@ -930,6 +930,14 @@ PrefabInstance:
       propertyPath: damigePlayer
       value: 
       objectReference: {fileID: 11400000, guid: d8bb3a453ab37ab4a88d84d131ef026e, type: 2}
+    - target: {fileID: 295157851312814180, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
+      propertyPath: _onHitOpdateUI
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d10b7f052b54ad4e8b20f6ccde5efdd, type: 2}
+    - target: {fileID: 295157851312814180, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
+      propertyPath: mariHealtStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 949dc079484aa7e46b63472b83dc7d77, type: 2}
     - target: {fileID: 295157851312814181, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
       propertyPath: mariJumpStats
       value: 

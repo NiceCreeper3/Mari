@@ -7,8 +7,8 @@ public class MisseialMakeingAndMarking : MonoBehaviour
     // values
     #region
     [Header("Times inbetvine Missials")]
-    [SerializeField] float _firstStageMissailsTime;
-    [SerializeField] float _timeIndBetvinVolligs;
+    [SerializeField] float _normalMissailsTime;
+    [SerializeField] float _Stage2voligeTime;
     [SerializeField] float _stage3IndBeatvineTime;
 
     [Header("How many missails to sendt")]
@@ -41,10 +41,10 @@ public class MisseialMakeingAndMarking : MonoBehaviour
         switch (attackStage)
         {
             case 1:
-                StartCoroutine(RocketsSent(_SendtOnStageOne, _firstStageMissailsTime));
+                StartCoroutine(RocketsSent(_SendtOnStageOne, _normalMissailsTime));
                 break;
             case 2:
-                StartCoroutine(LinepatternOfRockets());
+                StartCoroutine(LinepatternOfRockets(_Stage2voligeTime));
                 break;
             case 3:
                 StartCoroutine(CompoAttack());
@@ -71,7 +71,7 @@ public class MisseialMakeingAndMarking : MonoBehaviour
         _olredeRolled.Clear();
     }
 
-    private IEnumerator LinepatternOfRockets()
+    private IEnumerator LinepatternOfRockets(float timeIndBetvinVolligs)
     {
         // is how many rockets have ben sent
         ushort volligCount = 0;
@@ -82,7 +82,7 @@ public class MisseialMakeingAndMarking : MonoBehaviour
             if (volligCount >= 3)
             {
                 volligCount = 0;
-                yield return new WaitForSecondsRealtime(_timeIndBetvinVolligs);
+                yield return new WaitForSecondsRealtime(timeIndBetvinVolligs);
             }
             
             // Spawns a missial
@@ -93,31 +93,35 @@ public class MisseialMakeingAndMarking : MonoBehaviour
 
     private IEnumerator CompoAttack()
     {
-
-        StartCoroutine(LinepatternOfRockets());
-
-
+        // sends the missails on a line like on stage 2 but fast
+        StartCoroutine(LinepatternOfRockets(0.5f));
         yield return new WaitForSecondsRealtime(_stage3IndBeatvineTime);
 
-        // No work
-        int missingMissails = 0;
-        while (missingMissails == _SendtOnStageTre)
-        {
+        // sends a amidet 5 rockets twice
+        StartCoroutine(RocketsSent((ushort)(_SendtOnStageTre / 2), 0));
+        yield return new WaitForSecondsRealtime(_stage3IndBeatvineTime);
+        StartCoroutine(RocketsSent((ushort)(_SendtOnStageTre / 2), 0));
+        yield return new WaitForSecondsRealtime(_stage3IndBeatvineTime);
 
-            StartCoroutine(RocketsSent(_SendtOnStageTre, 0));
-            missingMissails++;
-            yield return new WaitForSecondsRealtime(3);
-        } 
-
+        // sendts 10 random missails like normal
+        StartCoroutine(RocketsSent((_SendtOnStageTre), _normalMissailsTime));
     }
 
     private int RollNoReaoite()
     {
+        // deturems if vi have found a dubleket nummber
         bool hasNotFoundUnikeNummber = true;
+
+        // is the random nummber Value
         int missailToSent = 0;
+
 
         while (hasNotFoundUnikeNummber)
         {
+            // cleares _olredeRolled if there are no other plases the missail can land
+            if (_olredeRolled.Count == _rocketSpotes.Count)
+                _olredeRolled.Clear();
+
             //get a random nummber. and that random nummber is the missail to send
             missailToSent = Random.Range(0, _rocketSpotes.Count);
 
@@ -133,6 +137,7 @@ public class MisseialMakeingAndMarking : MonoBehaviour
             }
         }
 
+        // adds the missail to what missails have bean lanted
         _olredeRolled.Add(missailToSent);
         return missailToSent;
 

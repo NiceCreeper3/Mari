@@ -3,37 +3,38 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MariDead : MonoBehaviour, IIsHitebol
+public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
 {
-    /// <summary>
-    /// To fix / thange
-    /// the player can et inves frame by taking damige and avoit kille zone
-    /// Interface Vs Event implemetason
-    /// </summary>
-
-    [SerializeField] float _inviseFamesTime;
-
     [Header("stuff ind inspeckter")]
-    [SerializeField] GameObject _deaidTextUis;
-    [SerializeField] Material _hitColor, _normalcolor;
+    [SerializeField] private GameObject _deaidTextUis;
+    [SerializeField] private Material _hitColor, _normalcolor;
+    [SerializeField] private GameEventScriptebolObjecks _onHitOpdateUI;
 
     // Deturmes if mari can be hit agien
     private bool MariInviseFrame = false;
 
-    /// shows how mane times the player kan be hit before die ing
-    /// Origen: MariDead
-    ///Is linked: MariDead, KillFloor, MariMove2
-    private short _health;
+    /// holds the Playeres Healt and start healt
+    /// and four how long the player can be invinsebol
+    [SerializeField] private MariHealtScriptebolObjeckt mariHealtStats;
 
     private void Start()
     {
         // Reasets the Playeres HP
-        _health = 3;
+        mariHealtStats.PlayerCurrentHealt = mariHealtStats.PlayerStartHealt;
+        //_health = 3;
     }
 
+    // is called when the player is hit by somthing
     public void ObjegtHasBenHit(short HitDamige)
     {
         ThePlayerIsHit(HitDamige);
+    }
+
+    // is called by things that one shoot the player
+    public void IsOneshoot()
+    {
+        if(!MariValues.MariIsDead)
+            StartCoroutine(PalyerReaspawn());
     }
 
     //is interface method
@@ -41,11 +42,14 @@ public class MariDead : MonoBehaviour, IIsHitebol
     {
         if (!MariInviseFrame)
         {
-            _health -= HitDamige;
-
-            Debug.Log($"HP is Right now {_health} and the player has takken {HitDamige}");
-
+            // removes the given HP from player, and playes a hit nouse to indkate the player got gik
+            mariHealtStats.PlayerCurrentHealt -= HitDamige;
             FindObjectOfType<AudioMangerScript>().PlayAudio("HitSound", true);
+
+            //Opdates the UI to Show the playeres current hp
+            _onHitOpdateUI.Raise(mariHealtStats.PlayerCurrentHealt);
+
+            Debug.Log($"HP is Right now {mariHealtStats.PlayerCurrentHealt} and the player has takken {HitDamige}");
 
             // makes it so enemyes kant          
             StartCoroutine(StartMariHitCooldown());
@@ -53,12 +57,11 @@ public class MariDead : MonoBehaviour, IIsHitebol
 
         /// Checks if the player has reathed 0 HP
         /// if then the player dies and the scene is reaset
-        if (_health <= 0 && MariValues.MariIsDead == false)
+        if (mariHealtStats.PlayerCurrentHealt <= 0 && !MariValues.MariIsDead)
         {
             Debug.Log("Player has died");
             StartCoroutine(PalyerReaspawn());
         }
-
     }
 
     // gives the player som invincebiletig time after there have ben hit
@@ -71,7 +74,7 @@ public class MariDead : MonoBehaviour, IIsHitebol
         for(int i = 1; i <= 3; i+= 1)
             gameObject.transform.GetChild(i).GetComponent<Renderer>().material.color = _hitColor.color;
 
-        yield return new WaitForSecondsRealtime(_inviseFamesTime);
+        yield return new WaitForSecondsRealtime(mariHealtStats.InviseFamesTime);
 
         // turens the player back to normal color to dendikat that the player no longer has invis frames
         for (int i = 1; i <= 3; i += 1)
@@ -100,6 +103,5 @@ public class MariDead : MonoBehaviour, IIsHitebol
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         _deaidTextUis.SetActive(false);
     }
-
 }
 

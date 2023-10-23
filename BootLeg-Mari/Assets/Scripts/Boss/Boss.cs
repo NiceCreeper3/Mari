@@ -51,7 +51,7 @@ public class Boss : MonoBehaviour
         GetHitEvent.BossIsHit += GetHitEvent_BossIsHit;
 
         // Starts the bosses Attack 
-        //StartCoroutine(BossColddownAttack());
+        StartCoroutine(BossColddownAttack());
     }
 
     // boss takes damige
