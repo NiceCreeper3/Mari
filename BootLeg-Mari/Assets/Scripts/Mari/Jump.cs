@@ -15,7 +15,7 @@ public class Jump : MonoBehaviour
     // Unity Triggeres
     #region
     // Update is called once per frame
-    void LateUpdate()
+    protected virtual void LateUpdate()
     {
         if (!MariValues.MariIsDead)
         {
@@ -28,7 +28,7 @@ public class Jump : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag != "NoWallJump")
         {
@@ -83,7 +83,7 @@ public class Jump : MonoBehaviour
     /// and the makes it so he can,t move
     /// </summary>
     /// <param name="Hit"></param>
-    private void WallJump(ControllerColliderHit Hit)
+    protected virtual void WallJump(ControllerColliderHit Hit)
     {
         if (!MariValues.IsGrounded && Hit.normal.y < 3f && !Hit.gameObject.CompareTag("NoWallJump"))
         {

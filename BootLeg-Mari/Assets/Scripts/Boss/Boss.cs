@@ -31,7 +31,7 @@ public class Boss : MonoBehaviour
 
     [Header("Death Partitals")]
     [SerializeField] ParticleSystem[] _deathPartitals;
-    [SerializeField] GameObject _vitureFlag, _viturePlatform;
+    [SerializeField] GameObject _viturePlatform;
 
 
     // indekaets how meny attackes the boss can do beafore he can be hit
@@ -147,7 +147,6 @@ public class Boss : MonoBehaviour
             effets.Play();
 
         }
-        _vitureFlag.SetActive(true);
         _viturePlatform.SetActive(true);
     }
     #endregion

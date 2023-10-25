@@ -1,1 +1,1 @@
-{"GameLvlProgres":1}
+{"GameLvlProgres":0}
