@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +5,7 @@ public class PlayerHealtIndekature : MonoBehaviour
 {
     [SerializeField] private MariHealtScriptebolObjeckt _howMotheHealtThePlayerHas;
 
-
     [SerializeField] private List<GameObject> _playerHealtImges = new List<GameObject>();
-
 
     private void Start()
     {
@@ -38,5 +35,4 @@ public class PlayerHealtIndekature : MonoBehaviour
         else
             _playerHealtImges[0].SetActive(true);
     }
-
 }

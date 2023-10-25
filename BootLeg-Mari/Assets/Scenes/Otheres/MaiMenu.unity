@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 202199062}
   - component: {fileID: 202199061}
   - component: {fileID: 202199064}
+  - component: {fileID: 202199065}
   m_Layer: 5
   m_Name: Worl4
   m_TagString: Untagged
@@ -441,6 +442,19 @@ MonoBehaviour:
   - 
   - 
   - 
+--- !u!114 &202199065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202199059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f93e1bb96d33274c9c66e867a35ec62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showOnLvlProgres: 4
 --- !u!1 &239186608
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &379530476
 GameObject:
@@ -741,6 +755,37 @@ Transform:
   - {fileID: 1312833931}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &458699346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458699347}
+  m_Layer: 0
+  m_Name: SaveAndLoadManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &458699347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458699346}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480727217
 GameObject:
@@ -1636,8 +1681,9 @@ GameObject:
   - component: {fileID: 1019443891}
   - component: {fileID: 1019443890}
   - component: {fileID: 1019443893}
+  - component: {fileID: 1019443894}
   m_Layer: 5
-  m_Name: BossButton
+  m_Name: BossLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1778,6 +1824,19 @@ MonoBehaviour:
   - 
   - 
   - 
+--- !u!114 &1019443894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019443888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f93e1bb96d33274c9c66e867a35ec62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showOnLvlProgres: 5
 --- !u!1 &1068544008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2260,7 @@ Transform:
   - {fileID: 984577678}
   - {fileID: 165791577}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1312833928
 GameObject:
@@ -3740,7 +3799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.806618, a: 1}
+  m_Color: {r: 0, g: 0.4891553, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

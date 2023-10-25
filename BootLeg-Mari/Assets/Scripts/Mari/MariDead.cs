@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,22 +5,22 @@ using UnityEngine.SceneManagement;
 public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
 {
     [Header("stuff ind inspeckter")]
-    [SerializeField] private GameObject _deaidTextUis;
-    [SerializeField] private Material _hitColor, _normalcolor;
     [SerializeField] private GameEventScriptebolObjecks _onHitOpdateUI;
-
-    // Deturmes if mari can be hit agien
-    private bool MariInviseFrame = false;
+    [SerializeField] private GameEventScriptebolObjecks _onDeadShowDeadUI;
+    [SerializeField] private Material _hitColor, _normalcolor;
 
     /// holds the Playeres Healt and start healt
     /// and four how long the player can be invinsebol
+    [Header("StriptebolObjeck that holds maris states")]
     [SerializeField] private MariHealtScriptebolObjeckt mariHealtStats;
+
+    // Deturmes if mari can be hit agien
+    private bool MariInviseFrame = false;
 
     private void Start()
     {
         // Reasets the Playeres HP
         mariHealtStats.PlayerCurrentHealt = mariHealtStats.PlayerStartHealt;
-        //_health = 3;
     }
 
     // is called when the player is hit by somthing
@@ -86,8 +85,8 @@ public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
 
     private IEnumerator PalyerReaspawn()
     {
-        // Shows the player det Ui that sease that there are dead
-        _deaidTextUis.SetActive(true);
+        // calles a event that makes the DeadUI be visebol
+        _onDeadShowDeadUI.Raise(true);
 
         // sets so the player cant move wille ded
         MariValues.MariIsDead = true;
@@ -101,7 +100,6 @@ public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
         // waits so player can read messige and then realoads the scene loads 
         yield return new WaitForSecondsRealtime(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        _deaidTextUis.SetActive(false);
     }
 }
 

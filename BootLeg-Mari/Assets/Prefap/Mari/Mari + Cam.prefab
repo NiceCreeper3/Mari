@@ -408,7 +408,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6093271187665412771}
-  m_LocalRotation: {x: 0.085417345, y: 0.025351837, z: -0.002174139, w: 0.9960203}
+  m_LocalRotation: {x: 0.08602034, y: 0.026079856, z: -0.002252522, w: 0.99594945}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -613,7 +613,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6093271188167769281}
-  m_LocalRotation: {x: 0.103472546, y: 0.025308205, z: -0.0026336985, w: 0.9943068}
+  m_LocalRotation: {x: 0.10407417, y: 0.026034702, z: -0.0027252785, w: 0.994225}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -693,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6093271188453851403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: -12}
+  m_LocalPosition: {x: -0.62803155, y: 8, z: -11.983555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -861,7 +861,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6093271189303337465}
-  m_LocalRotation: {x: 0.12154135, y: 0.025256151, z: -0.0030936103, w: 0.9922602}
+  m_LocalRotation: {x: 0.12214138, y: 0.025980826, z: -0.0031983857, w: 0.9921675}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -938,6 +938,10 @@ PrefabInstance:
       propertyPath: mariHealtStats
       value: 
       objectReference: {fileID: 11400000, guid: 949dc079484aa7e46b63472b83dc7d77, type: 2}
+    - target: {fileID: 295157851312814180, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
+      propertyPath: _onDeadShowDeadUI
+      value: 
+      objectReference: {fileID: 11400000, guid: 88f2571101ee5b04fb6b5f46db405430, type: 2}
     - target: {fileID: 295157851312814181, guid: 9304dbe574345634eb7c3545730aae4a, type: 3}
       propertyPath: mariJumpStats
       value: 

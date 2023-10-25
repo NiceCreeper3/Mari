@@ -1,37 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SavePlayerProgres : MonoBehaviour
 {
+    [SerializeField] private ushort _mapProges;
 
-    [SerializeField] private ushort _whatStageThePlayerIsAt; 
+    private void Awake()
+    {
+        SaveSystem.CheackIfFolderAndFille();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    public void SaveProgres()
     {
+        // gets what to save
+        #region
         // filles the SaveObject withe data 
-        SaveObject saveObject = new SaveObject
+        SaveSystem.SaveObject saveObject = new SaveSystem.SaveObject
         {
-            GameProgres = _whatStageThePlayerIsAt
+            GameLvlProgres = _mapProges
         };
-
-        // converts the info ind saveObject to jsons. we then save it ind a string as json is string based
+        // converts the saveObject to jsons. we then save it ind a string as json is string based
         string convertedJson = JsonUtility.ToJson(saveObject);
+        #endregion
+
+        // saves the data if the player is not olredeig further
+        #region
+        string SaveString = SaveSystem.Load();
 
         // Gets loads the saved json data from the fille
-        SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(convertedJson);
-    }
+        if (SaveString != null)
+        {
+            SaveSystem.SaveObject loadedSaveObject = JsonUtility.FromJson<SaveSystem.SaveObject>(SaveString);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //Contanes data we want to save
-    private class SaveObject
-    {
-        public ushort GameProgres;
+            if (_mapProges > loadedSaveObject.GameLvlProgres || loadedSaveObject == null)
+            {
+                SaveSystem.Save(convertedJson);
+            }
+        }
+        #endregion
     }
 }

@@ -696,7 +696,9 @@ GameObject:
   - component: {fileID: 1013335979685883853}
   - component: {fileID: 7255085783362983919}
   - component: {fileID: 192266141614865732}
+  - component: {fileID: 6801523654108538282}
   - component: {fileID: 2942154930680517256}
+  - component: {fileID: 9037237352215229988}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -816,6 +818,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sunCoinBox: {fileID: 8127202652454104934}
+--- !u!114 &6801523654108538282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912177384373732191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3cd499cd3e9fb4eb70b0f97447537c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapProges: 0
 --- !u!114 &2942154930680517256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,6 +858,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9037237352215229988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912177384373732191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec561b7f24f2ad4f9fa34ffea9c9fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 88f2571101ee5b04fb6b5f46db405430, type: 2}
+  reponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6897326086304032594}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &1970662483311660786
 GameObject:
@@ -2348,6 +2391,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 6801523654108538282}
+        m_TargetAssemblyTypeName: SavePlayerProgres, Assembly-CSharp
+        m_MethodName: SaveProgres
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 690547758428472511}
         m_TargetAssemblyTypeName: NextLevelUI, Assembly-CSharp
         m_MethodName: StartScene
