@@ -5,7 +5,7 @@ public class MariValues
     /// The MoveMent of Mari
     /// Origen: MariMove2
     /// Is linked: Jump, MariMove2
-    public static Vector3 Move;
+    public static Vector3 ForsMovePlayer;
 
     /// Telles the code wheder the player is Grounded
     /// Origen: PlayerGravity

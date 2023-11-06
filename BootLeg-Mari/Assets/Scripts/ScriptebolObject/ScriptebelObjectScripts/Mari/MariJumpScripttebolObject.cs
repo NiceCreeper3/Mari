@@ -9,14 +9,27 @@ public class MariJumpScripttebolObject : ScriptableObject
 
     //Walljumping
     [Header("Jump Values")]
-    // deturmens how hige the player walljumps
-    public float WallJumpForce;
-
-    // deturmens if the game neds to play its aduio agien
-    [HideInInspector] public bool HasJumped;
-
     /// The jump higt of the player
     /// Origen: Jump
     /// Is linked: Enemys, Jump    
     public float JumpHight;
+
+    // deturmens if the game neds to play its aduio agien
+    [HideInInspector] public bool HasJumped;
+
+    [Header("WallJump values")]
+    // deturmens how long it takes before the player can move agien
+    public float WallJumpngDuration;
+
+    // deturmens how hige the player walljumps
+    public float WallJumpForce;
+
+    [Header("Wall slide Values")]
+    // deturmens how qikklig the player falls when facing a wall
+    public float WallSlidingSpeed;
+
+
+
+
+
 }

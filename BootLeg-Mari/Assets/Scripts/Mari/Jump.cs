@@ -6,10 +6,19 @@ public class Jump : MonoBehaviour
     //Valus
     #region
 
-    // refrinse raycast Orige point
-    [SerializeField] Transform _mariBoot;
+    [Header("WallSlideStatas")]
+    private bool _isWallSliding;
 
-    [SerializeField] MariJumpScripttebolObject mariJumpStats;
+    [Header("Check if facing a wall")]
+    [SerializeField] private Transform _wallCheck;
+    [SerializeField] private LayerMask _wallLayerToCheck;
+
+    // refrinse raycast Orige point
+    [Header("Check if mari jumpet on somthing")]
+    [SerializeField] private Transform _mariBoot;
+
+    [Header("Maris Jump States")]
+    [SerializeField] protected MariJumpScripttebolObject mariJumpStats;
     #endregion
 
     // Unity Triggeres
@@ -26,6 +35,9 @@ public class Jump : MonoBehaviour
         {
             mariJumpStats.HasJumped = false;
         }
+
+        // checkes if the player is facing a wall
+        wallslide();
     }
 
     protected virtual void OnControllerColliderHit(ControllerColliderHit hit)
@@ -78,38 +90,64 @@ public class Jump : MonoBehaviour
         }
     }
 
+    // checkes if the palyer is facing a wall
+    private bool isWalled()
+    {
+        // checks if the player is fasing a wall
+        return Physics.CheckSphere(_wallCheck.position, 0.2f, _wallLayerToCheck);
+    }
+
+    // makes it so the player is not draged down by gravity as qikklig when there are facing a wall. giving the elusen of a wall slide
+    private void wallslide()
+    {
+        if (isWalled() && !MariValues.IsGrounded)
+        {
+            _isWallSliding = true;
+
+            //rb.velocity = Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            MariValues.Velocity = new Vector3(MariValues.Velocity.x, Mathf.Clamp(MariValues.Velocity.y, -mariJumpStats.WallSlidingSpeed, float.MaxValue), MariValues.Velocity.z);
+        }
+        else
+        {
+            _isWallSliding = false;
+        }
+    }
+
     /// <summary>
     /// makes the player Jump away from a wall
-    /// and the makes it so he can,t move
+    /// and then makes it so he can,t move
     /// </summary>
     /// <param name="Hit"></param>
     protected virtual void WallJump(ControllerColliderHit Hit)
     {
-        if (!MariValues.IsGrounded && Hit.normal.y < 3f && !Hit.gameObject.CompareTag("NoWallJump"))
+        if (Input.GetButton("Jump") && _isWallSliding && !MariValues.IsGrounded && !Hit.gameObject.CompareTag("NoWallJump"))
         {
-            if (Input.GetButton("Jump"))
+            #region DebugMessenges
+            // hows if we hit the wall
+            Debug.Log(gameObject.transform.position);
+            Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
+            #endregion
+
+            if (isWalled())
             {
-                #region DebugMessenges
-
-                // hows if we hit the wall
-                Debug.Log(gameObject.transform.position);
-                Debug.DrawRay(Hit.point, Hit.normal, Color.green, 1.25F);
-                #endregion
-                // søger for at spiller ikke bare kan holde jump inde
-
-
-                MariValues.Move = Hit.normal * 10000 * Time.deltaTime;
-                MariValues.Velocity.y = mariJumpStats.WallJumpForce;
-
-                if (!mariJumpStats.HasJumped)
-                {
-                    FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
-                }
-                mariJumpStats.HasJumped = true;
-
-
-                StartCoroutine(Timer());
+                // rotates the player
+                transform.Rotate(new Vector3(transform.rotation.y, transform.rotation.y + 180, transform.rotation.z));
             }
+
+            // makes teh player walljump. is broken and only works if the cammara is pointed a serten way
+            MariValues.Velocity.y = mariJumpStats.WallJumpForce;
+            MariValues.ForsMovePlayer = Hit.normal * 1000 * Time.deltaTime;
+
+
+            if (!mariJumpStats.HasJumped)
+            {
+                FindObjectOfType<AudioMangerScript>().PlayAudio("WallJumpAudio", true);
+            }
+
+            mariJumpStats.HasJumped = true;
+
+
+            StartCoroutine(Timer());
         }
     }
 
@@ -117,13 +155,13 @@ public class Jump : MonoBehaviour
     /// Timer ontil player can have controlle agien
     /// </summary>
     /// <returns></returns>
-    private IEnumerator Timer()
+    protected IEnumerator Timer()
     {
         yield return new WaitForSecondsRealtime(0.1f);
         MariValues.IsWallJumping = true;
 
         // gives controll bak to player after som time has passed
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(mariJumpStats.WallJumpngDuration);
         MariValues.IsWallJumping = false;
     }
     #endregion

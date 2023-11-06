@@ -5,7 +5,7 @@ public class SunCoinScript : MonoBehaviour
 {
     //[SerializeField] GameObject _sunCoinOrder;
     [Range(1, 3)]
-    [SerializeField] int _sunCoinNumber;
+    [SerializeField] ushort _sunCoinNumber;
 
     // sents event 
     [SerializeField] private GameEventScriptebolObjecks OnCoinPikOp;

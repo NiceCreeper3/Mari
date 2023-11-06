@@ -18,7 +18,7 @@ public class PlayerGravity : MonoBehaviour
     {
         if (!MariValues.PlayerIsTeleporting)
         {
-            // kan be opdated to only count op if the player is not on groud. and reaste ind a defrint way
+            // can be opdated to only count op if the player is not on groud. and reaste ind a defrint way
 
             // reastes the gravgig if the player is on solled ground
             MariValues.IsGrounded = Physics.CheckSphere(_mariLegs.position, _mariGravity.GroundDistance, _mariGravity.GroundMask);

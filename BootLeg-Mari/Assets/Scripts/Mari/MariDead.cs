@@ -7,6 +7,9 @@ public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
     [Header("stuff ind inspeckter")]
     [SerializeField] private GameEventScriptebolObjecks _onHitOpdateUI;
     [SerializeField] private GameEventScriptebolObjecks _onDeadShowDeadUI;
+
+    [Header("Wisual represntason of getting hit")]
+    [SerializeField] Renderer[] _whatPartsToChange;
     [SerializeField] private Material _hitColor, _normalcolor;
 
     /// holds the Playeres Healt and start healt
@@ -70,14 +73,15 @@ public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
         MariInviseFrame = true;
 
         // Colores the player Whit to dendikat that the player has ben hit and has invis frames
-        for(int i = 1; i <= 3; i+= 1)
-            gameObject.transform.GetChild(i).GetComponent<Renderer>().material.color = _hitColor.color;
+        foreach (Renderer changeColor in _whatPartsToChange)
+            changeColor.material.color = _hitColor.color;
+
 
         yield return new WaitForSecondsRealtime(mariHealtStats.InviseFamesTime);
 
         // turens the player back to normal color to dendikat that the player no longer has invis frames
-        for (int i = 1; i <= 3; i += 1)
-            gameObject.transform.GetChild(i).GetComponent<Renderer>().material.color = _normalcolor.color;
+        foreach (Renderer changeColor in _whatPartsToChange)
+            changeColor.material.color = _hitColor.color;
 
         // ends invis frames
         MariInviseFrame = false;

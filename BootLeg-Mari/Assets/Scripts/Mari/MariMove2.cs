@@ -12,11 +12,11 @@ public class MariMove2 : MonoBehaviour
 
     // <movment>
     [Header("Movment")]
-    [SerializeField] CharacterController _controller;
+    [SerializeField] private CharacterController _controller;
 
     // <camara>
     [Header("Camerra")]
-    [SerializeField] Transform _cam;
+    [SerializeField] private Transform _cam;
 
     // <turning>
     private float _turnSmoothVelosetig;
@@ -27,6 +27,9 @@ public class MariMove2 : MonoBehaviour
 
     private void Awake()
     {
+        // Get a refends to the Chareturecontroller
+        _controller = GetComponent<CharacterController>();
+
         // inde i en coruten so scene har tid til at indlese Spawnpoint
         transform.position = WorldValues.PlayerSpawnPoint;
 
@@ -35,7 +38,7 @@ public class MariMove2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (!MariValues.MariIsDead && !MariValues.PlayerIsTeleporting)
         {
@@ -43,20 +46,17 @@ public class MariMove2 : MonoBehaviour
         }
     }
 
-    // methodes
-    #region
-    // brackys
-    void MariMovement()
+    private void MariMovement()
     {
         // read inputs and gets W.A.S.D to move
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
+        //movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
 
         if (!MariValues.IsWallJumping)
         {
-            CreatSpeedDust();
             // the .normalize makes it so we don,t get extra speed by holding bofe buttons
-            MariValues.Move = new Vector3(x, 0f, z).normalized;
+            MariValues.ForsMovePlayer = new Vector3(x, 0f, z).normalized;
         }
 
         /// makes the player Move Forvert Continuislig if he is on ice.
@@ -68,20 +68,23 @@ public class MariMove2 : MonoBehaviour
             // moves the player
             _controller.Move(moveDir.normalized * mariMovmentStatesSB.SlideSpeed * Time.deltaTime);
         }
-        else if (MariValues.Move.magnitude >= 0.1f) // moves the player if you pushe down WASD
+        else if (MariValues.ForsMovePlayer.magnitude >= 0.1f) // moves the player if you pushe down WASD
         {
             Vector3 NormalCamMove = LookDependingOnCam();
             // moves the player
             _controller.Move(NormalCamMove.normalized * mariMovmentStatesSB.Speed * Time.deltaTime);
+
+            CreatSpeedDust();
         }
+
     }
 
 
     // makes Mari rotate and wake in acodens to the cammara
-    Vector3 LookDependingOnCam()
+    private Vector3 LookDependingOnCam()
     {
         // makes Mari curkel and wake ind akottens to cam
-        float targetAngel = Mathf.Atan2(MariValues.Move.x, MariValues.Move.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
+        float targetAngel = Mathf.Atan2(MariValues.ForsMovePlayer.x, MariValues.ForsMovePlayer.z) * Mathf.Rad2Deg + _cam.eulerAngles.y;
 
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngel, ref _turnSmoothVelosetig, mariMovmentStatesSB.TurnSmoothTime);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -98,5 +101,4 @@ public class MariMove2 : MonoBehaviour
             _runCloud.Play();
         }
     }
-        #endregion
 }

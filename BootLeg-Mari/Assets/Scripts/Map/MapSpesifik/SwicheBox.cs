@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SwicheBox : MonoBehaviour
@@ -20,14 +21,20 @@ public class SwicheBox : MonoBehaviour
             if (_isOn.gameObject.activeSelf)
             {
                 // makes the box ghost
-                _isOn.gameObject.SetActive(false);
+                StartCoroutine(WaitSoPlayerCanJump(false));
             }
             else
             {
                 // makes the box solid
-                _isOn.gameObject.SetActive(true);
+                StartCoroutine(WaitSoPlayerCanJump(true));
             }
-
         }
+    }
+
+    private IEnumerator WaitSoPlayerCanJump(bool setObject)
+    {
+        // waits four the next frame
+        yield return null;
+        _isOn.gameObject.SetActive(setObject);
     }
 }
