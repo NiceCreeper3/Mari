@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShooteGun : MonoBehaviour
 {
     [SerializeField] float _gunRange;
+    [SerializeField] ParticleSystem _gunFlash;
 
     // Update is called once per frame
     void LateUpdate()
@@ -19,6 +20,7 @@ public class ShooteGun : MonoBehaviour
 
         // the transform.TransformDirection(Vector3.forward) makes it so the beam is dinamik and alwalyes moves forword
         bool hit = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, _gunRange);
+        _gunFlash.Play(true);
 
         //draws a fake line that gives visual indekator
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitInfo.distance, Color.red, 5);

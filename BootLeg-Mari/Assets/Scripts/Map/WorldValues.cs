@@ -5,7 +5,10 @@ public class WorldValues
     /// Is the point the player vil spawn
     /// Origen: MariDead
     /// Is linked: MariDead, MariMove2    
-    public static Vector3 PlayerSpawnPoint = new Vector3(0, 3, 0);
+    public static Vector3 PlayerSpawnPoint;
+
+    //deturmens if the player has goten the checkpoint
+    public static bool HasGotCheckPoint = false;
 
     /// ville show if player has dide. and wille afekt score
     /// Origen: MariDead

@@ -3,13 +3,22 @@ using TMPro;
 
 public class GoleFlag : MonoBehaviour
 {
+    [Header("PlayerScore")]
+    [SerializeField] private ushort _mapProges;
+
+    [Header("Win text 0 = S and you haev to Write 6 ind total")]
+    [SerializeField] protected string[] WinTexts;
+
+
     [SerializeField] GameObject _winUi;
 
     [Header("PlayerScore")]
     [SerializeField] protected TMP_Text _score, _jokeText;
 
-    [Header("Win text 0 = S and you haev to Write 6 ind total")]
-    [SerializeField] protected string[] WinTexts;
+    private void Awake()
+    {
+        SaveSystem.CheackIfFolderAndFille();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -57,5 +66,39 @@ public class GoleFlag : MonoBehaviour
             _score.text = "F";
             _jokeText.text = WinTexts[5];
         }
+
+        SaveProgres();
+    }
+
+
+    // Start is called before the first frame update
+    private void SaveProgres()
+    {
+        // gets what to save
+        #region
+        // filles the SaveObject withe data 
+        SaveSystem.SaveObject saveObject = new SaveSystem.SaveObject
+        {
+            GameLvlProgres = _mapProges
+        };
+        // converts the saveObject to jsons. we then save it ind a string as json is string based
+        string convertedJson = JsonUtility.ToJson(saveObject);
+        #endregion
+
+        // saves the data if the player is not olredeig further
+        #region
+        string SaveString = SaveSystem.Load();
+
+        // Gets loads the saved json data from the fille
+        if (SaveString != null)
+        {
+            SaveSystem.SaveObject loadedSaveObject = JsonUtility.FromJson<SaveSystem.SaveObject>(SaveString);
+
+            if (_mapProges > loadedSaveObject.GameLvlProgres || loadedSaveObject == null)
+            {
+                SaveSystem.Save(convertedJson);
+            }
+        }
+        #endregion
     }
 }

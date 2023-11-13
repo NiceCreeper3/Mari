@@ -17,7 +17,7 @@ public class Monster : MonoBehaviour
 
 
     [Header("Mari jump after stomp")]
-    [SerializeField] MariJumpScripttebolObject mariJumpStats;
+    [SerializeField] protected MariJumpScripttebolObject mariJumpStats;
 
     // Update is called once per frame
     void Update()
@@ -78,17 +78,23 @@ public class Monster : MonoBehaviour
     }
 
     // Killes the enemy if it is hit
-    protected IEnumerator EnemyHit(string audioToPlayOnDeaf)
+    protected IEnumerator EnemyWasStumpt(string audioToPlayOnDeath)
     {
+        // Playes the given audio and then shrinkes the enemy by hafe its size
+        FindObjectOfType<AudioMangerScript>().PlayAudio(audioToPlayOnDeath, true);
+        transform.localScale = new Vector3(1, 0.5f, 1);
+
         // makes mari jump at hafe hight after stomping a enemy
         MariValues.Velocity.y = Mathf.Sqrt(mariJumpStats.JumpHight * -2f * MariValues.Gravity / 2);
 
-        // Playes the given audio and then shrinkes the enemy by hafe its size
-        FindObjectOfType<AudioMangerScript>().PlayAudio(audioToPlayOnDeaf, true);
-        transform.localScale = new Vector3(1, 0.5f, 1);
-
         // and Destores the enemy a bit after
         yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
+
+    protected void EnemyWasShot(string isShootNoise)
+    {
+        FindObjectOfType<AudioMangerScript>().PlayAudio(isShootNoise, true);
         Destroy(gameObject);
     }
 

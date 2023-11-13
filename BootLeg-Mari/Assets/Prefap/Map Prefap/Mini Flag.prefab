@@ -159,7 +159,6 @@ GameObject:
   - component: {fileID: 7802224641351447202}
   - component: {fileID: 3545304213589054718}
   - component: {fileID: 3114197549551564173}
-  - component: {fileID: 5146307187479837481}
   m_Layer: 0
   m_Name: BopAtTheTop
   m_TagString: Untagged
@@ -232,19 +231,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5146307187479837481
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4437214210537858890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7356389278074724650
 GameObject:
   m_ObjectHideFlags: 0

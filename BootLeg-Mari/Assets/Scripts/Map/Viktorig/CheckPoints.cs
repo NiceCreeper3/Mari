@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPoints : MonoBehaviour
@@ -11,24 +9,14 @@ public class CheckPoints : MonoBehaviour
     [SerializeField] GameObject _sunCoinFiled1, _sunCoinFiled2, _sunCoinFiled3;
 
     private Transform CheckPointFlag;
-    private static bool _hasBenAktivated = false;
+
 
     private void Awake()
     {
         //CheckPointPosition = gameObject.transform.position;
         CheckPointFlag = gameObject.transform.GetChild(0);
-        if (_hasBenAktivated)
+        if (WorldValues.HasGotCheckPoint)
             CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
-    }
-
-    // devleper stuff Deletie after
-    void Update()
-    {
-        if (Input.GetKeyDown("9"))
-        {
-            Debug.Log("New Spawn");
-            SetNewSpawnPoint();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +27,7 @@ public class CheckPoints : MonoBehaviour
     // sets Maris new spawnpoint and saves info
     void SetNewSpawnPoint()
     {
-        if (!_hasBenAktivated)
+        if (!WorldValues.HasGotCheckPoint)
         {
             Debug.Log("Player has new Spawn");
             WorldValues.PlayerSpawnPoint = transform.position;
@@ -48,7 +36,7 @@ public class CheckPoints : MonoBehaviour
             ReamberSunCoins();
 
             CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
-            _hasBenAktivated = true;
+            WorldValues.HasGotCheckPoint = true;
             FindObjectOfType<AudioMangerScript>().PlayAudio("CheckPonintGot", true);
         }
     }
@@ -56,6 +44,7 @@ public class CheckPoints : MonoBehaviour
     void ReamberSunCoins()
     {
         WorldValues.SavedSuncoins = WorldValues.ScoreSunCoinsColleted;
+
         // reambers if we have gotten the SunCoin wen vi hit the check point
         if (_sunCoinFiled1.activeSelf)
             WorldValues.SunCoinNummber1 = true;

@@ -7,14 +7,14 @@ public class PlayerHealtIndekature : MonoBehaviour
 
     [SerializeField] private List<GameObject> _playerHealtImges = new List<GameObject>();
 
-    private void Start()
+    private void Awake()
     {
         // filles the _playerHealtImges list
         foreach (Transform imges in transform)
             _playerHealtImges.Add(imges.gameObject);
 
         // geats the first Imge to be showen wich here is full hp
-        ChangePlayerHealt();
+        _playerHealtImges[_playerHealtImges.Count -1 ].SetActive(true);
     }
 
     public void PlayerHealtChange(object data)

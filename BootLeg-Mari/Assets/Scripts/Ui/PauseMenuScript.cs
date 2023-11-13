@@ -9,6 +9,7 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject pauseMenuUI;
     #endregion
 
+
     // Awaits player input
     void Update()
     {
@@ -42,34 +43,31 @@ public class PauseMenuScript : MonoBehaviour
     //Resumes the game
     public void ResumeGame()
     {
+        //Removes the pause menu and unpauses time
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-    // Reasets the game
-    public void ReasetTheGame()
+    public void ReasetTheScene()
     {
-        //Reasets score rikvaerments
-        WorldValues.ScoreHasPlayerDied = WorldValues.SunCoinNummber1 = WorldValues.SunCoinNummber2 = WorldValues.SunCoinNummber3 = false;
+        // reasets states
+        CommenUIElements.ReasetGameStates();
 
-        WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
+        // realoads the scene and unpauses time
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
+
 
     // goes the the main menu
     public void LoadMenu()
     {
         SceneManager.LoadScene("MaiMenu");
+        //Reasts the games states
+        CommenUIElements.ReasetGameStates();
         Time.timeScale = 1f;
     }
 
-    // exits the game
-    public void QuitGame()
-    {
-        Debug.Log("Qutting game");
-        Application.Quit();
-    }
     #endregion
 }

@@ -9,7 +9,7 @@ public class Gomba : Monster, IJumpable, IShootebol
 
     void IJumpable.JumpetOn(int hit)
     {
-        StartCoroutine(EnemyHit("GombaStomp"));
+        StartCoroutine(EnemyWasStumpt("GombaStomp"));
     }
 
     //Methodes
@@ -17,7 +17,8 @@ public class Gomba : Monster, IJumpable, IShootebol
     void IShootebol.Shoot()
     {
         //FindObjectOfType<AudioMangerScript>().PlayAudio("GombaStomp", true);
-        StartCoroutine(EnemyHit("GombaStomp"));
+        EnemyWasShot("GombaStomp");
+        //StartCoroutine(EnemyHit("GombaStomp"));
     }
 
     #endregion

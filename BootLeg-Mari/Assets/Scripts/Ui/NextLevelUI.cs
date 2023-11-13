@@ -8,8 +8,13 @@ public class NextLevelUI : MonoBehaviour
     [SerializeField] short _selecktScene;
     [SerializeField] string[] Scenes;
 
+
+    CommenUIElements commenUIElements;
+
     private void Start()
     {
+        commenUIElements = GetComponent<CommenUIElements>();
+
         Scenes[0] = "MaiMenu";
         Scenes[1] = "(Hop Skip Jump) map1";
         Scenes[2] = "(Wrong game) map2";
@@ -20,9 +25,8 @@ public class NextLevelUI : MonoBehaviour
 
     public void StartScene()
     {
-        WorldValues.PlayerSpawnPoint = new Vector3(0, 3, 0);
         //Reasets score rikvaerments
-        WorldValues.ScoreHasPlayerDied = WorldValues.SunCoinNummber1 = WorldValues.SunCoinNummber2 = WorldValues.SunCoinNummber3 = false;
+        CommenUIElements.ReasetGameStates();
         SceneManager.LoadScene(Scenes[_selecktScene]);
     }
 

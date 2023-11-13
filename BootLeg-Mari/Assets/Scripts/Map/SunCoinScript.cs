@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SunCoinScript : MonoBehaviour
@@ -10,26 +12,26 @@ public class SunCoinScript : MonoBehaviour
     // sents event 
     [SerializeField] private GameEventScriptebolObjecks OnCoinPikOp;
 
-    private void Awake()
+    private void Start()
     {
-        if (WorldValues.SunCoinNummber1 && _sunCoinNumber == 1)
+        if (WorldValues.SunCoinNummber1 == true && _sunCoinNumber == 1)
         {
-            CoinHasBeanTaken();
+            StartCoroutine(CoinHasBeanTaken());          
         }
-        else if (WorldValues.SunCoinNummber2 && _sunCoinNumber == 2)
+        else if (WorldValues.SunCoinNummber2 == true && _sunCoinNumber == 2)
         {
-            CoinHasBeanTaken();
+            StartCoroutine(CoinHasBeanTaken());
         }
-        else if (WorldValues.SunCoinNummber2 && _sunCoinNumber == 2)
+        else if (WorldValues.SunCoinNummber2 == true && _sunCoinNumber == 3)
         {
-            CoinHasBeanTaken();
+            StartCoroutine(CoinHasBeanTaken());
         }
         else
         {
             WorldValues.ScoreSunCoinsColleted = WorldValues.SavedSuncoins;
         }
 
-        Debug.Log("you have " + WorldValues.ScoreSunCoinsColleted + " SunCoins");
+        Debug.Log($"you have {WorldValues.ScoreSunCoinsColleted} SunCoins, and SunCoin nummber 1){WorldValues.SunCoinNummber1} 2){WorldValues.SunCoinNummber2} 3){WorldValues.SunCoinNummber3}");
     }
 
     private void Update()
@@ -50,14 +52,16 @@ public class SunCoinScript : MonoBehaviour
 
         // sets the
         OnCoinPikOp.Raise(_sunCoinNumber);
-
         Destroy(gameObject);
     }
 
-    private void CoinHasBeanTaken()
+    private IEnumerator CoinHasBeanTaken()
     {
+        // waits a frame so the Ui can be loades
+        yield return null;
+        OnCoinPikOp.Raise(_sunCoinNumber);
+
         Debug.Log("SunCoinHasBenDeleted");
         Destroy(gameObject);
-        OnCoinPikOp.Raise(_sunCoinNumber);
     }
 }

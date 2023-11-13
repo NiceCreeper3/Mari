@@ -19862,7 +19862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4005083332904032728, guid: 01e5ee9599b1d3244b02d93214d98738, type: 3}
       propertyPath: m_Name
-      value: Gomba
+      value: Jeffig
       objectReference: {fileID: 0}
     - target: {fileID: 6415533577095159855, guid: 01e5ee9599b1d3244b02d93214d98738, type: 3}
       propertyPath: TargetToMoveTo
@@ -70863,6 +70863,10 @@ PrefabInstance:
       propertyPath: _mapProges
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6824797714299633430, guid: 10915d283bd532d469ca6ddcf0408808, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReasetTheScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6897326087259444829, guid: 10915d283bd532d469ca6ddcf0408808, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -89840,19 +89844,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187455847484, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4.781064
+      value: 6.620379
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187455847484, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -11.95676
+      value: -9.317802
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187599461791, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4.781064
+      value: 6.620379
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187599461791, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -11.95676
+      value: -9.317802
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187628462161, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_Name
@@ -89936,11 +89940,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187999455169, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4.781064
+      value: 6.620379
       objectReference: {fileID: 0}
     - target: {fileID: 6093271187999455169, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -11.95676
+      value: -9.317802
       objectReference: {fileID: 0}
     - target: {fileID: 6093271188167769287, guid: f8f98c3c358206a4b9f4e411a955906c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -95348,7 +95352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 538834287305554170, guid: 983e48face191534b9afe9c134fa2034, type: 3}
       propertyPath: m_Name
-      value: Copper
+      value: Josh
       objectReference: {fileID: 0}
     - target: {fileID: 4415317719260716225, guid: 983e48face191534b9afe9c134fa2034, type: 3}
       propertyPath: TargetToMoveTo
@@ -95360,7 +95364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4910527860911866234, guid: 983e48face191534b9afe9c134fa2034, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4910527860911866234, guid: 983e48face191534b9afe9c134fa2034, type: 3}
       propertyPath: m_LocalPosition.z
@@ -95368,7 +95372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6237644752047941559, guid: 983e48face191534b9afe9c134fa2034, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 983e48face191534b9afe9c134fa2034, type: 3}
@@ -102851,9 +102855,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1789253644}
     - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: _jokeText
+      value: 
+      objectReference: {fileID: 2028923691}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
       propertyPath: _jukeText
       value: 
       objectReference: {fileID: 2028923691}
+    - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
+      propertyPath: _mapProges
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8495418294342156017, guid: ae308612ec893654dad3bac5904d750f, type: 3}
       propertyPath: WinTexts.Array.data[0]
       value: i hate you! but atlist i am not the one wasting my life four a number.

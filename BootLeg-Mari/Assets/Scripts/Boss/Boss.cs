@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -29,6 +27,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameEventScriptebolObjecks OnAttackDoomShere;
     [SerializeField] private GameEventScriptebolObjecks OnAttackHeadBash;
 
+    // a array of particals
     [Header("Death Partitals")]
     [SerializeField] ParticleSystem[] _deathPartitals;
     [SerializeField] GameObject _viturePlatform;
@@ -36,6 +35,8 @@ public class Boss : MonoBehaviour
 
     // indekaets how meny attackes the boss can do beafore he can be hit
     private ushort attacksTilWeak = 0;
+
+    private short currentAttackCoolDown;
     #endregion
 
     // Method Triggeres
@@ -50,6 +51,8 @@ public class Boss : MonoBehaviour
         GetHitEvent = _creatureHead.GetComponent<CreatureHeadSkript>();
         GetHitEvent.BossIsHit += GetHitEvent_BossIsHit;
 
+        currentAttackCoolDown = bossStatesSB.StageOneAttackCoolDown;
+
         // Starts the bosses Attack 
         StartCoroutine(BossColddownAttack());
     }
@@ -59,7 +62,9 @@ public class Boss : MonoBehaviour
     {
         // Swithes attacks and is alout to attack agien
         SwitcheStage();
+
         attacksTilWeak = 0;
+        currentAttackCoolDown = bossStatesSB.NormalAttackCoolDown;
     }
 
     #endregion
@@ -70,10 +75,11 @@ public class Boss : MonoBehaviour
     // Boss Attack after som time
     private IEnumerator BossColddownAttack()
     {
+
+        yield return new WaitForSecondsRealtime(bossStatesSB.TimeOnTilFirstAttack);
+
         while (_bossIsAlive)
         {
-            yield return new WaitForSecondsRealtime(bossStatesSB.BossAttackCoolDown);
-
             if (attacksTilWeak == 5)
             {
                 // stopes the head from spining and then 
@@ -88,6 +94,8 @@ public class Boss : MonoBehaviour
                 //ads one to attacksTilWeak
                 attacksTilWeak++;
             }
+
+            yield return new WaitForSecondsRealtime(currentAttackCoolDown);
         }
     }
 
@@ -103,18 +111,15 @@ public class Boss : MonoBehaviour
             // Makes missails fall from the sky
             case 1:
                 OnAttackMissails.Raise(_bossStage);
-                //RocketAttack?.Invoke(_bossStage);
                 break;
             // Glides Lasheres akros
             case 2:
                 OnAttackLasherSend.Raise(_bossStage);
-                //LasherSendAttack?.Invoke(_bossStage);
                 break;
 
             // Makes Sheres that chase the player
             case 3:
                 OnAttackDoomShere.Raise(_bossStage);
-                //DoomShereAttack?.Invoke(_bossStage);
                 break;
         }
     }

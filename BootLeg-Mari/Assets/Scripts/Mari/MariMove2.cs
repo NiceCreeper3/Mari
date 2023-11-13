@@ -30,8 +30,12 @@ public class MariMove2 : MonoBehaviour
         // Get a refends to the Chareturecontroller
         _controller = GetComponent<CharacterController>();
 
-        // inde i en coruten so scene har tid til at indlese Spawnpoint
-        transform.position = WorldValues.PlayerSpawnPoint;
+        // if the player has got a check point then there will spawn there
+        if (WorldValues.HasGotCheckPoint)
+        {
+            StartCoroutine(WaitASec());
+        }
+
 
         // Sets the player to not be dead and that he is not on ice. inkase the player dies on ice
         MariValues.MariIsDead = MariValues.OnIcyFloor = false;
@@ -100,5 +104,18 @@ public class MariMove2 : MonoBehaviour
         {
             _runCloud.Play();
         }
+    }
+
+    private IEnumerator WaitASec() 
+    {
+        MariValues.PlayerIsTeleporting = true;
+
+        yield return null;
+
+        transform.position = WorldValues.PlayerSpawnPoint;
+        Debug.Log("Player spawn point is " + WorldValues.PlayerSpawnPoint);
+
+        yield return null;
+        MariValues.PlayerIsTeleporting = false;
     }
 }

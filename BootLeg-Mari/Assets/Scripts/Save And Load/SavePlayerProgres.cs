@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SavePlayerProgres : MonoBehaviour
 {
+
+    [Header("PlayerScore")]
     [SerializeField] private ushort _mapProges;
 
     private void Awake()
@@ -10,7 +12,7 @@ public class SavePlayerProgres : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void SaveProgres()
+    private void SaveProgres()
     {
         // gets what to save
         #region

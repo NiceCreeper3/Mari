@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallPlatform : MonoBehaviour, IJumpable
 {
-    Transform GetTheYeelowBar;
+    Transform GetTheMiddelBar;
 
     [Header("Color Of Platform")]
     [SerializeField] Material _normalColor;
@@ -17,8 +16,8 @@ public class FallPlatform : MonoBehaviour, IJumpable
     private bool HasBenJumpetOn = false;
 
 
-    Vector3 _origanalPositon;
-    Rigidbody _platform;
+    private Vector3 _origanalPositon;
+    private Rigidbody _platform;
 
 
     void Start()
@@ -27,21 +26,19 @@ public class FallPlatform : MonoBehaviour, IJumpable
         _origanalPositon = transform.position;
         _platform = GetComponent<Rigidbody>();
 
-        GetTheYeelowBar = gameObject.transform.GetChild(0);
+        GetTheMiddelBar = gameObject.transform.GetChild(0);
     }
 
     void IJumpable.JumpetOn(int hit)
     {
-        Debug.Log("Platform hit");
-
         // makes the platform fall and go op aigen
         StartCoroutine(MakeBarFall());
     }
 
-    IEnumerator MakeBarFall()
+    private IEnumerator MakeBarFall()
     {
         //Makes the yellow bar red
-        GetTheYeelowBar.GetComponent<Renderer>().material.color = _fallColor.color;
+        GetTheMiddelBar.GetComponent<Renderer>().material.color = _fallColor.color;
 
         // playes audio det first time the platfom is hit
         if (!HasBenJumpetOn)
@@ -58,17 +55,17 @@ public class FallPlatform : MonoBehaviour, IJumpable
     }
 
     // makes the platform fall after a delley
-    void PlatFormFall()
+    private void PlatFormFall()
     {
         // mankes the platform Fall by removing isKinematic      
         _platform.isKinematic = false;
     }
 
     // reastes the platform to origenal position
-    void PlatFormReaset()
+    private void PlatFormReaset()
     {
         //Makes the yellow bar yellow agien
-        GetTheYeelowBar.GetComponent<Renderer>().material.color = _normalColor.color;
+        GetTheMiddelBar.GetComponent<Renderer>().material.color = _normalColor.color;
 
         // allows audio to be played agien
         HasBenJumpetOn = false;
