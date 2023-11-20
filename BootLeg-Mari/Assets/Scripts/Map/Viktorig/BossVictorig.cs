@@ -7,7 +7,7 @@ public class BossVictorig : GoleFlag
 
     protected override void ScoreToPlayer()
     {
-        Debug.Log("the skore is " + WorldValues.ScoreSunCoinsColleted + " and the player died = " + WorldValues.ScoreHasPlayerDied);
+        Debug.Log("the skore is " + WorldValues.CurrentSunCoins + " and the player died = " + WorldValues.ScoreHasPlayerDied);
 
         if (!WorldValues.ScoreHasPlayerDied)
         {

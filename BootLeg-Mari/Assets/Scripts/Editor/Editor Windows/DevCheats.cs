@@ -136,13 +136,13 @@ public class DevCheats : EditorWindow
             if (reasetOrMax)
             {
                 Debug.Log("Full points");
-                WorldValues.ScoreSunCoinsColleted = 3;
+                WorldValues.CurrentSunCoins = 3;
             }
             else
             {
                 Debug.Log("Points reset");
                 WorldValues.ScoreHasPlayerDied = WorldValues.SunCoinNummber1 = WorldValues.SunCoinNummber2 = WorldValues.SunCoinNummber3 = false;
-                WorldValues.ScoreSunCoinsColleted = 0;
+                WorldValues.CurrentSunCoins = 0;
             }
 
             //Reasets score rikvaerments

@@ -7,8 +7,14 @@ public class PauseMenuScript : MonoBehaviour
     // keaps trak if the game is paused or not
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+
+    private CommenUIElements commenUI;
     #endregion
 
+    private void Start()
+    {
+        commenUI = GetComponent<CommenUIElements>();
+    }
 
     // Awaits player input
     void Update()

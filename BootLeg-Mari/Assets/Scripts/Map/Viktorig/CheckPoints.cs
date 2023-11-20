@@ -10,42 +10,73 @@ public class CheckPoints : MonoBehaviour
 
     private Transform CheckPointFlag;
 
-
+    // unity trrigeres
+    #region
     private void Awake()
     {
-        //CheckPointPosition = gameObject.transform.position;
+        // gets a refrends to the flag part of the check point
         CheckPointFlag = gameObject.transform.GetChild(0);
+
+        // makes collecked sun coins the same as savedSunCoins
+        WorldValues.CurrentSunCoins = WorldValues.SavedSunCoins;
+
+        // changes the flag color to the tagen color
         if (WorldValues.HasGotCheckPoint)
             CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
+
+        // debugs about what SunCoin is aktive
+        Debug.Log(
+            $"you have {WorldValues.CurrentSunCoins} SunCoins, " +
+            $"and saved coins is {WorldValues.SavedSunCoins}, " +
+            $"and SunCoin nummber 1){WorldValues.SunCoinNummber1} " +
+            $"2){WorldValues.SunCoinNummber2} " +
+            $"3){WorldValues.SunCoinNummber3}");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         SetNewSpawnPoint();
     }
+    #endregion
 
     // sets Maris new spawnpoint and saves info
-    void SetNewSpawnPoint()
+    private void SetNewSpawnPoint()
     {
         if (!WorldValues.HasGotCheckPoint)
         {
-            Debug.Log("Player has new Spawn");
+            // reammberes stuff
+            #region
+            // makes it so the game remmberes the mini falg has bean takken
+            WorldValues.HasGotCheckPoint = true;
+
+            // sets the playeres new spawn point
             WorldValues.PlayerSpawnPoint = transform.position;
 
-            //StartCoroutine(ReamberSunCoin());
-            ReamberSunCoins();
+            // (Warning) is mabey the cause
+            WorldValues.SavedSunCoins = WorldValues.CurrentSunCoins;
 
+            //reammberes what SunCoin has bean taken
+            ReamberSunCoins();
+            #endregion
+
+            // does pure aperens stuff
+            #region
+            // tanges the color of the flag to _flagTakkenColor. and then playes a audio sampel
             CheckPointFlag.GetComponent<Renderer>().material.color = _flagTakkenColor.color;
-            WorldValues.HasGotCheckPoint = true;
             FindObjectOfType<AudioMangerScript>().PlayAudio("CheckPonintGot", true);
+
+            Debug.Log("Player has new Spawn");
+            #endregion
         }
     }
 
-    void ReamberSunCoins()
+    private void ReamberSunCoins()
     {
-        WorldValues.SavedSuncoins = WorldValues.ScoreSunCoinsColleted;
+        // the code belove needs to be changed. as it is annoying to set op the refrenses ithe time you add a this script and is generlig not good and makes a dependensig on the UI objeck
 
-        // reambers if we have gotten the SunCoin wen vi hit the check point
+        /// (Saves what suncoins we have gotten allrede)
+        /// it does this by checking if the Ui elemet represending the spisifik suncoin is active
+        /// if yeas then it putes SunCoinNummberX to true
         if (_sunCoinFiled1.activeSelf)
             WorldValues.SunCoinNummber1 = true;
         if (_sunCoinFiled2.activeSelf)

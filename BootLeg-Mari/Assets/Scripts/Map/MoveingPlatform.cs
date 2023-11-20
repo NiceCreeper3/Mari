@@ -32,7 +32,7 @@ public class MoveingPlatform : MonoBehaviour
     //moves the palyer ind a cortens to the platforms velocity. whille the player stands on it
     private void OnTriggerStay(Collider other)
     {
-        //moves the palyer ind a cortens to the platforms velocity
+        //moves the player ind a cortens to the platforms velocity
         if (other.CompareTag("Player"))
             cc.Move( rb.velocity * Time.deltaTime);
     }
@@ -49,7 +49,7 @@ public class MoveingPlatform : MonoBehaviour
         if (transform.position == _positonsToMove[_nextPositionMove].position)
         {
             _nextPositionMove = (_nextPositionMove + 1) % _positonsToMove.Length;
-
+            
             _distanseBetviePoints = Vector3.Distance(transform.position, _positonsToMove[_nextPositionMove].position);
         }
         else

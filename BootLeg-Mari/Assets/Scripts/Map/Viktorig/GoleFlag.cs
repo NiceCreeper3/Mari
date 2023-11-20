@@ -22,41 +22,47 @@ public class GoleFlag : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _winUi.SetActive(true);
+        
+        
+        /// (Warning) needs to be change as it does not work
+        /// is supposed to make so the player does not move when to UI is up
+        /// But this is not intuvetive to look at ind code and does not prevent movement
         MariValues.MariIsDead = true;
+
+        _winUi.SetActive(true);
         FindObjectOfType<AudioMangerScript>().PlayAudio("WinFanfar", true);
         ScoreToPlayer();
     }
 
     protected virtual void ScoreToPlayer()
     {
-        Debug.Log("the skore is " + WorldValues.ScoreSunCoinsColleted + " and the player died = " + WorldValues.ScoreHasPlayerDied);
+        Debug.Log("the skore is " + WorldValues.CurrentSunCoins + " and the player died = " + WorldValues.ScoreHasPlayerDied);
 
         // shows the player skore
-        if (WorldValues.ScoreSunCoinsColleted == 3 && !WorldValues.ScoreHasPlayerDied)
+        if (WorldValues.CurrentSunCoins == 3 && !WorldValues.ScoreHasPlayerDied)
         {
             _score.text = "Axolotl";
             _score.fontSize = 65;
             _score.enableWordWrapping = false;
             _jokeText.text = WinTexts[0];
         }
-        else if (WorldValues.ScoreSunCoinsColleted == 3)
+        else if (WorldValues.CurrentSunCoins == 3)
         {
             _score.text = "A";
             _jokeText.text = WinTexts[1];
         }
-        else if (WorldValues.ScoreSunCoinsColleted == 2)
+        else if (WorldValues.CurrentSunCoins == 2)
         {
             _score.text = "B";
             _jokeText.text = WinTexts[2];
         }
-        else if (WorldValues.ScoreSunCoinsColleted == 1)
+        else if (WorldValues.CurrentSunCoins == 1)
         {
             
             _score.text = "C";
             _jokeText.text = WinTexts[3];
         }
-        else if (WorldValues.ScoreSunCoinsColleted == 0 && !WorldValues.ScoreHasPlayerDied)
+        else if (WorldValues.CurrentSunCoins == 0 && !WorldValues.ScoreHasPlayerDied)
         {
             _score.text = "D";
             _jokeText.text = WinTexts[4];
@@ -66,11 +72,19 @@ public class GoleFlag : MonoBehaviour
             _score.text = "F";
             _jokeText.text = WinTexts[5];
         }
+/*
+        // reaplases the joke text so i can see what is goving on
+        string teast = 
+            $"the skore is {WorldValues.CurrentSunCoins} " +
+            $"and the player died = {WorldValues.ScoreHasPlayerDied}. " +
+            $"and player spawn is {WorldValues.HasGotCheckPoint}" +
+            $"and saved suncoin is {WorldValues.SavedSunCoins}";
+        _jokeText.text = teast;*/
 
         SaveProgres();
     }
 
-
+      
     // Start is called before the first frame update
     private void SaveProgres()
     {

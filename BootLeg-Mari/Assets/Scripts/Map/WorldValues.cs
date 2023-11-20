@@ -15,14 +15,15 @@ public class WorldValues
     /// Is linked: MariDead, GoleFlag    
     public static bool ScoreHasPlayerDied = false;
 
-    /// ville show how many suncoins the player has colletet
+    /// represends how meany suncoins the player has right now
     /// Origen: MariDead
     /// Is linked: SunCoinScript, GoleFlag    
-    public static short ScoreSunCoinsColleted = 0;
+    public static short CurrentSunCoins = 0;
 
     [Range(0, 3)]
-    public static short SavedSuncoins = 0;
+    public static short SavedSunCoins = 0;
 
+    // reapresends the spisifik suncoin
     public static bool SunCoinNummber1 = false, SunCoinNummber2 = false, SunCoinNummber3 = false;
 
 }

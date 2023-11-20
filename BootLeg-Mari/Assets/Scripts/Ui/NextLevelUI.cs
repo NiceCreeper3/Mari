@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +6,8 @@ public class NextLevelUI : MonoBehaviour
     [SerializeField] short _selecktScene;
     [SerializeField] string[] Scenes;
 
-
-    CommenUIElements commenUIElements;
-
     private void Start()
     {
-        commenUIElements = GetComponent<CommenUIElements>();
-
         Scenes[0] = "MaiMenu";
         Scenes[1] = "(Hop Skip Jump) map1";
         Scenes[2] = "(Wrong game) map2";
@@ -25,10 +18,9 @@ public class NextLevelUI : MonoBehaviour
 
     public void StartScene()
     {
-        //Reasets score rikvaerments
+        //Reasets score rikvaerments. and realoads the scene
         CommenUIElements.ReasetGameStates();
         SceneManager.LoadScene(Scenes[_selecktScene]);
+
     }
-
-
 }
