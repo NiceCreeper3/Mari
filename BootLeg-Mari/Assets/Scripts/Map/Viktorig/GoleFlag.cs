@@ -21,9 +21,7 @@ public class GoleFlag : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        
-        
+    {   
         /// (Warning) needs to be change as it does not work
         /// is supposed to make so the player does not move when to UI is up
         /// But this is not intuvetive to look at ind code and does not prevent movement

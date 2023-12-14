@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossMaxHealt: 3
   TimeOnTilFirstAttack: 5
-  StageOneAttackCoolDown: 8
-  NormalAttackCoolDown: 10
+  StageOneAttackCoolDown: 9
+  NormalAttackCoolDown: 11
