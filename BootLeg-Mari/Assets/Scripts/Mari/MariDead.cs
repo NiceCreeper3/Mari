@@ -37,6 +37,7 @@ public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
     {
         if(!MariValues.MariIsDead)
             StartCoroutine(PalyerReaspawn());
+        
     }
 
     //is interface method
@@ -107,4 +108,3 @@ public class MariDead : MonoBehaviour, IIsHitebol, IIsOneshottebol
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
-
